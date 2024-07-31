@@ -1,0 +1,14 @@
+# Django #
+*.log
+*.pot
+*.pyc
+*.csv
+
+.env
+./.vscode/*
+
+target_lists/
+order_datas/
+
+# Node.js #
+node_modules/

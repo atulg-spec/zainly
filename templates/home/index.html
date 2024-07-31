@@ -1,0 +1,208 @@
+{% extends 'home/base.html' %}
+{% block body %}
+<section class="relative 2xl:h-[100vh] 2xl:overflow-hidden">
+    <div class="flex items-center text-white">
+        <div class="container px-4">
+            <div class="absolute inset-0 -z-10">
+                <!-- Swiper -->
+                <div id="testi_6" class="swiper bg-cover bg-center">
+                    <div class="swiper-wrapper relative">
+                        <div class="swiper-slide">
+                            <img src="{{slider.1.image.url}}" class="hidden md:block 2xl:h-[770px] h-[770px] w-full" alt="">
+                            <img src="{{slider.4.image.url}}" class="md:hidden 2xl:h-[770px] h-[770px] w-full" alt="">
+                            <div class="absolute inset-0 bg-gray-950/70"></div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{slider.2.image.url}}" class="hidden md:block 2xl:h-[770px] h-[770px] w-full" alt="">
+                            <img src="{{slider.5.image.url}}" class="md:hidden 2xl:h-[770px] h-[770px] w-full" alt="">
+                            <div class="absolute inset-0 bg-gray-950/70"></div>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{slider.3.image.url}}" class="hidden md:block 2xl:h-[770px] h-[770px] w-full" alt="">
+                            <img src="{{slider.6.image.url}}" class="md:hidden 2xl:h-[770px] h-[770px] w-full" alt="">
+                            <div class="absolute inset-0 bg-gray-950/70"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="relative max-w-2xl pt-96">
+                <h1 class="2xl:text-[55px]/tight md:text-5xl/tight text-4xl/tight font-medium tracking-wide mb-8">
+                    {{slider.1.title}}
+                </h1>
+                <p class="text-base/relaxed text-white/60">
+                    {{slider.1.short_caption}}
+                </p>
+            </div>
+            <div class="flex flex-wrap items-center justify-between mt-6 2xl:mt-24">
+                <div class="flex items-center gap-2">
+                    <div
+                        class="border rounded-full w-10 h-10 flex items-center justify-center hover:border-blue-600 hover:text-blue-600 transition-all duration-500">
+                        <i class="ri-facebook-fill text-2xl"></i>
+                    </div>
+                    <div
+                        class="border rounded-full w-10 h-10 flex items-center justify-center hover:border-pink-600 hover:text-pink-600 transition-all duration-500">
+                        <i class="ri-instagram-line text-2xl"></i>
+                    </div>
+                    <div
+                        class="border rounded-full w-10 h-10 flex items-center justify-center hover:border-red-500 hover:text-red-500 transition-all duration-500">
+                        <i class="ri-youtube-fill text-2xl"></i>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-center">
+                    <div class="button-next after:hidden group">
+                        <div
+                            class="relative border-8 border-transparent hover:border-white/5 rounded-lg transition-all duration-500">
+                            <div
+                                class="w-9 h-9 flex items-center justify-center border rounded-md text-white border-gray-700 hover:border-transparent bg-gray-700/50 hover:bg-white hover:text-blue-600 transition-all duration-500">
+                                <div class="">
+                                    <i class="ri-arrow-left-s-line text-2xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-prev after:hidden">
+                        <div
+                            class="relative border-8 border-transparent hover:border-white/5 rounded-lg transition-all duration-500">
+                            <div
+                                class="w-9 h-9 flex items-center justify-center border rounded-md text-white border-gray-700 hover:border-transparent bg-gray-700/50 hover:bg-white hover:text-blue-600 transition-all duration-500">
+                                <div class="">
+                                    <i class="ri-arrow-right-s-line text-2xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- Flex End -->
+        </div><!-- Container End -->
+    </div>
+</section>
+
+
+<div class="bg-white">
+    <div class="mx-auto w-full px-6 py-10">
+        <h4 class="text-2xl tracking-tight text-center text-gray-900 font-mono text-4xl fade-in">NEWLY LAUNCHED</h4>
+        <div class="mt-6 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-6 xl:gap-x-4">
+            {% for product in trending_products %}
+            <div class="group relative fade-in">
+                <a href="/product-view/{{product.id}}">
+                    <div
+                        class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                        <img src="{{product.product_image.url}}" alt="{{product.keywords}}"
+                            class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                    </div>
+                    <div class="mt-4">
+                        <div>
+                            <h3 class="text-sm text-gray-700">
+                                <a href="#">
+                                    <p class="line-clamp-1 text-sm text-black">
+                                        {{product.title}}
+                                    </p>
+                                </a>
+                                <p class="text-sm font-medium text-gray-900">₹{{product.price}}</p>
+                            </h3>
+                            <p class="line-clamp-2 mb-3 text-gray-600 text-sm dark:text-gray-400 h-10">
+                                {{product.description}}
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="bg-white mt-10">
+    <div class="mx-auto px-6 w-full py-10">
+        <h4 class="text-2xl tracking-tight text-center text-gray-900 font-mono text-4xl fade-in">CATEGORIES</h4>
+        <div class="mt-6 flex overflow-x-auto space-x-2 scrollbar-hide">
+            {% for product in categories %}
+            <div class="group relative flex-shrink-0 w-52 fade-in">
+                <a href="/search/{{product.category}}">
+
+                    <div
+                        class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                        <img src="{{product.category_image.url}}" alt="{{product.category}}"
+                            class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                    </div>
+                    <div class="mt-4 flex justify-between">
+                        <div>
+                            <h3 class="text-sm text-gray-700">
+                                <a href="#">
+                                    <p class="line-clamp-1 text-sm text-black">
+                                        {{product.category}}
+                                    </p>
+                                </a>
+                            </h3>
+                            <p class="line-clamp-2 mb-3 text-gray-600 text-sm dark:text-gray-400 h-10">
+                                {{product.short_caption}}
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<a href="{{slider.1.redirect_url}}">
+    <img src="{{slider.1.image.url}}"
+    class="h-[200px] md:h-[500px] lg:h-[700px] w-full p-4 fade-in rounded-3xl" alt="">
+</a>
+
+
+
+<div class="bg-white fade-in">
+    <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-1">
+        <h4 class="text-2xl tracking-tight text-center text-gray-900 font-mono text-4xl">TRENDING</h4>
+
+        <div class="mt-6 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-6 xl:gap-x-4">
+            {% for product in latest_products %}
+            <div class="group relative">
+                <a href="/product-view/{{product.id}}">
+                    <div
+                        class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                        <img src="{{product.product_image.url}}" alt="{{product.keywords}}"
+                            class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                    </div>
+                    <div class="mt-4">
+                        <div>
+                            <h3 class="text-sm text-gray-700">
+                                <a href="#">
+                                    <p class="line-clamp-1 text-sm text-black">
+                                        {{product.title}}
+                                    </p>
+                                </a>
+                                <p class="text-sm font-medium text-gray-900">₹{{product.price}}</p>
+                            </h3>
+                            <p class="line-clamp-2 mb-3 text-gray-600 text-sm dark:text-gray-400 h-10">
+                                {{product.description}}
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 }); // Adjust threshold as needed
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    });
+</script>
+
+{% endblock body %}
