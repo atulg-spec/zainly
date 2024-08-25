@@ -1,226 +1,270 @@
 {% extends 'home/base.html' %}
-{% block body %}
-{% load humanize %}
-<div class="bg-black h-24"></div>
-<section class="py-12 sm:py-16 px-4">
-    <div class="container mx-auto px-4">
-        <nav class="flex">
-            <ol role="list" class="flex items-center">
-                <li class="text-left">
-                    <div class="-m-1">
-                        <a href="#"
-                            class="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800">
-                            Home </a>
-                    </div>
-                </li>
-
-                <li class="text-left">
-                    <div class="flex items-center">
-                        <span class="mx-2 text-gray-400">/</span>
-                        <div class="-m-1">
-                            <a href="#"
-                                class="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800">
-                                Products </a>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="text-left">
-                    <div class="flex items-center">
-                        <span class="mx-2 text-gray-400">/</span>
-                        <div class="-m-1">
-                            <a href="#"
-                                class="rounded-md p-1 text-sm font-medium text-gray-600 focus:text-gray-900 focus:shadow hover:text-gray-800 line-clamp-1"
-                                aria-current="page"> {{product.title}} </a>
-                        </div>
-                    </div>
-                </li>
-            </ol>
-        </nav>
-
-        <div class="lg:col-gap-6 xl:col-gap-6 mt-8 grid grid-cols-1 gap-6 lg:mt-6 lg:grid-cols-5 lg:gap-6">
-            <div class="lg:col-span-3 lg:row-end-1">
-                <div class="lg:flex lg:items-start">
-                    <div class="lg:order-2 lg:ml-5">
-                        <div class="max-w-xl overflow-hidden rounded-lg">
-                            <img class="h-full w-full max-w-full object-cover" src="{{product.image.url}}"
-                                alt="{{product.title}}" id="main-image" />
-                        </div>
-                    </div>
-
-                    <div class="mt-2 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">
-                        <div class="flex flex-row items-start lg:flex-col">
-                            <button type="button"
-                                class="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-gray-900 text-center">
-                                <img class="h-full w-full object-cover" src="{{product.image.url}}"
-                                    alt="{{product.title}}"
-                                    onclick="document.getElementById('main-image').src='{{product.image.url}}'" />
-                            </button>
-                            {% for x in product_images %}
-                            <button type="button"
-                                class="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-gray-900 text-center">
-                                <img class="h-full w-full object-cover" src="{{x.image.url}}" alt="{{product.title}}"
-                                    onclick="document.getElementById('main-image').src='{{x.image.url}}'" />
-                            </button>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="lg:col-span-2 lg:row-span-2 lg:row-end-2">
-                <h1 class="sm: text-2xl font-bold text-gray-900 sm:text-3xl">{{product.title}}</h1>
-
-                <div class="mt-5 flex items-center">
-                    <div class="flex items-center">
-                        {% for x in stars %}
-                        <svg class="block h-4 w-4 align-middle text-yellow-500" xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20" fill="currentColor">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                                class=""></path>
-                        </svg>
-                        {% endfor %}
-                    </div>
-                    <p class="ml-2 text-sm font-medium text-gray-500">{{product.review|intcomma}} Reviews</p>
-                </div>
-
-                <h2 class="mt-8 text-base text-gray-900">Select Size</h2>
-                <div class="mt-3 flex select-none flex-wrap items-center gap-1">
-                    {% for x in product.sizes_available.all %}
-                    <label class="">
-                        <input type="radio" name="size" value="{{x}}" class="peer sr-only" checked />
-                        <p
-                            class="peer-checked:bg-black peer-checked:text-white rounded-lg border border-black px-6 py-2 font-bold">
-                            {{x}}</p>
-                    </label>
-                    {% endfor %}
-                </div>
-                <div class="mt-4 flex select-none flex-wrap items-center gap-1">
-                    <button type="button"
-                        class="rounded-lg border border-gray px-12 py-2 w-full bg-gray-100 text-center"
-                        onclick="document.getElementById('sizeChartModal').classList.remove('hidden')">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                            data-inject-url="https://cdn.kiwisizing.com/icons/tape2.min.svg?v=5-inject2"
-                            class="w-5 h-5 inline-block mr-2" crossorigin="Anonymous">
-                            <path
-                                d="M193.65 156.647c-36.028 0-62.835 14.83-65.2 36.06a26.85 26.85 0 0 0-.165 2.964c0 21.366 24.68 37.366 60.02 38.9 1.787.078 3.583.117 5.337.117 37.87 0 65.357-16.413 65.357-39.026s-27.487-39.026-65.357-39.026zm0 46.707c-1.302 0-2.638-.03-3.97-.088-15.277-.668-24.74-4.874-28.58-7.608 4.4-3.133 15.725-7.663 32.552-7.663 16.856 0 28.204 4.547 32.577 7.68-4.373 3.133-15.72 7.68-32.577 7.68zm193.65 60.303v-67.982c0-28.763-21.7-54.808-61.135-73.338-35.657-16.76-82.72-25.992-132.515-25.992-48.057 0-93.907 8.675-129.104 24.428-38.388 17.18-61.2 41.593-64.202 68.744-.228 2.055-.344 4.127-.344 6.157v120.65c0 27.153 19.62 52.17 55.243 70.442 31.905 16.365 74.893 26.488 121.046 28.505a400.35 400.35 0 0 0 17.361.383H512V263.657H387.3zM31.5 192.974c3.498-31.527 69.5-65.282 162.15-65.282 95.648 0 162.303 35.828 162.303 67.983s-66.655 67.982-162.303 67.982a367.32 367.32 0 0 1-15.993-.354l-7.185-.39c-35.193-2.26-68.22-9.7-93.66-21.2l-2.615-1.208-.26-.124-2.178-1.05-1.235-.62-1.18-.596-1.73-.906-.388-.205c-21.34-11.434-34.124-25.26-35.7-38.54-.016-.135-.025-.27-.04-.404l-.086-.964a24.1 24.1 0 0 1-.045-1.42c.001-.88.052-1.8.153-2.7zm324.454 58.083v12.6H336.7c7.143-3.935 13.567-8.15 19.263-12.6zm124.7 133.25h-32.9v-41.32h-31.347v41.32h-38.86V317.56H346.2v66.746h-38.113v-41.32H276.75v41.32h-38.862V317.56H206.54v66.746h-12.9a369.21 369.21 0 0 1-15.993-.353l-9.23-.527v-40.44H137.08V379.8c-13.785-2.275-26.847-5.377-38.86-9.236v-66.4H66.873v53.3c-22.62-12.202-35.527-27.096-35.527-41.14v-65.242c4.296 3.35 9.026 6.56 14.15 9.626l.17.104 1.964 1.145 1.95 1.114 1.56.863 3.025 1.614.758.398.318.167L59.038 268l.565.27 4.306 2 .08.034 5.153 2.237 1.013.423 4.62 1.852 2.15.82 2.396.885c22.23 8.13 47.548 13.707 74.746 16.464l1.228.125 3.547.335 5.203.428 2.04.146 6.285.393c.086.004.17.01.256.016l1.028.56h307v89.308z">
-                            </path>
-                        </svg>
-                        Size Chart
-                    </button>
-                </div>
-
-                <div
-                    class="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
-                    <div class="flex items-end">
-                        <p class="text-3xl"><strike class="text-sm">₹{{product.before_discount_price}}</strike>
-                            ₹{{product.price}} <span
-                                class="text-sm text-red-600 font-bold">{{product.discount_percent}}% off</span></p>
-                        <span class="text-base"></span>
-                    </div>
-                </div>
-                {% if user.is_authenticated %}
-                <button type="button" onclick="addToCart()"
-                    class="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-gray-900 bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800 w-full mt-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 mr-3 h-5 w-5" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                    </svg>
-                    Add to cart
-                </button>
-                {% else %}
-                <a href="{% url 'social:begin' 'google-oauth2' %}?next={{request.path}}"
-                    class="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-gray-900 bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800 w-full mt-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 mr-3 h-5 w-5" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                    </svg>
-                    Add to cart
-                </a>
-                {% endif %}
-
-                <ul class="mt-8 space-y-2">
-                    <li class="flex items-center text-left text-sm font-medium text-gray-600">
-                        <svg class="mr-2 block h-5 w-5 align-middle text-gray-500" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                                class=""></path>
-                        </svg>
-                        Free shipping
-                    </li>
-
-                    <li class="flex items-center text-left text-sm font-medium text-gray-600">
-                        <svg class="mr-2 block h-5 w-5 align-middle text-gray-500" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
-                                class=""></path>
-                        </svg>
-                        Cancel Anytime
-                    </li>
+{% block breadcrumb %}
+<div class="breadcrumb-area pt--70 pt-md--25">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <ul class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/categories">Shop Pages</a></li>
+                    <li class="current"><span>{{product.title}}</span></li>
                 </ul>
-            </div>
-
-            <div class="lg:col-span-3">
-                <div class="border-b border-gray-300">
-                    <nav class="flex gap-4">
-                        <a href="#" title=""
-                            class="border-b-2 border-gray-900 py-4 text-sm font-medium text-gray-900 hover:border-gray-400 hover:text-gray-800">
-                            Description </a>
-
-                        <!-- <a href="#" title=""
-                            class="inline-flex items-center border-b-2 border-transparent py-4 text-sm font-medium text-gray-600">
-                            Reviews
-                            <span
-                                class="ml-2 block rounded-full bg-gray-500 px-2 py-px text-xs font-bold text-gray-100">
-                                1,209 </span>
-                        </a> -->
-                    </nav>
-                </div>
-
-                <div class="mt-4 flow-root sm:mt-6">
-                    <h1 class="text-1xl font-bold">Delivered To Your Door</h1>
-                    <p class="mt-2 text-2xl">
-                        {{product.title}}
-                    </p>
-                    <p class="mt-4">
-                        {{product.description}}
-                    </p>
-                </div>
             </div>
         </div>
     </div>
-</section>
-
-
-<div class="grid lg:grid-cols-9 gap-4" style="z-index: 999;">
-    <div id="sizeChartModal" class="fixed rounded-lg inset-0 flex items-center justify-center hidden"
-        style="left: 50%;top: 50%;transform: translate(-50%, -50%);min-width: 350px; z-index: 1000;">
-        <div class="bg-white rounded-lg shadow-lg w-full p-6 border">
-            <div class="flex justify-between items-center border-b">
-                <div>
-                    <label class="text-lg text-black font-semibold mb-2">
-                        Size Chart
-                    </label><span id=""></span>
+</div>
+{% endblock breadcrumb %}
+{% block body %}
+<div class="page-content-inner enable-full-width">
+    <div class="container-fluid">
+        <div class="row pt--40">
+            <div class="col-md-6 product-main-image">
+                <div class="product-image">
+                    <div class="product-gallery vertical-slide-nav">
+                        <div class="product-gallery__thumb">
+                            <div class="product-gallery__thumb--image">
+                                <div class="airi-element-carousel nav-slider slick-vertical" data-slick-options='{
+                                    "slidesToShow": 3,
+                                    "slidesToScroll": 1,
+                                    "vertical": true,
+                                    "swipe": true,
+                                    "verticalSwiping": true,
+                                    "infinite": true,
+                                    "focusOnSelect": true,
+                                    "asNavFor": ".main-slider",
+                                    "arrows": true, 
+                                    "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fa fa-angle-up" },
+                                    "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fa fa-angle-down" }
+                                }' data-slick-responsive='[
+                                    {
+                                        "breakpoint":992, 
+                                        "settings": {
+                                            "slidesToShow": 4,
+                                            "vertical": false
+                                        } 
+                                    },
+                                    {
+                                        "breakpoint":575, 
+                                        "settings": {
+                                            "slidesToShow": 3,
+                                            "vertical": false
+                                        } 
+                                    },
+                                    {
+                                        "breakpoint":480, 
+                                        "settings": {
+                                            "slidesToShow": 2,
+                                            "vertical": false
+                                        } 
+                                    }
+                                ]'>
+                                    <figure class="product-gallery__thumb--single">
+                                        <img src="{{product.product_image.url}}" alt="Products">
+                                    </figure>
+                                    <figure class="product-gallery__thumb--single">
+                                        <img src="{{product.second_image.url}}" alt="Products">
+                                    </figure>
+                                    {% for image in product_images %}
+                                    <figure class="product-gallery__thumb--single">
+                                        <img src="{{image.image.url}}" alt="Products">
+                                    </figure>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-gallery__large-image">
+                            <div class="gallery-with-thumbs">
+                                <div class="product-gallery__wrapper">
+                                    <div class="airi-element-carousel main-slider product-gallery__full-image image-popup"
+                                        data-slick-options='{
+                                        "slidesToShow": 1,
+                                        "slidesToScroll": 1,
+                                        "infinite": true,
+                                        "arrows": false, 
+                                        "asNavFor": ".nav-slider"
+                                    }'>
+                                        <figure class="product-gallery__image zoom">
+                                            <img src="{{product.product_image.url}}" alt="Product">
+                                        </figure>
+                                        <figure class="product-gallery__image zoom">
+                                            <img src="{{product.second_image.url}}" alt="Product">
+                                        </figure>
+                                        {% for image in product_images %}
+                                        <figure class="product-gallery__image zoom">
+                                            <img src="{{image.image.url}}" alt="Product">
+                                        </figure>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="product-gallery__actions">
+                                        <button class="action-btn btn-zoom-popup"><i
+                                                class="dl-icon-zoom-in"></i></button>
+                                        <a href="{{product.video_url}}" class="action-btn video-popup"><i
+                                                class="dl-icon-format-video"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="product-badge new">New</span>
                 </div>
-                <button class="text-gray-400 hover:text-gray-600"
-                    onclick="document.getElementById('sizeChartModal').classList.add('hidden')">&times;</button>
             </div>
-            {% if product.size_chart %}
-            <img class="h-full w-full max-w-full object-cover" src="{{product.size_chart.url}}"
-                alt="{{product.title}}" />
-            {% endif %}
+            <div class="col-md-6 product-main-details mt--40 mt-md--10 mt-sm--30">
+                <div class="product-summary">
+                    <div class="product-rating float-left">
+                        <span>
+                            {% for x in stars %}
+                            <i class="dl-icon-star rated"></i>
+                            {% endfor %}
+                        </span>
+                        <a href="#" class="review-link">(Customer's review)</a>
+                    </div>
+                    <!-- <div class="product-navigation">
+                        <a href="#" class="prev"><i class="dl-icon-left"></i></a>
+                        <a href="#" class="next"><i class="dl-icon-right"></i></a>
+                    </div> -->
+                    <div class="clearfix"></div>
+                    <h3 class="product-title">{{product.title}}</h3>
+                    <span class="product-stock in-stock float-right">
+                        <i class="dl-icon-check-circle1"></i>
+                        in stock
+                    </span>
+                    <div class="product-price-wrapper mb--40 mb-md--10">
+                        <span class="money">₹{{product.price}}</span>
+                        <span class="old-price">
+                            <span class="money">₹{{product.before_discount_price}}</span>
+                        </span>
+                    </div>
+                    <div class="clearfix"></div>
+                    <p class="product-short-description mb--45 mb-sm--20">{{product.description|safe}}</p>
+                    <form action="#" class="form--action mb--30 mb-sm--20">
+                        <div class="product-action flex-row align-items-center">
+                            <div class="quantity">
+                                <input type="number" class="quantity-input" name="quantity" id="qty" value="1" min="1">
+                            </div>
+                            <div class="size_input" style="color: black;">
+                                <select name="size" id="size" class="quantity-input">
+                                    {% for size in product.sizes_available.all %}
+                                    <option value="{{size.size}}">{{size.size}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-style-1 btn-large add-to-cart mt-4" onclick="addToCart()">
+                            Add To Cart
+                        </button>
+                    </form>
+                    <div class="product-extra mb--40">
+                        <a href="/refundpolicy" class="font-size-12"><i class="fa fa-exchange"></i>Delivery and
+                            return</a>
+                    </div>
+                    <div class="product-data-tab border-bottom pb--40 pb-md--30 pb-sm--20 tab-style-4">
+                        <div class="nav nav-tabs product-data-tab__head mb--40 mb-sm--30" id="product-tab"
+                            role="tablist">
+                            <a class="product-data-tab__link nav-link active" id="nav-description-tab"
+                                data-bs-toggle="tab" href="#nav-description" role="tab" aria-selected="true">
+                                <span>Description</span>
+                            </a>
+                        </div>
+                        <div class="tab-content product-data-tab__content" id="product-tabContent">
+                            <div class="tab-pane fade show active" id="nav-description" role="tabpanel"
+                                aria-labelledby="nav-description-tab">
+                                <div class="product-description">
+                                    <p>{{product.description|safe}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="product-summary-footer d-flex justify-content-between flex-sm-row flex-column mt--45 mt-md--35 mt-sm--25">
+                        <div class="product-share-box">
+                            <span class="font-size-12">Share With</span>
+                            <!-- Social Icons Start Here -->
+                            <ul class="social social-small">
+                                <li class="social__item">
+                                    <a href="https://facebook.com/" class="social__link">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li class="social__item">
+                                    <a href="https://twitter.com/" class="social__link">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li class="social__item">
+                                    <a href="https://plus.google.com/" class="social__link">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </li>
+                                <li class="social__item">
+                                    <a href="https://plus.google.com/" class="social__link">
+                                        <i class="fa fa-pinterest-p"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- Social Icons End Here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pt--30 pt-md--20 pt-sm--15 pb--75 pb-md--55 pb-sm--35">
+            <div class="col-12">
+                <div class="row mb--40 mb-md--30">
+                    <div class="col-12 text-center">
+                        <h2 class="heading-secondary">Related Products</h2>
+                        <hr class="separator center mt--25 mt-md--15">
+                    </div>
+                </div>
+                <div class="row g-0">
+                    {% for product in related_products %}
+                    <div class="col-xl-3 col-lg-4 col-sm-6 mb--40 mb-md--30">
+                        <div class="airi-product">
+                            <div class="product-inner">
+                                <figure class="product-image">
+                                    <div class="product-image--holder">
+                                        <a href="/product-view/{{product.id}}">
+                                            <img src="{{product.product_image.url}}" alt="Product Image"
+                                                class="primary-image">
+                                            <img src="{{product.second_image.url}}" alt="Product Image"
+                                                class="secondary-image">
+                                        </a>
+                                    </div>
+                                    <div class="airi-product-action">
+                                        <div class="product-action">
+                                            <a class="add_to_cart_btn action-btn" href="cart.html"
+                                                data-bs-toggle="tooltip" data-bs-placement="left"
+                                                title="Add to Cart">
+                                                <i class="dl-icon-cart29"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </figure>
+                                <div class="product-info text-center">
+                                    <h3 class="product-title">
+                                        <a href="/product-view/{{product.id}}">{{product.title}}
+                                            </a>
+                                    </h3>
+                                    <span class="product-price-wrapper">
+                                        <span class="money">₹{{product.price}}</span>
+                                        <span class="product-price-old">
+                                            <span class="money">₹{{product.before_discount_price}}</span>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
 </div>
 <script>
     function addToCart() {
-        let sizeValue = document.querySelector('input[name="size"]:checked').value;
-        location.href=`/add-to-cart/{{product.id}}/${sizeValue}`
+        let sizeValue = document.querySelector('select[name="size"]').value;  // Get the selected size value from the select element
+        let quantity = document.querySelector('input[name="quantity"]').value;  // Get the quantity value from the input element
+        location.href=`/add-to-cart/{{product.id}}/${sizeValue}/${quantity}`
     }
 </script>
 {% endblock body %}

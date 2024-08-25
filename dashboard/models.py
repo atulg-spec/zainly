@@ -6,6 +6,7 @@ from django.db import models, transaction
 from django.core.exceptions import ValidationError
 from django.db.models import UniqueConstraint
 import random
+from django_ckeditor_5.fields import CKEditor5Field
 import string
 
 # Create your models here.
@@ -20,19 +21,6 @@ class CustomUser(AbstractUser):
     objects = UserManager()
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = [] 
-
-class Slider(models.Model):
-    image = models.ImageField(upload_to='slider_images/')
-    title = models.CharField(max_length=50, blank=True, null=True)
-    short_caption = models.CharField(max_length=100, blank=True, null=True)
-    redirect_url = models.CharField(max_length=500, default='#')
-
-    def __str__(self):
-        return f"Slider Image {self.id}"
-    
-    class Meta:
-        verbose_name = "Slider"
-        verbose_name_plural = "Main Slider"
 
 
 class Gender(models.Model):
@@ -84,7 +72,7 @@ class Categories(models.Model):
     icon = models.FileField(upload_to='category_images/',null=True,blank=True)
     category_image = models.ImageField(upload_to='category_images/')
     category = models.CharField(max_length=100, default='')
-    short_caption = models.CharField(max_length=100, default='')
+    short_caption = models.CharField(max_length=12, default='')
 
     def __str__(self):
         return f"Category {self.category}"
@@ -93,43 +81,41 @@ class Categories(models.Model):
         verbose_name = "Categories"
         verbose_name_plural = "Category"
 
+
 class Product(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=30)
     product_image = models.ImageField(upload_to='product_images/')
-    size_chart = models.ImageField(upload_to='size_chart/',null=True,blank=True)
+    second_image = models.ImageField(upload_to='product_images/', null=True, blank=True)
+    size_chart = models.ImageField(upload_to='size_chart/', null=True, blank=True)
     category = models.ManyToManyField(Categories)
     gender = models.ManyToManyField(Gender)
-    description = models.TextField()
+    description = CKEditor5Field('Text', config_name='extends')
     keywords = models.ManyToManyField(Keywords)
     stars = models.PositiveIntegerField(default=5)
     review = models.PositiveIntegerField(default=1200)
-    before_discount_price = models.DecimalField(max_digits=10, decimal_places=2,default=0)
+    before_discount_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     discount_percent = models.PositiveIntegerField(default=20)
     price = models.DecimalField(max_digits=10, decimal_places=2)
+    video_url = models.URLField(blank=True)
     sizes_available = models.ManyToManyField(Sizes)
-    available = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    image = models.ImageField(upload_to='product_images/', blank=True, null=True)
 
     def __str__(self):
         return self.title
-    
+
     class Meta:
         verbose_name = "Product"
         verbose_name_plural = "Products"
 
+
 class ProductImage(models.Model):
-    product = models.ForeignKey(Product, related_name='images', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='additional_images')
     image = models.ImageField(upload_to='product_images/')
-    uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"Image for {self.product.title}"
-    
-    class Meta:
-        verbose_name = "Product Image"
-        verbose_name_plural = "Product Images"
+
 
 
 class Cart(models.Model):

@@ -1,525 +1,757 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+
+<!-- Mirrored from htmldemo.net/airi/airi/index-02.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Aug 2024 09:46:24 GMT -->
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="meta description">
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="{{settings.mobile_logo.url}}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{settings.mobile_logo.url}}">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://unpkg.com/feather-icons"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <meta name="description"
-        content="Zainly eCommerce - Your one-stop shop for the latest fashion, caps. Subscribe to our newsletter for the latest updates and discounts." />
-    <meta name="keywords" content="Zainly, eCommerce, fashion, footwear, caps, online shopping" />
-    <meta name="author" content="Zainly eCommerce" />
-    <title>Zainly eCommerece</title>
+    <!-- Title -->
+    <title>{{settings.site_name}}</title>
+
+    <!-- ************************* CSS Files ************************* -->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/assets/css/bootstrap.css">
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="/static/assets/css/font-awesome.min.css">
+
+    <!-- dl Icon CSS -->
+    <link rel="stylesheet" href="/static/assets/css/dl-icon.css">
+
+    <!-- All Plugins CSS -->
+    <link rel="stylesheet" href="/static/assets/css/plugins.css">
+
+    <!-- Revoulation Slider CSS  -->
+    <link rel="stylesheet" href="/static/assets/css/revoulation.css">
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="/static/assets/css/main.css">
+
+    <!-- modernizr JS
+    ============================================ -->
+    <script src="/static/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 <style>
-    /* Hide all slides by default */
-    ::-webkit-scrollbar {
-        display: none;
+    .size_input {
+        width: 7rem;
+        height: 7rem;
     }
-
-    .carousel-item {
-        display: none;
-    }
-
-    /* Display the first slide */
-    .carousel-item:first-child {
-        display: block;
-    }
-
-    .fade-in {
-        opacity: 0;
-        transform: translateY(4rem);
-        transition: opacity 1s ease-out, transform 1s ease-out;
-    }
-
-    .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .scrollbar-hide::-webkit-scrollbar {
-        display: none;
-        /* Safari and Chrome */
-    }
-
-    .scrollbar-hide {
-        -ms-overflow-style: none;
-        /* IE and Edge */
-        scrollbar-width: none;
-        /* Firefox */
+    @media (max-width: 93.6875em) {
+        .size_input {
+            width: 6rem;
+            height: 6rem;
+        }
     }
 </style>
 
 <body>
-    <header class="w-full z-10 fixed animate-fadeIn hover:bg-black bg-opacity-100" id="main-header">
-        <div class="w-full text-center text-white text-xs py-2">ZAINLY</div>
-        <div class="container mx-auto px-6 py-3">
-            <div class="flex items-center justify-between">
-                <div class="w-full text-white flex items-center">
-                    <div class="flex sm:hidden">
-                        <button @click="isOpen = !isOpen" type="button"
-                            class="text-white hover:text-gray-500 focus:outline-none focus:text-gray-500"
-                            aria-label="toggle menu">
-                            <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current">
-                                <path fill-rule="evenodd"
-                                    d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z">
-                                </path>
-                            </svg>
-                        </button>
+
+    <div class="ai-preloader active">
+        <div class="ai-preloader-inner h-100 d-flex align-items-center justify-content-center">
+            <div class="ai-child ai-bounce1"></div>
+            <div class="ai-child ai-bounce2"></div>
+            <div class="ai-child ai-bounce3"></div>
+        </div>
+    </div>
+
+    <!-- Main Wrapper Start -->
+    <div class="wrapper enable-header-transparent">
+        <!-- Header Area Start -->
+        <header
+            class="header {% if request.get_full_path == '/' %} header-transparent {% endif %} header-fullwidth header-style-1">
+            <div class="top-bar d-none d-md-block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <div class="notice-text-wrapper">
+                                <p class="notice-text">
+                                    {{settings.site_header_news|safe}}
+                                    <a class="close-notice"><i class="dl-icon-close"></i></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="w-full text-gray-700 md:text-center text-2xl font-semibold text-white">
-                    <a href="/">
-                        <img src="/static/assets/images/logos/zainly2.png" alt="the zainly"
-                            class="mx-auto w-8 h-8 hover:w-10 hover:h-10 transition-all duration-600">
-                    </a>
-                    <!-- Zainly -->
-                </div>
-                <div class="flex items-center justify-end w-full">
-                    <button onclick="search()" class="text-white focus:outline-none mx-4">
-                        <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path d="M21 21l-4.35-4.35m0 0a7.5 7.5 0 1 0-10.61 0 7.5 7.5 0 0 0 10.61 0z" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="flex">
-                    <a href="/cart" class="text-white hover:text-gray-200 focus:outline-none focus:text-gray-200"
-                        aria-label="toggle menu">
-                        <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path
-                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
-                            </path>
-                        </svg>
-                    </a>
-                </div>
             </div>
-            <nav :class="isOpen ? '' : 'hidden'" class="sm:flex sm:justify-center sm:items-center mt-4 hidden">
-                <div class="flex flex-col sm:flex-row">
-                    <a class="mt-3 text-white hover:font-semibold sm:mx-3 sm:mt-0" href="/">Home</a>
-                    <a class="mt-3 text-white hover:font-semibold sm:mx-3 sm:mt-0" href="/cart">Cart</a>
-                    <a class="mt-3 text-white hover:font-semibold sm:mx-3 sm:mt-0" href="/categories">Categories</a>
-                    <a class="mt-3 text-white hover:font-semibold sm:mx-3 sm:mt-0" href="/contact">Contact</a>
-                    <a class="mt-3 text-white hover:font-semibold sm:mx-3 sm:mt-0" href="/about">About</a>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <div class="w-full h-full z-40 bg-white fixed hidden" id="search-section">
-        <form method="GET" id="search-form">
-            <div class="bg-white border-1 shadow p-2 relative rounded-sm flex">
-                <span class="w-auto flex justify-end items-center text-gray-500 p-2" onclick="search()">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                    </svg>
-                </span>
-                <input name="episodequery" id="search-input"
-                    class="border-white outline-none border-0 w-full rounded-sm p-2" type="search"
-                    placeholder="Try 'Latest Oversized T-Shirts for men'" />
-                <button type="submit" class="text-xl p-2 pl-4 pr-4 ml-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
-                </button>
-            </div>
-        </form>
-        <div id="suggestions"
-            class="absolute w-full bg-white border border-gray-100 rounded-md mt-1 shadow-lg hidden suggestion-list z-50">
-            <ul id="suggestion-list" class="list-none">
-                <li class="px-5 py-2 border border-gray-100"><a href="/search/Oversized T-shirts">Oversized T-shirts</a>
-                </li>
-                <li class="px-5 py-2 border border-gray-100"><a href="/search/Trending T-shirt">Trending T-shirt</a>
-                </li>
-                <li class="px-5 py-2 border border-gray-100"><a href="/search/Mens wear">Mens wear</a></li>
-                <li class="px-5 py-2 border border-gray-100"><a href="/search/Womens wear">Womens wear</a></li>
-                <li class="px-5 py-2 border border-gray-100"><a href="/search/Fitness T-shirts">Fitness T-shirts</a>
-                </li>
-            </ul>
-        </div>
-        <div class="bg-white">
-            <div class="mx-auto px-3 w-full py-1 mt-6">
-                <span class="text-2xl tracking-tight text-gray-900 font-mono">SEARCH CATEGORIES</span>
-                <div class="mt-1 flex overflow-x-auto space-x-2 scrollbar-hide">
-                    {% for product in categories reversed %}
-                    <a href="/search/{{product.category}}">
-                        <div class="group relative flex-shrink-0">
-                            <div class="">
-                                <img src="{{product.icon.url}}" alt="{{product.category}}"
-                                    class="w-28 h-24 object-center">
+            <div class="header-outer">
+                <div class="header-inner fixed-header">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <div class="col-xl-5 col-lg-6">
+                                <!-- Main Navigation Start Here -->
+                                <nav class="main-navigation">
+                                    <ul class="mainmenu">
+                                        <li class="mainmenu__item menu-item-has-children megamenu-holder">
+                                            <a href="/" class="mainmenu__link">
+                                                <span class="mm-text">Home</span>
+                                            </a>
+                                        </li>
+                                        <li class="mainmenu__item menu-item-has-children">
+                                            <a href="/categories" class="mainmenu__link">
+                                                <span class="mm-text">Shop</span>
+                                                <span class="tip">Hot</span>
+                                            </a>
+                                        </li>
+                                        <li class="mainmenu__item">
+                                            <a href="/categories" class="mainmenu__link">
+                                                <span class="mm-text">Collections</span>
+                                            </a>
+                                        </li>
+                                        <li class="mainmenu__item menu-item-has-children has-children">
+                                            <a href="/about" class="mainmenu__link">
+                                                <span class="mm-text">About Us</span>
+                                            </a>
+                                        </li>
+                                        <li class="mainmenu__item">
+                                            <a href="/contact" class="mainmenu__link">
+                                                <span class="mm-text">Contact Us</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <!-- Main Navigation End Here -->
                             </div>
-                            <div class="mt-4">
-                                <div>
-                                    <h3 class="text-sm text-gray-700">
-                                        <a href="#">
-                                            <p class="line-clamp-1 text-sm text-black">
-                                                {{product.category}}
-                                            </p>
+                            <div class="col-lg-2 col-md-3 col-4 text-lg-center">
+                                <!-- Logo Start Here -->
+                                <a href="/" class="logo-box">
+                                    <figure class="logo--normal">
+                                        <img src="{{settings.logo.url}}" alt="Logo" />
+                                    </figure>
+                                    <figure class="logo--transparency">
+                                        <img src="{{settings.logo.url}}" alt="Logo" />
+                                    </figure>
+                                </a>
+                                <!-- Logo End Here -->
+                            </div>
+                            <div class="col-xl-5 col-lg-4 col-md-9 col-8">
+                                <ul class="header-toolbar text-end">
+                                    <li class="header-toolbar__item d-none d-lg-block">
+                                        <a href="#sideNav" class="toolbar-btn">
+                                            <i class="dl-icon-menu2"></i>
                                         </a>
-                                    </h3>
-                                    <p class="line-clamp-2 text-gray-600 text-sm dark:text-gray-400 h-8">
-                                        {{product.short_caption}}
-                                    </p>
+                                    </li>
+                                    <li class="header-toolbar__item user-info-menu-btn">
+                                        <a href="#">
+                                            <i class="fa fa-user-circle-o"></i>
+                                        </a>
+                                        <ul class="user-info-menu">
+                                            <li>
+                                                <a
+                                                    href="{% if user.is_authenticated %}/my-orders{% else %}{% url 'social:begin' 'google-oauth2' %}?next={{request.path}}{% endif %}">My
+                                                    Account</a>
+                                            </li>
+                                            <li>
+                                                <a href="/cart">Shopping Cart</a>
+                                            </li>
+                                            <li>
+                                                <a href="/my-orders">Order tracking</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="header-toolbar__item">
+                                        <a href="/cart" class="mini-cart-btn ">
+                                            <i class="dl-icon-cart4"></i>
+                                            <sup class="mini-cart-count">2</sup>
+                                        </a>
+                                    </li>
+                                    <li class="header-toolbar__item">
+                                        <a href="#searchForm" class="search-btn toolbar-btn">
+                                            <i class="dl-icon-search1"></i>
+                                        </a>
+                                    </li>
+                                    <li class="header-toolbar__item d-lg-none">
+                                        <a href="#" class="menu-btn"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-sticky-header-height"></div>
+            </div>
+        </header>
+        <!-- Header Area End -->
+
+        <!-- Mobile Header area Start -->
+        <header class="header-mobile">
+            <div class="header-mobile__outer">
+                <div class="header-mobile__inner fixed-header">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <div class="col-4">
+                                <a href="/" class="logo-box">
+                                    <figure class="logo--normal">
+                                        <img src="{{settings.mobile_logo.url}}" alt="Logo">
+                                    </figure>
+                                </a>
+                            </div>
+                            <div class="col-8">
+                                <ul class="header-toolbar text-end">
+                                    <li class="header-toolbar__item user-info-menu-btn">
+                                        <a href="#">
+                                            <i class="fa fa-user-circle-o"></i>
+                                        </a>
+                                        <ul class="user-info-menu">
+                                            <li>
+                                                <a
+                                                    href="{% if user.is_authenticated %}/my-orders{% else %}{% url 'social:begin' 'google-oauth2' %}?next={{request.path}}{% endif %}">My
+                                                    Account</a>
+                                            </li>
+                                            <li>
+                                                <a href="/cart">Shopping Cart</a>
+                                            </li>
+                                            <li>
+                                                <a href="/my-orders">Order tracking</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="header-toolbar__item">
+                                        <a href="/cart" class="mini-cart-btn toolbar-btn">
+                                            <i class="dl-icon-cart4"></i>
+                                            <sup class="mini-cart-count">2</sup>
+                                        </a>
+                                    </li>
+                                    <li class="header-toolbar__item">
+                                        <a href="#searchForm" class="search-btn toolbar-btn">
+                                            <i class="dl-icon-search1"></i>
+                                        </a>
+                                    </li>
+                                    <li class="header-toolbar__item d-lg-none">
+                                        <a href="#" class="menu-btn"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <!-- Mobile Navigation Start Here -->
+                                <div class="mobile-navigation dl-menuwrapper" id="dl-menu">
+                                    <button class="dl-trigger">Open Menu</button>
+                                    <ul class="dl-menu">
+                                        <li>
+                                            <a href="/">
+                                                Home
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/categories">
+                                                Shop
+                                                <span class="tip">Hot</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/categories">
+                                                Collections
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/about">
+                                                About Us
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/contact">
+                                                Contact Us
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/my-orders">
+                                                My Orders
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- Mobile Navigation End Here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-sticky-header-height"></div>
+            </div>
+        </header>
+        <!-- Mobile Header area End -->
+        {% block breadcrumb %}
+        {% endblock breadcrumb %}
+        <!-- Main Content Wrapper Start -->
+        <div id="content" class="main-content-wrapper">
+            {% block body %}
+            {% endblock body %}
+            <!-- Instagram Feed area Start Here -->
+            <div class="instagram-feed-area pt--80 pt-md--60 pb--65 pb-md--45">
+                <div class="container-fluid p-0">
+                    <div class="row g-0 align-items-center">
+                        <div class="col-xl-3 offset-xl-2 col-lg-4">
+                            <div class="insta-content-header mb-md--15">
+                                <h5 class="font-size-16 heading-color font-bold">Follow us on</h5>
+                                <h2>@{{settings.instagram}} Instagram</h2>
+                                <p class="font-2 font-size-16 heading-color">
+                                    {{settings.tagline}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-xl-7 col-lg-8">
+                            <div class="instagram-feed">
+                                <div id="instafeed" class="instagram-feed-wrapper instagram-style-1 grid-space-30"
+                                    data-insta-config='{
+                                    "accesstoken": "IGQVJWLXU1Ri1JbjE0RlhlRmVZAMy1mRllxUzJWZAG5najYxWUxLcGl1SV80UHNiN2ZAaUFdHTVllMEh6YjRucTZAIY09TQlowdGlScG9taHhWNHJwaXQzOVZAwUDdsZAHdqTjhTcHB5ZA2I5QWRVZAVZAtYjZA2SgZDZD", 
+                                    "limit":"8",
+                                    "template":"<div class=\"grid-item mb--10\"><div class=\"instagram-feed-item\"><a href=https://htmldemo.net/"{{link}}/" target=\"_blank\" id=\"{{id}}\"><img src=https://htmldemo.net/"{{image}}/" /></a><div class=\"instagram-feed-hover-content\"><span class=\"tottallikes\"><i class=\"fa fa-heart\"></i>{{likes}}</span><span class=\"totalcomments\"><i class=\"fa fa-comments\"></i>{{comments}}</span></div></div></div>"}'>
+
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    {% endfor %}
+                    </div>
                 </div>
             </div>
-        </div>
+            <!-- Instagram Feed area End Here -->
 
-        <div class="bg-white">
-            <div class="mx-auto">
-                <span class="text-2xl tracking-tight text-gray-900 font-mono px-2 mb-4">Explore New Trends</span>
-                <div class="mt-4 flex overflow-x-auto space-x-2 scrollbar-hide">
-                    {% for product in categories %}
-                    <a href="/search/{{product.category}}">
-                        <div class="group relative flex-shrink-0 w-52 px-3">
-                            <div
-                                class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75">
-                                <img src="{{product.category_image.url}}" alt="{{product.category}}"
-                                    class="h-60 w-56 object-cover object-center">
-                            </div>
-                            <div class="mt-4">
-                                <div>
-                                    <h3 class="text-sm text-gray-700">
-                                        <a href="#">
-                                            <p class="line-clamp-1 text-sm text-black">
-                                                {{product.category}}
-                                            </p>
-                                        </a>
-                                    </h3>
-                                    <p class="line-clamp-2 text-gray-600 text-sm dark:text-gray-400 h-8">
-                                        {{product.short_caption}}
-                                    </p>
+        </div>
+        <!-- Main Content Wrapper Start -->
+
+
+        <!-- Footer Start -->
+        <footer class="footer footer-1 bg--black ptb--40">
+            <div class="footer-top pb--40 pb-md--30">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-8 mb-md--30">
+                            <div class="footer-widget">
+                                <div class="textwidget">
+                                    <img src="{{settings.logo.url}}" alt="Logo" class="mb--10">
+                                    <p class="font-size-16 font-2 mb--20">{{settings.tagline}}</p>
+                                    <!-- Social Icons Start Here -->
+                                    <ul class="social">
+                                        <li class="social__item">
+                                            <a href="{{settings.twitter_handle}}" class="social__link color--white">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li class="social__item">
+                                            <a href="mailto:{{settings.email}}" class="social__link color--white">
+                                                <i class="fa fa-google-plus"></i>
+                                            </a>
+                                        </li>
+                                        <li class="social__item">
+                                            <a href="{{settings.facebook_handle}}" class="social__link color--white">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li class="social__item">
+                                            <a href="{{settings.youtube_handle}}" class="social__link color--white">
+                                                <i class="fa fa-youtube"></i>
+                                            </a>
+                                        </li>
+                                        <li class="social__item">
+                                            <a href="{{settings.instagram_handle}}" class="social__link color--white">
+                                                <i class="fa fa-instagram"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <!-- Social Icons End Here -->
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    {% endfor %}
+                        <div class="col-lg-2 col-md-4 mb-md--30">
+                            <div class="footer-widget">
+                                <h3 class="widget-title">Company</h3>
+                                <ul class="widget-menu">
+                                    <li><a href="/about">About Us</a></li>
+                                    <li><a href="/disclaimer">Disclaimer</a></li>
+                                    <li><a href="/termsofuse">Terms of Use</a></li>
+                                    <li><a href="/privacypolicy">Privacy Policy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 mb-sm--30">
+                            <div class="footer-widget">
+                                <h3 class="widget-title">USEFUL LINKS</h3>
+                                <ul class="widget-menu">
+                                    <li><a href="/categories">The Collections</a></li>
+                                    <li><a href="/contact">Contact Us</a></li>
+                                    <li><a href="/refundpolicy">Return Policiy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4">
+                            <div class="footer-widget">
+                                <h4 class="widget-title">CONTACT INFO</h4>
+                                <ul class="contact-info">
+                                    <li class="contact-info__item">
+                                        <i class="fa fa-phone"></i>
+                                        <span><a href="tel:{{settings.phone_number}}"
+                                                class="contact-info__link">{{settings.phone_number}}
+                                            </a></span>
+                                    </li>
+                                    <li class="contact-info__item">
+                                        <i class="fa fa-envelope"></i>
+                                        <span><a href="mailto:{{settings.email}}"
+                                                class="contact-info__link">{{settings.email}}</a></span>
+                                    </li>
+                                </ul>
+                                <div class="textwidget">
+                                    <img src="/static/assets/img/others/payments.png" alt="Payment">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer End -->
+
+        <!-- Search from Start -->
+        <div class="searchform__popup" id="searchForm">
+            <a href="#" class="btn-close"><i class="dl-icon-close"></i></a>
+            <div class="searchform__body">
+                <p>Start typing and press Enter to search</p>
+                <form class="searchform" id="search-form">
+                    <input type="text" name="search" id="search-input" class="searchform__input"
+                        placeholder="Search Entire Store...">
+                    <button type="submit" class="searchform__submit"><i class="dl-icon-search10"></i></button>
+                </form>
+            </div>
+        </div>
+        <!-- Search from End -->
+
+        <!-- Side Navigation Start -->
+        <aside class="side-navigation" id="sideNav">
+            <div class="side-navigation-wrapper">
+                <a href="#" class="btn-close"><i class="dl-icon-close"></i></a>
+                <div class="side-navigation-inner">
+                    <div class="widget">
+                        <ul class="sidenav-menu">
+                            <li><a href="/home">Home</a></li>
+                            <li><a href="/about">About Us</a></li>
+                            <li><a href="/contact">Help Center</a></li>
+                            <li><a href="/categories">Categories</a></li>
+                        </ul>
+                    </div>
+                    <div class="widget pt--30 pr--20">
+                        <div class="text-widget">
+                            <p>
+                                <img src="/static/assets/img/others/payments.png" alt="payment">
+                            </p>
+                            <p>{{settings.tagline}}</p>
+                        </div>
+                    </div>
+                    <div class="widget">
+                        <div class="text-widget">
+                            <p>
+                                <a href="#">{{settings.phone_number}}</a>
+                                <a href="mailto:{{settings.email}}">{{settings.email}}</a>
+                                {{settings.location}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="widget">
+                        <div class="text-widget">
+                            <!-- Social Icons Start Here -->
+                            <ul class="social social-small">
+                                <li class="social__item">
+                                    <a href="{{settings.twitter_handle}}" class="social__link">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li class="social__item">
+                                    <a href="{{settings.email}}" class="social__link">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </li>
+                                <li class="social__item">
+                                    <a href="{{settings.facebook_handle}}" class="social__link">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li class="social__item">
+                                    <a href="{{settings.youtube_handle}}" class="social__link">
+                                        <i class="fa fa-youtube"></i>
+                                    </a>
+                                </li>
+                                <li class="social__item">
+                                    <a href="{{settings.instagram_handle}}" class="social__link">
+                                        <i class="fa fa-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- Social Icons End Here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <!-- Side Navigation End -->
+
+        <!-- Mini Cart Start -->
+        <aside class="mini-cart" id="miniCart">
+            <div class="mini-cart-wrapper">
+                <a href="#" class="btn-close"><i class="dl-icon-close"></i></a>
+                <div class="mini-cart-inner">
+                    <h5 class="mini-cart__heading mb--40 mb-lg--30">Shopping Cart</h5>
+                    <div class="mini-cart__content">
+                        <ul class="mini-cart__list">
+                            <li class="mini-cart__product">
+                                <a href="#" class="remove-from-cart remove">
+                                    <i class="dl-icon-close"></i>
+                                </a>
+                                <div class="mini-cart__product__image">
+                                    <img src="/static/assets/img/products/prod-17-1-70x91.jpg" alt="products">
+                                </div>
+                                <div class="mini-cart__product__content">
+                                    <a class="mini-cart__product__title" href="product-details.html">Chain print bermuda
+                                        shorts </a>
+                                    <span class="mini-cart__product__quantity">1 x $49.00</span>
+                                </div>
+                            </li>
+                            <li class="mini-cart__product">
+                                <a href="#" class="remove-from-cart remove">
+                                    <i class="dl-icon-close"></i>
+                                </a>
+                                <div class="mini-cart__product__image">
+                                    <img src="/static/assets/img/products/prod-18-1-70x91.jpg" alt="products">
+                                </div>
+                                <div class="mini-cart__product__content">
+                                    <a class="mini-cart__product__title" href="product-details.html">Waxed-effect
+                                        pleated skirt</a>
+                                    <span class="mini-cart__product__quantity">1 x $49.00</span>
+                                </div>
+                            </li>
+                            <li class="mini-cart__product">
+                                <a href="#" class="remove-from-cart remove">
+                                    <i class="dl-icon-close"></i>
+                                </a>
+                                <div class="mini-cart__product__image">
+                                    <img src="/static/assets/img/products/prod-19-1-70x91.jpg" alt="products">
+                                </div>
+                                <div class="mini-cart__product__content">
+                                    <a class="mini-cart__product__title" href="product-details.html">Waxed-effect
+                                        pleated skirt</a>
+                                    <span class="mini-cart__product__quantity">1 x $49.00</span>
+                                </div>
+                            </li>
+                            <li class="mini-cart__product">
+                                <a href="#" class="remove-from-cart remove">
+                                    <i class="dl-icon-close"></i>
+                                </a>
+                                <div class="mini-cart__product__image">
+                                    <img src="/static/assets/img/products/prod-2-1-70x91.jpg" alt="products">
+                                </div>
+                                <div class="mini-cart__product__content">
+                                    <a class="mini-cart__product__title" href="product-details.html">Waxed-effect
+                                        pleated skirt</a>
+                                    <span class="mini-cart__product__quantity">1 x $49.00</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="mini-cart__total">
+                            <span>Subtotal</span>
+                            <span class="ammount">$98.00</span>
+                        </div>
+                        <div class="mini-cart__buttons">
+                            <a href="cart.html" class="btn btn-fullwidth btn-style-1">View Cart</a>
+                            <a href="checkout.html" class="btn btn-fullwidth btn-style-1">Checkout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <!-- Mini Cart End -->
+
+        <!-- Global Overlay Start -->
+        <div class="ai-global-overlay"></div>
+        <!-- Global Overlay End -->
+
+        <!-- Modal Start -->
+        <div class="modal fade product-modal" id="productModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><i class="dl-icon-close"></i></span>
+                        </button>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="airi-element-carousel product-image-carousel nav-vertical-center nav-style-1"
+                                    data-slick-options='{
+                                    "slidesToShow": 1,
+                                    "slidesToScroll": 1,
+                                    "arrows": true,
+                                    "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "dl-icon-left" },
+                                    "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "dl-icon-right" }
+                                }'>
+                                    <div class="product-image">
+                                        <div class="product-image--holder">
+                                            <a href="product-details.html">
+                                                <img src="/static/assets/img/products/prod-9-1.jpg" alt="Product Image"
+                                                    class="primary-image">
+                                            </a>
+                                        </div>
+                                        <span class="product-badge sale">sale</span>
+                                    </div>
+                                    <div class="product-image">
+                                        <div class="product-image--holder">
+                                            <a href="product-details.html">
+                                                <img src="/static/assets/img/products/prod-10-1.jpg" alt="Product Image"
+                                                    class="primary-image">
+                                            </a>
+                                        </div>
+                                        <span class="product-badge new">new</span>
+                                    </div>
+                                    <div class="product-image">
+                                        <div class="product-image--holder">
+                                            <a href="product-details.html">
+                                                <img src="/static/assets/img/products/prod-11-1.jpg" alt="Product Image"
+                                                    class="primary-image">
+                                            </a>
+                                        </div>
+                                        <span class="product-badge hot">hot</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="modal-box product-summary">
+                                    <div class="product-navigation mb--10">
+                                        <a href="#" class="prev"><i class="dl-icon-left"></i></a>
+                                        <a href="#" class="next"><i class="dl-icon-right"></i></a>
+                                    </div>
+                                    <h3 class="product-title mb--15">Waxed-effect pleated skirt</h3>
+                                    <span class="product-price-wrapper mb--20">
+                                        <span class="money">$49.00</span>
+                                        <span class="product-price-old">
+                                            <span class="money">$60.00</span>
+                                        </span>
+                                    </span>
+                                    <p class="product-short-description mb--25 mb-md--20">Donec accumsan auctor iaculis.
+                                        Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus,
+                                        ultrices justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra, in
+                                        vehicula lacus scelerisque. Vestibulum ut sem laoreet, feugiat tellus at,
+                                        hendrerit arcu.</p>
+                                    <div class="product-action d-flex flex-row align-items-center mb--30 mb-md--20">
+                                        <div class="quantity">
+                                            <input type="number" class="quantity-input" name="qty" id="quick-qty"
+                                                value="1" min="1">
+                                        </div>
+                                        <button type="button" class="btn btn-style-1 btn-semi-large add-to-cart"
+                                            onclick="window.location.href='cart.html'">
+                                            Add To Cart
+                                        </button>
+                                        <a href="wishlist.html"><i class="dl-icon-heart2"></i></a>
+                                        <a href="compare.html"><i class="dl-icon-compare2"></i></a>
+                                    </div>
+                                    <div class="product-extra mb--30 mb-md--20">
+                                        <a href="#" class="font-size-12"><i class="fa fa-map-marker"></i>Find store near
+                                            you</a>
+                                        <a href="#" class="font-size-12"><i class="fa fa-exchange"></i>Delivery and
+                                            return</a>
+                                    </div>
+                                    <div
+                                        class="product-summary-footer d-flex justify-content-between flex-sm-row flex-column flex-sm-row flex-column">
+                                        <div class="product-meta">
+                                            <span class="sku_wrapper font-size-12">SKU: <span class="sku">REF.
+                                                    LA-887</span></span>
+                                            <span class="posted_in font-size-12">Categories: <a href="shop-sidebar.html"
+                                                    rel="tag">Fashions</a></span>
+                                        </div>
+                                        <div class="product-share-box">
+                                            <span class="font-size-12">Share With</span>
+                                            <!-- Social Icons Start Here -->
+                                            <ul class="social social-small">
+                                                <li class="social__item">
+                                                    <a href="https://facebook.com/" class="social__link">
+                                                        <i class="fa fa-facebook"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="social__item">
+                                                    <a href="https://twitter.com/" class="social__link">
+                                                        <i class="fa fa-twitter"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="social__item">
+                                                    <a href="https://plus.google.com/" class="social__link">
+                                                        <i class="fa fa-google-plus"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="social__item">
+                                                    <a href="https://plus.google.com/" class="social__link">
+                                                        <i class="fa fa-pinterest-p"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <!-- Social Icons End Here -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <!-- Modal End -->
+
+
+
     </div>
-
-
-    {% if messages %}
-    <div class="space-y-5">
-        {% for message in messages %}
-        {% if message.tags == 'success' %}
-        <div class="bg-teal-50 border-t-2 border-teal-500 rounded-lg p-4" role="alert">
-            <div class="flex">
-                <div class="flex-shrink-0">
-                    <!-- Icon -->
-                    <span
-                        class="inline-flex justify-center items-center size-8 rounded-full border-4 border-teal-100 bg-teal-200 text-teal-800">
-                        <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z">
-                            </path>
-                            <path d="m9 12 2 2 4-4"></path>
-                        </svg>
-                    </span>
-                    <!-- End Icon -->
-                </div>
-                <div class="ms-3">
-                    <h3 class="text-gray-800 font-semibold">{{ message.tags|capfirst }}</h3>
-                    <p class="text-sm text-gray-700">{{ message }}</p>
-                </div>
-            </div>
-        </div>
-        {% elif message.tags == 'error' %}
-        <div class="bg-red-50 border-s-4 border-red-500 p-4" role="alert">
-            <div class="flex">
-                <div class="flex-shrink-0">
-                    <!-- Icon -->
-                    <span
-                        class="inline-flex justify-center items-center size-8 rounded-full border-4 border-red-100 bg-red-200 text-red-800">
-                        <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 6 6 18"></path>
-                            <path d="m6 6 12 12"></path>
-                        </svg>
-                    </span>
-                    <!-- End Icon -->
-                </div>
-                <div class="ms-3">
-                    <h3 class="text-gray-800 font-semibold">{{ message.tags|capfirst }}</h3>
-                    <p class="text-sm text-gray-700">{{ message }}</p>
-                </div>
-            </div>
-        </div>
-        {% elif message.tags == 'warning' %}
-        <div class="bg-yellow-50 border-s-4 border-yellow-500 p-4" role="alert">
-            <div class="flex">
-                <div class="flex-shrink-0">
-                    <!-- Icon -->
-                    <span
-                        class="inline-flex justify-center items-center size-8 rounded-full border-4 border-yellow-100 bg-yellow-200 text-yellow-800">
-                        <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z">
-                            </path>
-                            <path d="M12 8v4h4"></path>
-                        </svg>
-                    </span>
-                    <!-- End Icon -->
-                </div>
-                <div class="ms-3">
-                    <h3 class="text-gray-800 font-semibold">{{ message.tags|capfirst }}</h3>
-                    <p class="text-sm text-gray-700">{{ message }}</p>
-                </div>
-            </div>
-        </div>
-        {% elif message.tags == 'info' %}
-        <div class="bg-blue-50 border-s-4 border-blue-500 p-4" role="alert">
-            <div class="flex">
-                <div class="flex-shrink-0">
-                    <!-- Icon -->
-                    <span
-                        class="inline-flex justify-center items-center size-8 rounded-full border-4 border-blue-100 bg-blue-200 text-blue-800">
-                        <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z">
-                            </path>
-                            <path d="M12 8v4h4"></path>
-                        </svg>
-                    </span>
-                    <!-- End Icon -->
-                </div>
-                <div class="ms-3">
-                    <h3 class="text-gray-800 font-semibold">{{ message.tags|capfirst }}</h3>
-                    <p class="text-sm text-gray-700">{{ message }}</p>
-                </div>
-            </div>
-        </div>
-        {% else %}
-        <div class="bg-gray-50 border-s-4 border-gray-500 p-4" role="alert">
-            <div class="flex">
-                <div class="flex-shrink-0">
-                    <!-- Icon -->
-                    <span
-                        class="inline-flex justify-center items-center size-8 rounded-full border-4 border-gray-100 bg-gray-200 text-gray-800">
-                        <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z">
-                            </path>
-                            <path d="M12 8v4h4"></path>
-                        </svg>
-                    </span>
-                    <!-- End Icon -->
-                </div>
-                <div class="ms-3">
-                    <h3 class="text-gray-800 font-semibold">{{ message.tags|capfirst }}</h3>
-                    <p class="text-sm text-gray-700">{{ message }}</p>
-                </div>
-            </div>
-        </div>
-        {% endif %}
-        {% endfor %}
-    </div>
-    {% endif %}
-    {% block body %}
-    {% endblock body %}
-    <!--todo footer -->
-    <footer class="footer bg-black">
-        <hr />
-        <div class="px-6 py-8 md:px-8 md:py-10 lg:px-16 lg:py-12">
-            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
-                <div>
-                    <h2 class="font-bold text-md text-white">POPULAR CATEGORIES</h2>
-                    <hr class="title w-16 mb-4 mt-2" />
-                    <ul class="flex flex-col justify-start text-gray-500 gap-2">
-                        <li><a href="/search/t-shirts">T-shirts</a></li>
-                        <li><a href="/search/Shirts">Shirts</a></li>
-                        <li><a href="/search/Oversized T-shirts">Oversized T-shirts</a></li>
-                        <li><a href="/search/Street wears">Street wears</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h2 class="font-bold text-md text-white">PRODUCTS</h2>
-                    <hr class="title w-16 mb-4 mt-2" />
-                    <ul class="flex flex-col justify-start text-gray-500 gap-2">
-                        <li><a href="/search/Sale">Prices Drop</a></li>
-                        <li><a href="/search/Latest">New Products</a></li>
-                        <li><a href="/search/Trending">Best Sales</a></li>
-                        <li><a href="/contact">Contact Us</a></li>
-                        <!-- <li><a href="">Sitemap</a></li> -->
-                    </ul>
-                </div>
-
-                <div>
-                    <h2 class="font-bold text-md text-white">OUR COMPANY</h2>
-                    <hr class="title w-16 mb-4 mt-2" />
-                    <ul class="flex flex-col justify-start text-gray-500 gap-2">
-                        <li><a href="/privacypolicy">Privacy Policy</a></li>
-                        <li><a href="/termsofuse">Terms And Conditions</a></li>
-                        <li><a href="/refundpolicy">Refund Policy</a></li>
-                        <li><a href="/about">About Us</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h2 class="font-bold text-md text-white">CONTACT US</h2>
-                    <hr class="title w-16 mb-4 mt-2" />
-                    <ul class="flex flex-col justify-start text-gray-500 gap-2">
-                        <li>
-                            <ion-icon class="text-lg" name="location-outline"></ion-icon>
-                            <a href="#">419 State 414 Rte Beaver Dams, New York(NY), 14812, USA</a>
-                        </li>
-                        <li>
-                            <ion-icon class="text-lg" name="call-outline"></ion-icon>
-                            <a href="#">(607) 936-8058</a>
-                        </li>
-                        <li>
-                            <ion-icon class="text-lg" name="mail-outline"></ion-icon>
-                            <a href="#">Example@Gmail.Com</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="lg:hidden">
-                    <h2 class="font-bold text-md text-white">FOLLOW US</h2>
-                    <hr class="title w-16 mb-4 mt-2" />
-                    <ul class="flex justify-start text-gray-500 gap-2 text-lg">
-                        <li>
-                            <a href="#">
-                                <ion-icon name="logo-instagram"></ion-icon>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <ion-icon name="logo-youtube"></ion-icon>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <ion-icon name="logo-facebook"></ion-icon>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <hr />
-        <div class="mx-auto flex items-center justify-center flex-col gap-4 py-10 pb-20 lg:pb-10">
-            <img class="w-10 h-10" src="/static/assets/images/logos/zainly2.png" alt="payment" />
-            <h4 class="text-gray-500 text-md lg:text-lg font-semibold">
-                Copyright © Zainly All Rights Reserved.
-            </h4>
-        </div>
-    </footer>
-
+    <!-- Main Wrapper End -->
     <script>
-        let currentIndex = 0;
-        const items = document.querySelectorAll('.carousel-item');
-
-        function showSlide(index) {
-            items.forEach((item, i) => {
-                item.style.display = i === index ? 'block' : 'none';
-            });
-        }
-
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % items.length;
-            showSlide(currentIndex);
-        }
-
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + items.length) % items.length;
-            showSlide(currentIndex);
-        }
-        setInterval(() => {
-            nextSlide()
-        }, 40000)
-
-        window.addEventListener('scroll', function () {
-            var header = document.getElementById('main-header');
-            if (window.scrollY > 0) {
-                header.classList.remove('bg-opacity-100');
-                header.classList.add('bg-black');
-            } else {
-                header.classList.remove('bg-black');
-                header.classList.add('bg-opacity-100');
-            }
-        });
-
-
-        function search() {
-            document.getElementById('search-section').classList.toggle('hidden');
-            if (document.getElementById('search-section').classList.contains('hidden')) { }
-            else {
-                // document.getElementById('search-input').focus()
-            }
-        }
-
-        document.addEventListener('click', event => {
-            document.getElementById('suggestions').classList.add('hidden')
-        });
-
-
         document.getElementById('search-form').addEventListener('submit', function (event) {
             event.preventDefault(); // Prevent the form from submitting
             let query = document.getElementById('search-input').value
             location.href = `/search/${query}`
         });
 
-        let searchInput = document.getElementById('search-input')
-        searchInput.addEventListener('focus', () => {
-            document.getElementById('suggestions').classList.remove('hidden')
-        });
-
-
-        $(document).ready(function () {
-            $('#search-input').on('input', function () {
-                document.getElementById('suggestions').classList.remove('hidden');
-                var query = $(this).val();
-                if (query.length > 1) {
-                    $.ajax({
-                        url: "{% url 'search_suggestions' %}",
-                        data: { 'q': query },
-                        success: function (data) {
-                            $('#suggestion-list').empty();
-                            data.forEach(function (item) {
-                                console.log(item)
-                                $('#suggestion-list').append(`<li class="px-5 py-2 border border-gray-100"><a href="/search/${item}">${item}</a></li>`);
-                            });
-                        }
-                    });
-                } else {
-                    $('#suggestion-list').empty();
-                }
-            });
-        });
-
-        feather.replace();
-
     </script>
 
-    <!--! icons -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="https://techzaa.getappui.com/techslider/assets/js/theme.min.js"></script>
+    <!-- ************************* JS Files ************************* -->
 
-    <!--!javascript file  -->
+    <!-- jQuery JS -->
+    <script src="/static/assets/js/vendor/jquery.min.js"></script>
+
+    <!-- Bootstrap and Popper Bundle JS -->
+    <script src="/static/assets/js/bootstrap.bundle.min.js"></script>
+
+    <!-- All Plugins Js -->
+    <script src="/static/assets/js/plugins.js"></script>
+
+    <!-- Ajax Mail Js -->
+    <script src="/static/assets/js/ajax-mail.js"></script>
+
+    <!-- Main JS -->
+    <script src="/static/assets/js/main.js"></script>
+
+    <!-- REVOLUTION JS FILES -->
+    <script src="/static/assets/js/revoulation/jquery.themepunch.tools.min.js"></script>
+    <script src="/static/assets/js/revoulation/jquery.themepunch.revolution.min.js"></script>
+
+    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
+    <script src="/static/assets/js/revoulation/extensions/revolution.extension.actions.min.js"></script>
+    <script src="/static/assets/js/revoulation/extensions/revolution.extension.carousel.min.js"></script>
+    <script src="/static/assets/js/revoulation/extensions/revolution.extension.kenburn.min.js"></script>
+    <script src="/static/assets/js/revoulation/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script src="/static/assets/js/revoulation/extensions/revolution.extension.migration.min.js"></script>
+    <script src="/static/assets/js/revoulation/extensions/revolution.extension.navigation.min.js"></script>
+    <script src="/static/assets/js/revoulation/extensions/revolution.extension.parallax.min.js"></script>
+    <script src="/static/assets/js/revoulation/extensions/revolution.extension.slideanims.min.js"></script>
+    <script src="/static/assets/js/revoulation/extensions/revolution.extension.video.min.js"></script>
+
+    <!-- REVOLUTION ACTIVE JS FILES -->
+    <script src="/static/assets/js/revoulation.js"></script>
+
+
 </body>
+
+
+<!-- Mirrored from htmldemo.net/airi/airi/index-02.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Aug 2024 09:47:08 GMT -->
 
 </html>

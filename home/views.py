@@ -39,17 +39,15 @@ def termsofuse(request):
 
 # END PAGES
 def index(request):
-    slider = Slider.objects.all()
     categories = Categories.objects.all()
-    latest_products = Product.objects.filter(keywords__keyword__icontains='Latest').order_by('-id').distinct()[:30]
-    trending_products = Product.objects.filter(keywords__keyword__icontains='Trending').order_by('-id').distinct()[:30]
-    sesonal_products = Product.objects.filter(keywords__keyword__icontains='Sesonal Fav').order_by('-id').distinct()[:30]
+    new_products = Product.objects.filter(keywords__keyword__icontains='New').order_by('-id').distinct()[:30]
+    top_products = Product.objects.filter(keywords__keyword__icontains='Top').order_by('-id').distinct()[:30]
+    sale_products = Product.objects.filter(keywords__keyword__icontains='Sale').order_by('-id').distinct()[:30]
     context = {
-        'slider':slider,
         'categories':categories,
-        'latest_products':latest_products,
-        'trending_products':trending_products,
-        'sesonal_products':sesonal_products,
+        'new_products':new_products,
+        'top_products':top_products,
+        'sale_products':sale_products,
     }
     return render(request,'home/index.html',context)
 
@@ -58,14 +56,12 @@ def search(request,search):
     products = Product.objects.none()
     if query:
         products = Product.objects.filter(
+            models.Q(category__category__icontains=query) |  # Correct usage for ManyToManyField
             models.Q(description__icontains=query) |
             models.Q(keywords__keyword__icontains=query)
-        )[:100] 
-        print(products)
-    categories = Categories.objects.all()
+        ).distinct()[:100] 
     context = {
         'products':products,
-        'categories':categories,
         'search':search,
     }
     return render(request,'home/search.html',context)
@@ -75,8 +71,17 @@ def product_view(request,id):
     product_images = ProductImage.objects.filter(product=product)
     stars = [i for i in range(0,product.stars)]
     categories = Categories.objects.all()
+    query = product.category.first().category
+    related_products = Product.objects.none()
+    if query:
+        related_products = Product.objects.filter(
+            models.Q(category__category__icontains=query) |  # Correct usage for ManyToManyField
+            models.Q(description__icontains=query) |  # This is fine as description is a text field
+            models.Q(keywords__keyword__icontains=query)  # Correct usage for ManyToManyField
+        ).distinct()[:100]  # Use distinct() to avoid duplicate results if there are multiple matches
+
     context = {
-        # 'products':products,
+        'related_products':related_products,
         'categories':categories,
         'stars':stars,
         'product_images':product_images,
@@ -85,13 +90,13 @@ def product_view(request,id):
     return render(request,'home/product-view.html',context)
 
 @login_required
-def add_to_cart(request,id,size):
+def add_to_cart(request,id,size,qty):
     product = Product.objects.filter(id=id).first()
     selected_size = Sizes.objects.filter(size=size).first()
     if product:
         exist = Cart.objects.filter(user=request.user,product=product).first()
         if not exist:
-            Cart.objects.create(user=request.user,size=selected_size,product=product)
+            Cart.objects.create(user=request.user,size=selected_size,product=product,quantity=qty)
     return redirect('/cart')
 
 @login_required
@@ -166,12 +171,10 @@ def my_orders(request):
 
 @login_required
 def categories(request):
-    slider = Slider.objects.all()
     trending_products = Product.objects.filter(keywords__keyword__icontains='Trending').order_by('-id').distinct()[:50]
     orders = Order.objects.filter(user=request.user)
     categories = Categories.objects.all()
     context = {
-        'slider':slider,
         'trending_products':trending_products,
         'categories':categories,
         'orders':orders,

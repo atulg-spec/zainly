@@ -1,19 +1,31 @@
 {% extends 'home/base.html' %}
+{% block breadcrumb %}
+<!-- Breadcrumb area Start -->
+<div class="breadcrumb-area bg--white-6 breadcrumb-bg-1 pt--60 pb--70 pt-lg--40 pb-lg--50 pt-md--30 pb-md--40">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="page-title">About Us</h1>
+                <ul class="breadcrumb justify-content-center">
+                    <li><a href="/">Home</a></li>
+                    <li class="current"><span>About Us</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb area End -->
+{% endblock breadcrumb %}
 {% block body %}
-<div class="bg-black h-32"></div>
-<div id="about" class="relative bg-white overflow-hidden">
+<div id="about" class="container">
+    <br><br>
     <div class="mw-full px-4 mx-auto">
         <div class="relative pb-8 bg-white">
             <div class="pt-1"></div>
-
             <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="sm:text-center lg:text-left">
-                    <h2 class="my-6 text-2xl tracking-tight font-extrabold text-gray-900 sm:text-3xl md:text-4xl">
-                        About Us
-                    </h2>
-
                     <p class="mb-4">
-                        Welcome to <span class="font-bold">TheZainly</span>, where fashion meets comfort and style knows
+                        Welcome to <span class="font-bold">{{settings.site_name}}</span>, where fashion meets comfort and style knows
                         no size limits. We are a pioneering e-commerce brand dedicated to bringing you the trendiest
                         oversized t-shirts that effortlessly combine style, comfort, and quality. Our mission is to
                         redefine fashion norms and offer everyone a chance to express their unique personality through
@@ -22,7 +34,7 @@
 
                     <h2 class="text-2xl font-bold mb-4">Our Story</h2>
                     <p class="mb-4">
-                        TheZainly was born out of a simple idea: to create clothing that doesn't just fit, but feels
+                        {{settings.site_name}} was born out of a simple idea: to create clothing that doesn't just fit, but feels
                         right. We noticed a gap in the market for high-quality, stylish oversized t-shirts that cater to
                         diverse tastes and body types. Driven by a passion for fashion and a commitment to inclusivity,
                         we embarked on a journey to fill this gap and make oversized t-shirts a staple in everyone’s
@@ -31,7 +43,7 @@
 
                     <h2 class="text-2xl font-bold mb-4">What We Offer</h2>
                     <p class="mb-4">
-                        At TheZainly, we believe that fashion should be accessible to all. Our collection features a
+                        At {{settings.site_name}}, we believe that fashion should be accessible to all. Our collection features a
                         wide range of oversized t-shirts that are perfect for every occasion, whether you're lounging at
                         home, hitting the streets, or heading out with friends. Each piece is crafted with the finest
                         fabrics and meticulous attention to detail, ensuring a perfect blend of comfort and durability.
@@ -55,28 +67,27 @@
                         </li>
                     </ul>
 
-                    <h2 class="text-2xl font-bold mb-4">Join the Zainly Community</h2>
+                    <h2 class="text-2xl font-bold mb-4">Join the {{settings.site_name}} Community</h2>
                     <p class="mb-4">
-                        At TheZainly, we’re more than just a brand; we’re a community of fashion enthusiasts who love to
+                        At {{settings.site_name}}, we’re more than just a brand; we’re a community of fashion enthusiasts who love to
                         express themselves through unique and comfortable clothing. Follow us on social media and join
-                        the conversation using <span class="font-bold">#TheZainlyStyle</span> to share your looks and
+                        the conversation using <span class="font-bold">#{{settings.site_name}}</span> to share your looks and
                         connect with like-minded individuals.
                     </p>
 
                     <p class="mb-4">
-                        Thank you for choosing TheZainly. We’re excited to be a part of your fashion journey and can’t
+                        Thank you for choosing {{settings.site_name}}. We’re excited to be a part of your fashion journey and can’t
                         wait to see how you style your oversized t-shirts.
                     </p>
 
                     <p>
-                        Stay stylish, stay comfortable, and embrace the oversized revolution with TheZainly!
+                        Stay stylish, stay comfortable, and embrace the oversized revolution with {{settings.site_name}}!
                     </p>
 
                 </div>
             </main>
         </div>
     </div>
-   
 </div>
 
 {% endblock body %}

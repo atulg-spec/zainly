@@ -1,0 +1,65 @@
+{% extends 'home/base.html' %}
+{% block breadcrumb %}
+<!-- Breadcrumb area Start -->
+<div class="breadcrumb-area bg--white-6 breadcrumb-bg-1 pt--60 pb--70 pt-lg--40 pb-lg--50 pt-md--30 pb-md--40">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="page-title">Disclaimer</h1>
+                <ul class="breadcrumb justify-content-center">
+                    <li><a href="/">Home</a></li>
+                    <li class="current"><span>Disclaimer</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb area End -->
+{% endblock breadcrumb %}
+
+{% block body %}
+<div id="disclaimer" class="container">
+    <br><br>
+    <div class="mw-full px-4 mx-auto">
+        <div class="relative pb-8 bg-white">
+            <div class="pt-1"></div>
+            <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="sm:text-center lg:text-left">
+                    <h2 class="text-2xl font-bold mb-4">Disclaimer</h2>
+                    <p class="mb-4">
+                        The information provided by <span class="font-bold">{{settings.site_name}}</span> ("we," "us," or "our") on this website is for general informational purposes only. All information on the site is provided in good faith, however, we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the site.
+                    </p>
+
+                    <p class="mb-4">
+                        Under no circumstance shall we have any liability to you for any loss or damage of any kind incurred as a result of the use of the site or reliance on any information provided on the site. Your use of the site and your reliance on any information on the site is solely at your own risk.
+                    </p>
+
+                    <h2 class="text-2xl font-bold mb-4">External Links Disclaimer</h2>
+                    <p class="mb-4">
+                        The site may contain (or you may be sent through the site) links to other websites or content belonging to or originating from third parties or links to websites and features in banners or other advertising. Such external links are not investigated, monitored, or checked for accuracy, adequacy, validity, reliability, availability, or completeness by us.
+                    </p>
+
+                    <p class="mb-4">
+                        We do not warrant, endorse, guarantee, or assume responsibility for the accuracy or reliability of any information offered by third-party websites linked through the site or any website or feature linked in any banner or other advertising. We will not be a party to or in any way be responsible for monitoring any transaction between you and third-party providers of products or services.
+                    </p>
+
+                    <h2 class="text-2xl font-bold mb-4">Professional Disclaimer</h2>
+                    <p class="mb-4">
+                        The site cannot and does not contain financial advice. The financial information is provided for general informational and educational purposes only and is not a substitute for professional advice. Accordingly, before taking any actions based upon such information, we encourage you to consult with the appropriate professionals. We do not provide any kind of financial advice.
+                    </p>
+
+                    <p class="mb-4">
+                        The use or reliance of any information contained on this site is solely at your own risk.
+                    </p>
+
+                    <h2 class="text-2xl font-bold mb-4">Contact Us</h2>
+                    <p class="mb-4">
+                        If you have any questions about this disclaimer, you can contact us at <a href="mailto:{{settings.email}}" class="font-bold">{{settings.email}}</a>.
+                    </p>
+
+                </div>
+            </main>
+        </div>
+    </div>
+</div>
+{% endblock body %}

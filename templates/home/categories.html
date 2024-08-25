@@ -1,94 +1,43 @@
 {% extends 'home/base.html' %}
+{% block breadcrumb %}
+<!-- Breadcrumb area Start -->
+<div class="breadcrumb-area bg--white-6 pt--60 pb--70 pt-lg--40 pb-lg--50 pt-md--30 pb-md--40">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="page-title">Categories</h1>
+                <ul class="breadcrumb justify-content-center">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/categories">Categories</a></li>
+                    <li class="current"><span>Shop Collections</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb area End -->
+{% endblock breadcrumb %}
 {% block body %}
-<div class="bg-black h-24"></div>
-<div class="bg-white">
-    <div class="mx-auto px-6 w-full py-10">
-        <h4 class="text-2xl tracking-tight text-center text-gray-900 font-mono text-4xl fade-in">CATEGORIES</h4>
-        <div class="mt-6 flex overflow-x-auto space-x-2 scrollbar-hide">
-            {% for product in categories %}
-            <div class="group relative flex-shrink-0 w-52 fade-in">
-                <a href="/search/{{product.category}}">
-
-                    <div
-                        class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                        <img src="{{product.category_image.url}}" alt="{{product.category}}"
-                            class="h-full w-full object-cover object-center lg:h-full lg:w-full">
-                    </div>
-                    <div class="mt-4 flex justify-between">
-                        <div>
-                            <h3 class="text-sm text-gray-700">
-                                <a href="#">
-                                    <p class="line-clamp-1 text-sm text-black">
-                                        {{product.category}}
-                                    </p>
-                                </a>
-                            </h3>
-                            <p class="line-clamp-2 mb-3 text-gray-600 text-sm dark:text-gray-400 h-10">
-                                {{product.short_caption}}
-                            </p>
+<div class="shop-page-wrapper">
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            {% for category in categories %}
+            <div class="col-md-4">
+                <div class="banner-box banner-type-3 banner-type-3-1 banner-hover-1">
+                    <div class="banner-inner">
+                        <div class="banner-image">
+                            <img src="{{category.category_image.url}}" alt="Banner">
                         </div>
+                        <div class="banner-info">
+                            <p class="banner-title-1 lts-13 lts-lg-4 text-uppercase">{{category.short_caption}}</p>
+                            <h2 class="banner-title-2"><strong>{{category.category}}</strong></h2>
+                        </div>
+                        <a class="banner-link banner-overlay" href="/search/{{category.category}}">Shop Now</a>
                     </div>
-                </a>
+                </div>
             </div>
             {% endfor %}
         </div>
     </div>
 </div>
-<a href="{{slider.1.redirect_url}}">
-    <img src="{{slider.1.image.url}}"
-    class="h-[200px] md:h-[500px] lg:h-[700px] w-full p-4 fade-in rounded-3xl" alt="">
-</a>
-
-<div class="bg-white">
-    <div class="mx-auto w-full px-6 py-10">
-        <h4 class="text-2xl tracking-tight text-center text-gray-900 font-mono text-4xl fade-in">NEWLY LAUNCHED</h4>
-        <div class="mt-6 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-6 xl:gap-x-4">
-            {% for product in trending_products %}
-            <div class="group relative fade-in">
-                <a href="/product-view/{{product.id}}">
-                    <div
-                        class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                        <img src="{{product.product_image.url}}" alt="{{product.keywords}}"
-                            class="h-full w-full object-cover object-center lg:h-full lg:w-full">
-                    </div>
-                    <div class="mt-4">
-                        <div>
-                            <h3 class="text-sm text-gray-700">
-                                <a href="#">
-                                    <p class="line-clamp-1 text-sm text-black">
-                                        {{product.title}}
-                                    </p>
-                                </a>
-                                <p class="text-sm font-medium text-gray-900">₹{{product.price}}</p>
-                            </h3>
-                            <p class="line-clamp-2 mb-3 text-gray-600 text-sm dark:text-gray-400 h-10">
-                                {{product.description}}
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</div>
-
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 }); // Adjust threshold as needed
-
-        document.querySelectorAll('.fade-in').forEach(element => {
-            observer.observe(element);
-        });
-    });
-</script>
-
 {% endblock body %}

@@ -1,0 +1,124 @@
+{% extends 'home/base.html' %}
+{% block body %}
+{% load humanize %}
+<div class="bg-black h-24"></div>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;1,600&display=swap"
+    rel="stylesheet" />
+<style>
+    * {
+        font-family: 'Source Sans Pro';
+    }
+</style>
+<div class="mx-auto max-w-screen-xl bg-white">
+    <h1 class="mt-20 ml-5 text-2xl font-bold text-gray-900">Your Orders</h1>
+</div>
+{% for order in orders reversed %}
+<section class="mt-4 mb-4 relative">
+    <div class="max-w-screen-xl lg-6 mx-auto">
+        <div class="main-box border border-gray-200 rounded-xl max-w-xl max-lg:mx-auto lg:max-w-full">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between px-6 pb-6 border-b border-gray-200">
+                <div class="data mt-2">
+                    <p class="font-semibold text-base leading-7 text-black">Order Id: <span
+                            class="text-gray-600 font-medium">#{{order.order_id}}</span></p>
+                    <p class="font-semibold text-base leading-7 text-black mt-4">Order Payment : <span
+                            class="text-gray-400 font-medium">
+                            {{order.created_at}}
+                        </span></p>
+                </div>
+                <!-- <a href="/track-order/{{order.order_id}}"
+                    class="rounded-full py-2 px-7 font-semibold text-sm leading-7 text-white bg-gray-900 max-lg:mt-5 shadow-sm shadow-transparent transition-all duration-500 hover:bg-gray-700 hover:shadow-gray-400">Track
+                    Your Order</a> -->
+            </div>
+            <div class="w-full px-3 min-[400px]:px-6">
+                {% for product in order.products.all %}
+                <div class="flex flex-col lg:flex-row items-center py-6 border-b border-gray-200 gap-6 w-full">
+                    <div class="img-box max-lg:w-full">
+                        <img src="{{product.product.image.url}}" alt="{{product.product.title}}"
+                            class="aspect-square w-full lg:max-w-[140px] rounded-xl">
+                    </div>
+                    <div class="flex flex-row items-center w-full ">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 w-full">
+                            <div class="flex items-center">
+                                <div class="">
+                                    <h2 class="font-semibold text-xl leading-8 text-black mb-3 line-clamp-1">
+                                        {{product.product.title}}
+                                    </h2>
+                                    <p class="font-normal text-lg leading-8 text-gray-500 mb-3 line-clamp-2">
+                                        {{product.product.description}}
+                                    </p>
+                                    <div class="flex items-center ">
+                                        <p
+                                            class="font-medium text-base leading-7 text-black pr-4 mr-4 border-r border-gray-200">
+                                            Size: <span class="text-gray-500">{{product.size}}</span></p>
+                                        <p class="font-medium text-base leading-7 text-black ">Qty: <span
+                                                class="text-gray-500">{{product.quantity}}</span></p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="grid grid-cols-5">
+                                <div class="col-span-5 lg:col-span-1 flex items-center max-lg:mt-3">
+                                    <div class="flex gap-3 lg:block">
+                                        <p class="font-medium text-sm leading-7 text-black">price</p>
+                                        <p class="lg:mt-4 font-medium text-sm leading-7 text-gray-600">
+                                            {{product.product.price}}INR</p>
+                                    </div>
+                                </div>
+                                <div class="col-span-5 lg:col-span-2 flex items-center max-lg:mt-3 ">
+                                    <div class="flex gap-3 lg:block">
+                                        <p class="font-medium text-sm leading-7 text-black">Status
+                                        </p>
+                                        <p class="font-medium text-sm leading-6 whitespace-nowrap py-0.5 px-3 rounded-full lg:mt-3
+    {% if order.status == 'Pending' %}
+        bg-yellow-50 text-yellow-600
+    {% elif order.status == 'Processing' %}
+        bg-blue-50 text-blue-600
+    {% elif order.status == 'Shipped' %}
+        bg-indigo-50 text-indigo-600
+    {% elif order.status == 'Out for Delivery' %}
+        bg-purple-50 text-purple-600
+    {% elif order.status == 'Delivered' %}
+        bg-emerald-50 text-emerald-600
+    {% elif order.status == 'Cancelled' %}
+        bg-red-50 text-red-600
+    {% elif order.status == 'Refunded' %}
+        bg-gray-50 text-gray-600
+    {% elif order.status == 'Failed' %}
+        bg-pink-50 text-pink-600
+    {% endif %}
+">
+                                            {{ order.status }}
+                                        </p>
+
+                                    </div>
+
+                                </div>
+                                <div class="col-span-5 lg:col-span-2 flex items-center max-lg:mt-3">
+                                    <div class="flex gap-3 lg:block">
+                                        <p class="font-medium text-sm whitespace-nowrap leading-6 text-black">
+                                            Expected Delivery Time</p>
+                                        <p
+                                            class="font-medium text-base whitespace-nowrap leading-7 lg:mt-3 text-emerald-500">
+                                            {% if order.expected_delivery_date %}
+                                            {{order.expected_delivery_date}}
+                                            {% else %}
+                                            -
+                                            {% endif %}
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endfor %}
+
+{% endblock body %}
