@@ -18,7 +18,6 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     "paper_admin",
-    "paper_admin.patches.dal",           
     "paper_admin.patches.django_money",  
     "paper_admin.patches.django_solo",   
     "paper_admin.patches.mptt",          
