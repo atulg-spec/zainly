@@ -17,7 +17,13 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
-    'jazzmin',
+    "paper_admin",
+    "paper_admin.patches.dal",           
+    "paper_admin.patches.django_money",  
+    "paper_admin.patches.django_solo",   
+    "paper_admin.patches.mptt",          
+    "paper_admin.patches.logentry_admin",
+    "paper_admin.patches.tree_queries",  
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
