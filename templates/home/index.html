@@ -389,20 +389,22 @@
         <div class="row">
             <div class="col-12">
                 <div class="product-tab tab-style-1">
-                    <div class="nav nav-tabs product-tab__head mb--40 mb-md--30" id="product-tab"
-                        role="tablist">
-                        <button type="button" class="product-tab__link nav-link active"
-                            id="nav-new-arrival-tab" data-bs-toggle="tab" data-bs-target="#nav-new-arrival"
-                            role="tab" aria-selected="true">
-                            <span>New Arrival</span>
+                    <div class="nav nav-tabs product-tab__head mb--40 mb-md--30" id="product-tab" role="tablist">
+                        <button type="button"
+                            class="hero_buttons text-white bg-gray-800 border font-medium rounded-full px-5 mb-2 h-14 font-mono mx-2"
+                            id="nav-new-arrival-tab" data-bs-toggle="tab" data-bs-target="#nav-new-arrival" role="tab"
+                            aria-selected="true">
+                            New Arrival
                         </button>
-                        <button type="button" class="product-tab__link nav-link" id="nav-top-sale-tab"
-                            data-bs-toggle="tab" data-bs-target="#nav-top-sale" role="tab"
+                        <button type="button"
+                            class="hero_buttons text-gray-900 border font-medium rounded-full px-5 mb-2 h-14 font-mono"
+                            id="nav-top-sale-tab" data-bs-toggle="tab" data-bs-target="#nav-top-sale" role="tab"
                             aria-selected="true">
                             <span>Top Sale</span>
                         </button>
-                        <button type="button" class="product-tab__link nav-link" id="nav-sale-off-tab"
-                            data-bs-toggle="tab" data-bs-target="#nav-sale-off" role="tab"
+                        <button type="button"
+                            class="hero_buttons text-gray-900 border font-medium rounded-full px-5 mb-2 h-14 font-mono mx-2"
+                            id="nav-sale-off-tab" data-bs-toggle="tab" data-bs-target="#nav-sale-off" role="tab"
                             aria-selected="true">
                             <span>Sale Off</span>
                         </button>
@@ -418,17 +420,16 @@
                                             <figure class="product-image">
                                                 <div class="product-image--holder">
                                                     <a href="/product-view/{{product.id}}">
-                                                        <img src="{{product.product_image.url}}"
-                                                            alt="Product Image" class="primary-image" style="width:335px; height:385px;">
-                                                        <img src="{{product.second_image.url}}"
-                                                            alt="Product Image" class="secondary-image" style="width:335px; height:385px;">
+                                                        <img src="{{product.product_image.url}}" alt="Product Image"
+                                                            class="primary-image" style="width:335px; height:385px;">
+                                                        <img src="{{product.second_image.url}}" alt="Product Image"
+                                                            class="secondary-image" style="width:335px; height:385px;">
                                                     </a>
                                                 </div>
                                                 <div class="airi-product-action">
                                                     <div class="product-action">
-                                                        <a class="add_to_cart_btn action-btn"
-                                                            href="cart.html" data-bs-toggle="tooltip"
-                                                            data-bs-placement="left" title=""
+                                                        <a class="add_to_cart_btn action-btn" href="cart.html"
+                                                            data-bs-toggle="tooltip" data-bs-placement="left" title=""
                                                             data-bs-original-title="Add to Cart">
                                                             <i class="dl-icon-cart29"></i>
                                                         </a>
@@ -441,14 +442,12 @@
                                             </figure>
                                             <div class="product-info text-center">
                                                 <h3 class="product-title">
-                                                    <a
-                                                        href="/product-view/{{product.id}}">{{product.title}}</a>
+                                                    <a href="/product-view/{{product.id}}">{{product.title}}</a>
                                                 </h3>
                                                 <span class="product-price-wrapper">
                                                     <span class="money">₹{{product.price}}</span>
                                                     <span class="product-price-old">
-                                                        <span
-                                                            class="money">₹{{product.before_discount_price}}</span>
+                                                        <span class="money">₹{{product.before_discount_price}}</span>
                                                     </span>
                                                 </span>
                                             </div>
@@ -458,8 +457,7 @@
                                 {% endfor %}
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="nav-top-sale" role="tabpanel"
-                            aria-labelledby="nav-top-sale-tab">
+                        <div class="tab-pane fade" id="nav-top-sale" role="tabpanel" aria-labelledby="nav-top-sale-tab">
                             <div class="row">
                                 {% for product in top_products %}
                                 <div class="col-xl-3 col-lg-4 col-sm-6 mb--40 mb-md--30">
@@ -468,17 +466,16 @@
                                             <figure class="product-image">
                                                 <div class="product-image--holder">
                                                     <a href="/product-view/{{product.id}}">
-                                                        <img src="{{product.product_image.url}}"
-                                                            alt="Product Image" class="primary-image" style="width:335px; height:385px;">
-                                                        <img src="{{product.second_image.url}}"
-                                                            alt="Product Image" class="secondary-image" style="width:335px; height:385px;">
+                                                        <img src="{{product.product_image.url}}" alt="Product Image"
+                                                            class="primary-image" style="width:335px; height:385px;">
+                                                        <img src="{{product.second_image.url}}" alt="Product Image"
+                                                            class="secondary-image" style="width:335px; height:385px;">
                                                     </a>
                                                 </div>
                                                 <div class="airi-product-action">
                                                     <div class="product-action">
-                                                        <a class="add_to_cart_btn action-btn"
-                                                            href="cart.html" data-bs-toggle="tooltip"
-                                                            data-bs-placement="left" title=""
+                                                        <a class="add_to_cart_btn action-btn" href="cart.html"
+                                                            data-bs-toggle="tooltip" data-bs-placement="left" title=""
                                                             data-bs-original-title="Add to Cart">
                                                             <i class="dl-icon-cart29"></i>
                                                         </a>
@@ -491,14 +488,12 @@
                                             </figure>
                                             <div class="product-info text-center">
                                                 <h3 class="product-title">
-                                                    <a
-                                                        href="/product-view/{{product.id}}">{{product.title}}</a>
+                                                    <a href="/product-view/{{product.id}}">{{product.title}}</a>
                                                 </h3>
                                                 <span class="product-price-wrapper">
                                                     <span class="money">₹{{product.price}}</span>
                                                     <span class="product-price-old">
-                                                        <span
-                                                            class="money">₹{{product.before_discount_price}}</span>
+                                                        <span class="money">₹{{product.before_discount_price}}</span>
                                                     </span>
                                                 </span>
                                             </div>
@@ -508,8 +503,7 @@
                                 {% endfor %}
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="nav-sale-off" role="tabpanel"
-                            aria-labelledby="nav-sale-off-tab">
+                        <div class="tab-pane fade" id="nav-sale-off" role="tabpanel" aria-labelledby="nav-sale-off-tab">
                             <div class="row">
                                 {% for product in sale_products %}
                                 <div class="col-xl-3 col-lg-4 col-sm-6 mb--40 mb-md--30">
@@ -518,17 +512,16 @@
                                             <figure class="product-image">
                                                 <div class="product-image--holder">
                                                     <a href="/product-view/{{product.id}}">
-                                                        <img src="{{product.product_image.url}}"
-                                                            alt="Product Image" class="primary-image" style="width:335px; height:385px;">
-                                                        <img src="{{product.second_image.url}}"
-                                                            alt="Product Image" class="secondary-image" style="width:335px; height:385px;">
+                                                        <img src="{{product.product_image.url}}" alt="Product Image"
+                                                            class="primary-image" style="width:335px; height:385px;">
+                                                        <img src="{{product.second_image.url}}" alt="Product Image"
+                                                            class="secondary-image" style="width:335px; height:385px;">
                                                     </a>
                                                 </div>
                                                 <div class="airi-product-action">
                                                     <div class="product-action">
-                                                        <a class="add_to_cart_btn action-btn"
-                                                            href="cart.html" data-bs-toggle="tooltip"
-                                                            data-bs-placement="left" title=""
+                                                        <a class="add_to_cart_btn action-btn" href="cart.html"
+                                                            data-bs-toggle="tooltip" data-bs-placement="left" title=""
                                                             data-bs-original-title="Add to Cart">
                                                             <i class="dl-icon-cart29"></i>
                                                         </a>
@@ -541,14 +534,12 @@
                                             </figure>
                                             <div class="product-info text-center">
                                                 <h3 class="product-title">
-                                                    <a
-                                                        href="/product-view/{{product.id}}">{{product.title}}</a>
+                                                    <a href="/product-view/{{product.id}}">{{product.title}}</a>
                                                 </h3>
                                                 <span class="product-price-wrapper">
                                                     <span class="money">₹{{product.price}}</span>
                                                     <span class="product-price-old">
-                                                        <span
-                                                            class="money">₹{{product.before_discount_price}}</span>
+                                                        <span class="money">₹{{product.before_discount_price}}</span>
                                                     </span>
                                                 </span>
                                             </div>
@@ -564,14 +555,14 @@
         </div>
         <div class="row">
             <div class="col-12 text-center">
-                <a href="shop-sidebar.html" class="heading-button">View All</a>
+                <a href="/categories" class="heading-button">View All</a>
             </div>
         </div>
     </div>
 </section>
 <!-- Product Tab area End Here -->
- <!-- Featured Products area Start Here -->
- <section class="featured-products-area pt--30 pb--80 pt-md--20 pb-md--60">
+<!-- Featured Products area Start Here -->
+<section class="featured-products-area pt--30 pb--80 pt-md--20 pb-md--60">
     <div class="container-fluid p-0">
         <div class="row mb--30 mb-md--20">
             <div class="col-12 text-center">
@@ -619,17 +610,43 @@
     </div>
 </section>
 <!-- Featured Products area End Here -->
- <!-- Video Banner area Start Here -->
- <section class="video-banner-area video-banner-bg-1 ptb--200 ptb-lg--100" style="background-image: {{settings.main_page_video_thumbnail}};">
+<!-- Video Banner area Start Here -->
+<section class="video-banner-area video-banner-bg-1 ptb--200 ptb-lg--100"
+    style="background-image: {{settings.main_page_video_thumbnail}};">
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="heading-big lts-5 color--white mb--70 mb-lg--50 mb-xs--30">{{settings.main_page_video_caption}}</h2>
-                <a href="{{settings.main_page_video_url}}"
-                    class="video-btn video-popup">video</a>
+                <h2 class="heading-big lts-5 color--white mb--70 mb-lg--50 mb-xs--30">
+                    {{settings.main_page_video_caption}}</h2>
+                <a href="{{settings.main_page_video_url}}" class="video-btn video-popup">video</a>
             </div>
         </div>
     </div>
 </section>
 <!-- Video Banner area End Here -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get all elements with class 'hero_buttons'
+        var buttons = document.querySelectorAll('.hero_buttons');
+
+        // Iterate through each button
+        buttons.forEach(function (button) {
+            // Add onclick event listener
+            button.addEventListener('click', function () {
+                // Iterate through all buttons to reset their classes
+                buttons.forEach(function (otherButton) {
+                    if (otherButton !== button) { // If it's not the clicked button
+                        otherButton.classList.remove('text-white', 'bg-gray-800');
+                        otherButton.classList.add('text-gray-900');
+                    }
+                });
+
+                // Toggle classes on the clicked button
+                button.classList.toggle('text-white');
+                button.classList.toggle('bg-gray-800');
+                button.classList.toggle('text-gray-900');
+            });
+        });
+    });
+</script>
 {% endblock body %}

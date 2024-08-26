@@ -36,6 +36,9 @@
     <!-- Style CSS -->
     <link rel="stylesheet" href="/static/assets/css/main.css">
 
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
     <!-- modernizr JS
     ============================================ -->
     <script src="/static/assets/js/vendor/modernizr-2.8.3.min.js"></script>
@@ -321,6 +324,30 @@
         <!-- Main Content Wrapper Start -->
 
 
+        <footer class="block sm:hidden fixed inset-x-0 bottom-0 z-50 bg-white shadow">
+            <div class="flex justify-around py-3">
+                <a href="/" class="flex flex-col items-center justify-center text-center py-2 px-4 transition">
+                    <i data-feather="home" style="height: 30px;width: 20px; color: black; "></i>
+                    <span class="text-sm text-dark">Home</span>
+                </a>
+                <a href="/search/Sale" class="flex flex-col items-center justify-center text-center py-2 px-4 transition">
+                    <i data-feather="zap" style="height: 30px;width: 20px; color: black; "></i>
+                    <span class="text-sm text-dark">Trending</span>
+                </a>
+                <a href="/categories" class="flex flex-col items-center justify-center text-center py-2 px-4 transition">
+                    <i data-feather="globe" style="height: 30px;width: 20px; color: black; "></i>
+                    <span class="text-sm text-dark">Categories</span>
+                </a>
+                <a href="/my-orders" class="flex flex-col items-center justify-center text-center py-2 px-4 transition">
+                    <i data-feather="layers" style="height: 30px;width: 20px; color: black; "></i>
+                    <span class="text-sm text-dark">Orders</span>
+                </a>
+                <a href="/cart" class="flex flex-col items-center justify-center text-center py-2 px-4 transition">
+                    <i data-feather="shopping-bag" style="height: 30px;width: 20px; color: black; "></i>
+                    <span class="text-sm text-dark">Cart</span>
+                </a>
+            </div>
+        </footer>
         <!-- Footer Start -->
         <footer class="footer footer-1 bg--black ptb--40">
             <div class="footer-top pb--40 pb-md--30">
@@ -744,7 +771,10 @@
     <script src="/static/assets/js/revoulation/extensions/revolution.extension.parallax.min.js"></script>
     <script src="/static/assets/js/revoulation/extensions/revolution.extension.slideanims.min.js"></script>
     <script src="/static/assets/js/revoulation/extensions/revolution.extension.video.min.js"></script>
-
+    <script>
+        feather.replace();
+      </script>
+      
     <!-- REVOLUTION ACTIVE JS FILES -->
     <script src="/static/assets/js/revoulation.js"></script>
 

@@ -169,15 +169,12 @@ def my_orders(request):
     }
     return render(request,'home/orders.html',context)
 
-@login_required
 def categories(request):
-    trending_products = Product.objects.filter(keywords__keyword__icontains='Trending').order_by('-id').distinct()[:50]
-    orders = Order.objects.filter(user=request.user)
+    trending_products = Product.objects.filter(keywords__keyword__icontains='Trending').distinct()[:50]
     categories = Categories.objects.all()
     context = {
         'trending_products':trending_products,
         'categories':categories,
-        'orders':orders,
     }
     return render(request,'home/categories.html',context)
 
