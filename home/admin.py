@@ -19,7 +19,7 @@ class SiteSettingsAdmin(admin.ModelAdmin):
     
     fieldsets = (
         ('Main Settings', {
-            'fields': ('site_name','site_header_news', 'logo', 'mobile_logo', 'tagline', 'slider_background_color')
+            'fields': ('site_name','site_header_news', 'logo', 'mobile_logo', 'tagline', 'slider_background_color', 'font_style')
         }),
         ('Slider 1', {
             'fields': ('slider1_image', 'slider1_caption1', 'slider1_caption2', 'slider1_url')

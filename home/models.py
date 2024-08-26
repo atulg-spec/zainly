@@ -2,8 +2,13 @@ from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
 from django.db import models
 
-
 class SiteSettings(models.Model):
+    FONT_CHOICES = [
+        ('font-sans', 'Sans-serif'),
+        ('font-serif', 'Serif'),
+        ('font-mono', 'Monospace'),
+    ]
+
     slider1_image = models.ImageField(upload_to='slider_images/', blank=True, null=True)
     slider1_caption1 = models.CharField(max_length=30, blank=True)
     slider1_caption2 = models.CharField(max_length=30, blank=True)
@@ -40,5 +45,8 @@ class SiteSettings(models.Model):
     facebook_handle = models.URLField(blank=True)
     twitter_handle = models.URLField(blank=True)
     youtube_handle = models.URLField(blank=True)
+    
+    font_style = models.CharField(max_length=10, choices=FONT_CHOICES, default='font-sans')
+
     def __str__(self):
         return "Site Settings"
