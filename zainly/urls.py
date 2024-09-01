@@ -7,7 +7,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('social-auth/', include('social_django.urls',namespace='social')),
-    path("ckeditor5/", include('django_ckeditor_5.urls')),
+    # path("ckeditor5/", include('django_ckeditor_5.urls')),
     path('', include('home.urls')),
     path('', include('dashboard.urls')),
 ]

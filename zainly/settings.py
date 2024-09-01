@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     'home',
     'dashboard',
     'django.contrib.humanize',
-    'django_ckeditor_5',
+    # 'django_ckeditor_5',
     # 'compressor',
 ]
 
