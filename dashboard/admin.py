@@ -53,7 +53,7 @@ class CategoriesAdmin(admin.ModelAdmin):
     list_display = ('category', 'short_caption')
     search_fields = ('category', 'short_caption')
     list_filter = ('category',)
-    readonly_fields = ('category_image', 'icon')
+    # readonly_fields = ('category_image', 'icon')
 
     def category_image_thumbnail(self, obj):
         if obj.category_image:

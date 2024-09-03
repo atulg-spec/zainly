@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-7gnr974ckmmmh0l(l&ru^x3@ig)nxxbz85#1%kvrkxq=2baa19
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 INSTALLED_APPS = [
     "paper_admin",
@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     'home',
     'dashboard',
     'django.contrib.humanize',
-    # 'django_ckeditor_5',
+    'django_ckeditor_5',
     # 'compressor',
 ]
 
@@ -54,6 +54,25 @@ LOGGING = {
         'django': {
             'handlers': ['file'],
             'level': 'ERROR',
+            'propagate': True,
+        },
+    },
+}
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'debug.log',  # Adjust the path as per your setup
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
             'propagate': True,
         },
     },
@@ -147,8 +166,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_ROOT=os.path.join(BASE_DIR,'staticfiles/media/')
 MEDIA_URL="/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 STATICFILES_DIRS =[
     os.path.join(BASE_DIR, "static"),
