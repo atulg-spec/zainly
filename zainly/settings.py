@@ -6,9 +6,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-7gnr974ckmmmh0l(l&ru^x3@ig)nxxbz85#1%kvrkxq=2baa19'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     "paper_admin",
