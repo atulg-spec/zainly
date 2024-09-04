@@ -274,114 +274,6 @@
     </div><!-- END REVOLUTION SLIDER -->
 </div>
 <!-- END SLIDER SECTION -->
-<!-- Banner Start Here -->
-<div class="banner-area">
-    <div class="container-fluid p-0">
-        <div class="row g-0">
-            <div class="col-lg-3 col-md-6">
-                <div class="banner-box banner-type-2 banner-hover-2">
-                    <div class="banner-inner">
-                        <div class="banner-image">
-                            <img src="{{categories.3.category_image.url}}" alt="Banner">
-                        </div>
-                        <div class="banner-info">
-                            <a class="banner-btn-2" href="/search/{{categories.3.category}}">
-                                <span class="normal-view">{{categories.3.category}}</span>
-                                <span class="hover-view">Shop Now</span>
-                            </a>
-                        </div>
-                        <a class="banner-link banner-overlay" href="/search/{{categories.3.category}}">Shop Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="banner-box banner-type-2 banner-hover-2">
-                    <div class="banner-inner">
-                        <div class="banner-image">
-                            <img src="{{categories.2.category_image.url}}" alt="Banner">
-                        </div>
-                        <div class="banner-info">
-                            <a class="banner-btn-2" href="/search/{{categories.2.category}}">
-                                <span class="normal-view">{{categories.2.category}}</span>
-                                <span class="hover-view">Shop Now</span>
-                            </a>
-                        </div>
-                        <a class="banner-link banner-overlay" href="/search/{{categories.2.category}}">Shop Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="banner-box banner-type-2 banner-hover-2">
-                    <div class="banner-inner">
-                        <div class="banner-image">
-                            <img src="{{categories.1.category_image.url}}" alt="Banner">
-                        </div>
-                        <div class="banner-info">
-                            <a class="banner-btn-2" href="{{categories.1.category}}">
-                                <span class="normal-view">{{categories.1.category}}</span>
-                                <span class="hover-view">Shop Now</span>
-                            </a>
-                        </div>
-                        <a class="banner-link banner-overlay" href="{{categories.1.category}}">Shop Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="banner-box banner-type-2 banner-hover-2">
-                    <div class="banner-inner">
-                        <div class="banner-image">
-                            <img src="{{categories.0.category_image.url}}" alt="Banner">
-                        </div>
-                        <div class="banner-info">
-                            <a class="banner-btn-2" href="{{categories.0.category}}">
-                                <span class="normal-view">{{categories.0.category}}</span>
-                                <span class="hover-view">Shop Now</span>
-                            </a>
-                        </div>
-                        <a class="banner-link banner-overlay" href="{{categories.0.category}}">Shop Now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Banner End Here -->
-<!-- Method area Start Here -->
-<section class="method-area pt--80 pt-md--60 pb--40 pb-md--30">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-6 mb-md--30">
-                <div class="method-box method-box-2 text-center">
-                    <img src="/static/assets/img/icons/icon-1.png" alt="Icon">
-                    <h4 class="mt--20">FREESHIPPING WORLD WIDE</h4>
-                    <p>Freeship over order</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-md--30">
-                <div class="method-box method-box-2 text-center">
-                    <img src="/static/assets/img/icons/icon-2.png" alt="Icon">
-                    <h4 class="mt--20">30 DAYS MONEY Returns</h4>
-                    <p>Derabitur eget vehicula</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-sm--30">
-                <div class="method-box method-box-2 text-center">
-                    <img src="/static/assets/img/icons/icon-3.png" alt="Icon">
-                    <h4 class="mt--20">SUPPORT 24/7</h4>
-                    <p>Dedicated Support</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="method-box method-box-2 text-center">
-                    <img src="/static/assets/img/icons/icon-4.png" alt="Icon">
-                    <h4 class="mt--20">100% SECURE CHECKOUT</h4>
-                    <p>Protect buyer &amp; Security</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Method area End Here -->
 
 <!-- Product Tab area Start Here -->
 <section class="product-tab-area pt--25 pt-md--20 pb--40 pb-md--30">
@@ -412,138 +304,138 @@
                     <div class="tab-content product-tab__content" id="product-tabContent">
                         <div class="tab-pane fade show active" id="nav-new-arrival" role="tabpanel"
                             aria-labelledby="nav-new-arrival-tab">
-                            <div class="row">
+                            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                                 {% for product in new_products %}
-                                <div class="col-xl-3 col-lg-4 col-sm-6 mb--40 mb-md--30">
-                                    <div class="airi-product">
-                                        <div class="product-inner">
-                                            <figure class="product-image">
-                                                <div class="product-image--holder">
-                                                    <a href="/product-view/{{product.id}}">
-                                                        <img src="{{product.product_image.url}}" alt="Product Image"
-                                                            class="primary-image" style="width:335px; height:385px;">
-                                                        <img src="{{product.second_image.url}}" alt="Product Image"
-                                                            class="secondary-image" style="width:335px; height:385px;">
+                                <div class="airi-product">
+                                    <div class="product-inner">
+                                        <figure class="product-image">
+                                            <div class="product-image--holder">
+                                                <a href="/product-view/{{product.id}}">
+                                                    <img src="{{product.product_image.url}}" alt="Product Image"
+                                                        class="w-16 h-44">
+                                                    <img src="{{product.second_image.url}}" alt="Product Image"
+                                                        class="secondary-image">
+                                                </a>
+                                            </div>
+                                            <div class="airi-product-action">
+                                                <div class="product-action">
+                                                    <a class="add_to_cart_btn action-btn" href="cart.html"
+                                                        data-bs-toggle="tooltip" data-bs-placement="left" title=""
+                                                        data-bs-original-title="Add to Cart">
+                                                        <i class="dl-icon-cart29"></i>
                                                     </a>
                                                 </div>
-                                                <div class="airi-product-action">
-                                                    <div class="product-action">
-                                                        <a class="add_to_cart_btn action-btn" href="cart.html"
-                                                            data-bs-toggle="tooltip" data-bs-placement="left" title=""
-                                                            data-bs-original-title="Add to Cart">
-                                                            <i class="dl-icon-cart29"></i>
-                                                        </a>
-                                                        <!-- <a class="add_wishlist action-btn" href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Add to Wishlist">
-                                                            <i class="dl-icon-heart4"></i>
-                                                        </a> -->
-                                                    </div>
-                                                </div>
-                                                <span class="product-badge new">New</span>
-                                            </figure>
-                                            <div class="product-info text-center">
-                                                <h3 class="product-title">
-                                                    <a href="/product-view/{{product.id}}">{{product.title}}</a>
-                                                </h3>
-                                                <span class="product-price-wrapper">
-                                                    <span class="money">₹{{product.price}}</span>
-                                                    <span class="product-price-old">
-                                                        <span class="money">₹{{product.before_discount_price}}</span>
-                                                    </span>
-                                                </span>
                                             </div>
-                                        </div>
+                                            <span class="product-badge new">New</span>
+                                        </figure>
+                                        <a href="/product-view/{{product.id}}" class="mb-2">
+                                            <p class="text-gray-900 pt-3 font-semibold line-clamp-custom">
+                                                {{product.title}}
+                                            </p>
+                                            <span class="product-price-wrapper">
+                                                <span class="money">₹{{product.price}}</span>
+                                                <span class="product-price-old">
+                                                    <span class="money">₹{{product.before_discount_price}}</span>
+                                                </span>
+                                            </span>
+                                            <p class="">
+                                                {% for size in product.sizes_available.all %}
+                                                <span class="text-gray-400">{{size.size}}</span>
+                                                {% endfor %}
+                                            </p>
+                                        </a>
                                     </div>
                                 </div>
                                 {% endfor %}
                             </div>
                         </div>
                         <div class="tab-pane fade" id="nav-top-sale" role="tabpanel" aria-labelledby="nav-top-sale-tab">
-                            <div class="row">
+                            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                                 {% for product in top_products %}
-                                <div class="col-xl-3 col-lg-4 col-sm-6 mb--40 mb-md--30">
-                                    <div class="airi-product">
-                                        <div class="product-inner">
-                                            <figure class="product-image">
-                                                <div class="product-image--holder">
-                                                    <a href="/product-view/{{product.id}}">
-                                                        <img src="{{product.product_image.url}}" alt="Product Image"
-                                                            class="primary-image" style="width:335px; height:385px;">
-                                                        <img src="{{product.second_image.url}}" alt="Product Image"
-                                                            class="secondary-image" style="width:335px; height:385px;">
+                                <div class="airi-product">
+                                    <div class="product-inner">
+                                        <figure class="product-image">
+                                            <div class="product-image--holder">
+                                                <a href="/product-view/{{product.id}}">
+                                                    <img src="{{product.product_image.url}}" alt="Product Image"
+                                                        class="w-16 h-44">
+                                                    <img src="{{product.second_image.url}}" alt="Product Image"
+                                                        class="secondary-image">
+                                                </a>
+                                            </div>
+                                            <div class="airi-product-action">
+                                                <div class="product-action">
+                                                    <a class="add_to_cart_btn action-btn" href="cart.html"
+                                                        data-bs-toggle="tooltip" data-bs-placement="left" title=""
+                                                        data-bs-original-title="Add to Cart">
+                                                        <i class="dl-icon-cart29"></i>
                                                     </a>
                                                 </div>
-                                                <div class="airi-product-action">
-                                                    <div class="product-action">
-                                                        <a class="add_to_cart_btn action-btn" href="cart.html"
-                                                            data-bs-toggle="tooltip" data-bs-placement="left" title=""
-                                                            data-bs-original-title="Add to Cart">
-                                                            <i class="dl-icon-cart29"></i>
-                                                        </a>
-                                                        <!-- <a class="add_wishlist action-btn" href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Add to Wishlist">
-                                                            <i class="dl-icon-heart4"></i>
-                                                        </a> -->
-                                                    </div>
-                                                </div>
-                                                <span class="product-badge new">Hot</span>
-                                            </figure>
-                                            <div class="product-info text-center">
-                                                <h3 class="product-title">
-                                                    <a href="/product-view/{{product.id}}">{{product.title}}</a>
-                                                </h3>
-                                                <span class="product-price-wrapper">
-                                                    <span class="money">₹{{product.price}}</span>
-                                                    <span class="product-price-old">
-                                                        <span class="money">₹{{product.before_discount_price}}</span>
-                                                    </span>
-                                                </span>
                                             </div>
-                                        </div>
+                                            <span class="product-badge new">TOP</span>
+                                        </figure>
+                                        <a href="/product-view/{{product.id}}" class="mb-2">
+                                            <p class="text-gray-900 pt-3 font-semibold line-clamp-custom">
+                                                {{product.title}}
+                                            </p>
+                                            <span class="product-price-wrapper">
+                                                <span class="money">₹{{product.price}}</span>
+                                                <span class="product-price-old">
+                                                    <span class="money">₹{{product.before_discount_price}}</span>
+                                                </span>
+                                            </span>
+                                            <p class="">
+                                                {% for size in product.sizes_available.all %}
+                                                <span class="text-gray-400">{{size.size}}</span>
+                                                {% endfor %}
+                                            </p>
+                                        </a>
                                     </div>
                                 </div>
                                 {% endfor %}
                             </div>
                         </div>
                         <div class="tab-pane fade" id="nav-sale-off" role="tabpanel" aria-labelledby="nav-sale-off-tab">
-                            <div class="row">
+                            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                                 {% for product in sale_products %}
-                                <div class="col-xl-3 col-lg-4 col-sm-6 mb--40 mb-md--30">
-                                    <div class="airi-product">
-                                        <div class="product-inner">
-                                            <figure class="product-image">
-                                                <div class="product-image--holder">
-                                                    <a href="/product-view/{{product.id}}">
-                                                        <img src="{{product.product_image.url}}" alt="Product Image"
-                                                            class="primary-image" style="width:335px; height:385px;">
-                                                        <img src="{{product.second_image.url}}" alt="Product Image"
-                                                            class="secondary-image" style="width:335px; height:385px;">
+                                <div class="airi-product">
+                                    <div class="product-inner">
+                                        <figure class="product-image">
+                                            <div class="product-image--holder">
+                                                <a href="/product-view/{{product.id}}">
+                                                    <img src="{{product.product_image.url}}" alt="Product Image"
+                                                        class="w-16 h-44">
+                                                    <img src="{{product.second_image.url}}" alt="Product Image"
+                                                        class="secondary-image">
+                                                </a>
+                                            </div>
+                                            <div class="airi-product-action">
+                                                <div class="product-action">
+                                                    <a class="add_to_cart_btn action-btn" href="cart.html"
+                                                        data-bs-toggle="tooltip" data-bs-placement="left" title=""
+                                                        data-bs-original-title="Add to Cart">
+                                                        <i class="dl-icon-cart29"></i>
                                                     </a>
                                                 </div>
-                                                <div class="airi-product-action">
-                                                    <div class="product-action">
-                                                        <a class="add_to_cart_btn action-btn" href="cart.html"
-                                                            data-bs-toggle="tooltip" data-bs-placement="left" title=""
-                                                            data-bs-original-title="Add to Cart">
-                                                            <i class="dl-icon-cart29"></i>
-                                                        </a>
-                                                        <!-- <a class="add_wishlist action-btn" href="wishlist.html" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Add to Wishlist">
-                                                            <i class="dl-icon-heart4"></i>
-                                                        </a> -->
-                                                    </div>
-                                                </div>
-                                                <span class="product-badge new">Sale</span>
-                                            </figure>
-                                            <div class="product-info text-center">
-                                                <h3 class="product-title">
-                                                    <a href="/product-view/{{product.id}}">{{product.title}}</a>
-                                                </h3>
-                                                <span class="product-price-wrapper">
-                                                    <span class="money">₹{{product.price}}</span>
-                                                    <span class="product-price-old">
-                                                        <span class="money">₹{{product.before_discount_price}}</span>
-                                                    </span>
-                                                </span>
                                             </div>
-                                        </div>
+                                            <span class="product-badge new">SALE</span>
+                                        </figure>
+                                        <a href="/product-view/{{product.id}}" class="mb-2">
+                                            <p class="text-gray-900 pt-3 font-semibold line-clamp-custom">
+                                                {{product.title}}
+                                            </p>
+                                            <span class="product-price-wrapper">
+                                                <span class="money">₹{{product.price}}</span>
+                                                <span class="product-price-old">
+                                                    <span class="money">₹{{product.before_discount_price}}</span>
+                                                </span>
+                                            </span>
+                                            <p class="">
+                                                {% for size in product.sizes_available.all %}
+                                                <span class="text-gray-400">{{size.size}}</span>
+                                                {% endfor %}
+                                            </p>
+                                        </a>
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -561,6 +453,97 @@
     </div>
 </section>
 <!-- Product Tab area End Here -->
+<!-- Video Banner area Start Here -->
+<section class="video-banner-area video-banner-bg-1 ptb--200 ptb-lg--100 mb-10"
+    style="background-image: url('{{settings.main_page_video_thumbnail.url}}');background-repeat: no-repeat;background-size: cover;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="heading-big lts-5 color--white mb--70 mb-lg--50 mb-xs--30">
+                    {{settings.main_page_video_caption}}</h2>
+                <a href="{{settings.main_page_video_url}}" class="video-btn video-popup">video</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Video Banner area End Here -->
+
+
+<h2 class="text-6xl text-gray-900 sm:text-5xl text-center mt-2 mb-10">
+    CATEGORIES
+</h2>
+
+<!-- Banner Start Here -->
+<div class="banner-area">
+    <div class="container-fluid p-0">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-2">
+            {% for x in categories %}
+            <div class="banner-box banner-type-2 banner-hover-2">
+                <div class="banner-inner">
+                    <div class="">
+                        <img src="{{x.category_image.url}}" alt="Banner" class="rounded-3xl h-3/4">
+                    </div>
+                    <div class="banner-info" style="text-align: left;">
+                        <a class="" href="/search/{{x.category}}">
+                            <h2 class="text-6xl text-white sm:text-5xl mt-2 mb-10 text-left px-4">
+                                {{x.category}}
+                            </h2>
+                        </a>
+                    </div>
+                    <a class="banner-link banner-overlay" href="/search/{{x.category}}">Shop Now</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Banner End Here -->
+<!-- Method area Start Here -->
+<section class="method-area pt--80 pt-md--60 pb--40 pb-md--30">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-md--30">
+                <div class="method-box method-box-2 text-center">
+                    <center>
+                        <img src="/static/assets/img/icons/icon-1.png" alt="Icon">
+                    </center>
+                    <h4 class="mt--20">FREESHIPPING WORLD WIDE</h4>
+                    <p>Freeship over order</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-md--30">
+                <div class="method-box method-box-2 text-center">
+                    <center>
+                        <img src="/static/assets/img/icons/icon-2.png" alt="Icon">
+                    </center>
+                    <h4 class="mt--20">30 DAYS MONEY Returns</h4>
+                    <p>Derabitur eget vehicula</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-sm--30">
+                <div class="method-box method-box-2 text-center">
+                    <center>
+                        <img src="/static/assets/img/icons/icon-3.png" alt="Icon">
+                    </center>
+                    <h4 class="mt--20">SUPPORT 24/7</h4>
+                    <p>Dedicated Support</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="method-box method-box-2 text-center">
+                    <center>
+                        <img src="/static/assets/img/icons/icon-4.png" alt="Icon">
+                    </center>
+                    <h4 class="mt--20">100% SECURE CHECKOUT</h4>
+                    <p>Protect buyer &amp; Security</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Method area End Here -->
+
+
 <!-- Featured Products area Start Here -->
 <section class="featured-products-area pt--30 pb--80 pt-md--20 pb-md--60">
     <div class="container-fluid p-0">
@@ -581,21 +564,18 @@
                         "dots": true,
                         "infinite": true,
                         "centerMode": true,
-                        "centerPadding": "20%"
+                        "centerPadding": "30%"
                     }' data-slick-responsive='[
                         {"breakpoint":991, "settings": {"slidesToShow": 1} }
                     ]'>
-                    {% for category in categories %}
+                    {% for category in categories reversed %}
                     <div class="item">
                         <div class="single-featured-product">
                             <div class="banner-box banner-type-3 banner-hover-1">
                                 <div class="banner-inner">
-                                    <div class="banner-image">
-                                        <img src="{{category.category_image.url}}" alt="Banner">
-                                    </div>
-                                    <div class="banner-info">
-                                        <!-- <p class="banner-title-1 lts-13">NEW MAN</p> -->
-                                        <h2 class="banner-title-2">{{category.category}}</h2>
+                                    <div>
+                                        <img src="{{category.category_image.url}}" alt="Banner"
+                                            class="rounded-3xl h-3/4">
                                     </div>
                                     <a class="banner-link banner-overlay" href="/search/{{category.category}}">Shop
                                         Now</a>
@@ -610,20 +590,6 @@
     </div>
 </section>
 <!-- Featured Products area End Here -->
-<!-- Video Banner area Start Here -->
-<section class="video-banner-area video-banner-bg-1 ptb--200 ptb-lg--100"
-    style="background-image: {{settings.main_page_video_thumbnail.url}};">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h2 class="heading-big lts-5 color--white mb--70 mb-lg--50 mb-xs--30">
-                    {{settings.main_page_video_caption}}</h2>
-                <a href="{{settings.main_page_video_url}}" class="video-btn video-popup">video</a>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Video Banner area End Here -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Get all elements with class 'hero_buttons'

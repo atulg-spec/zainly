@@ -199,17 +199,18 @@
                         </div>
                     </div>
                 </div>
-                <div class="shop-products">
-                    <div class="row g-0">
-                        {% for product in products %}
-                        <div class="col-xl-3 col-lg-4 col-md-6 col-6 mb--40 mb-md--30">
+                <div class="shop-products mx-4">
+                    <div class="tab-pane fade show active" id="nav-new-arrival" role="tabpanel"
+                        aria-labelledby="nav-new-arrival-tab">
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                            {% for product in products %}
                             <div class="airi-product">
                                 <div class="product-inner">
                                     <figure class="product-image">
                                         <div class="product-image--holder">
                                             <a href="/product-view/{{product.id}}">
                                                 <img src="{{product.product_image.url}}" alt="Product Image"
-                                                    class="primary-image">
+                                                    class="w-16 h-44">
                                                 <img src="{{product.second_image.url}}" alt="Product Image"
                                                     class="secondary-image">
                                             </a>
@@ -217,29 +218,34 @@
                                         <div class="airi-product-action">
                                             <div class="product-action">
                                                 <a class="add_to_cart_btn action-btn" href="cart.html"
-                                                    data-bs-toggle="tooltip" data-bs-placement="left"
-                                                    title="Add to Cart">
+                                                    data-bs-toggle="tooltip" data-bs-placement="left" title=""
+                                                    data-bs-original-title="Add to Cart">
                                                     <i class="dl-icon-cart29"></i>
                                                 </a>
                                             </div>
                                         </div>
+                                        <!-- <span class="product-badge new">New</span> -->
                                     </figure>
-                                    <div class="product-info text-center">
-                                        <h3 class="product-title">
-                                            <a href="/product-view/{{product.id}}">{{product.title}}
-                                                </a>
-                                        </h3>
+                                    <a href="/product-view/{{product.id}}" class="mb-2">
+                                        <p class="text-gray-900 pt-3 font-semibold line-clamp-custom">
+                                            {{product.title}}
+                                        </p>
                                         <span class="product-price-wrapper">
                                             <span class="money">₹{{product.price}}</span>
                                             <span class="product-price-old">
                                                 <span class="money">₹{{product.before_discount_price}}</span>
                                             </span>
                                         </span>
-                                    </div>
+                                        <p class="">
+                                            {% for size in product.sizes_available.all %}
+                                            <span class="text-gray-400">{{size.size}}</span>
+                                            {% endfor %}
+                                        </p>
+                                    </a>
                                 </div>
                             </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
                     </div>
                 </div>
             </div>

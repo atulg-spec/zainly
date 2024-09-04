@@ -1,9 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
 
-
-<!-- Mirrored from htmldemo.net/airi/airi/index-02.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Aug 2024 09:46:24 GMT -->
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,16 +14,12 @@
     <title>{{settings.site_name}}</title>
 
     <!-- ************************* CSS Files ************************* -->
-
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/static/assets/css/bootstrap.css">
-
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="/static/assets/css/font-awesome.min.css">
-
     <!-- dl Icon CSS -->
     <link rel="stylesheet" href="/static/assets/css/dl-icon.css">
-
     <!-- All Plugins CSS -->
     <link rel="stylesheet" href="/static/assets/css/plugins.css">
 
@@ -52,11 +45,20 @@
         width: 7rem;
         height: 7rem;
     }
+
     @media (max-width: 93.6875em) {
         .size_input {
             width: 6rem;
             height: 6rem;
         }
+    }
+
+    .line-clamp-custom {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 </style>
 
@@ -128,14 +130,16 @@
                             </div>
                             <div class="col-lg-2 col-md-3 col-4 text-lg-center">
                                 <!-- Logo Start Here -->
-                                <a href="/" class="logo-box">
-                                    <figure class="logo--normal">
-                                        <img src="{{settings.logo.url}}" alt="Logo" />
-                                    </figure>
-                                    <figure class="logo--transparency">
-                                        <img src="{{settings.logo.url}}" alt="Logo" />
-                                    </figure>
-                                </a>
+                                <center>
+                                    <a href="/" class="logo-box">
+                                        <figure class="logo--normal">
+                                            <img src="{{settings.logo.url}}" alt="Logo" class="w-20 h-10" />
+                                        </figure>
+                                        <figure class="logo--transparency">
+                                            <img src="{{settings.logo.url}}" alt="Logo" class="w-20 h-10" />
+                                        </figure>
+                                    </a>
+                                </center>
                                 <!-- Logo End Here -->
                             </div>
                             <div class="col-xl-5 col-lg-4 col-md-9 col-8">
@@ -324,17 +328,19 @@
         <!-- Main Content Wrapper Start -->
 
 
-        <footer class="block sm:hidden fixed inset-x-0 bottom-0 z-50 bg-white shadow">
+        <!-- <footer class="block sm:hidden fixed inset-x-0 bottom-0 z-50 bg-white shadow">
             <div class="flex justify-around py-3">
                 <a href="/" class="flex flex-col items-center justify-center text-center py-2 px-4 transition">
                     <i data-feather="home" style="height: 30px;width: 20px; color: black; "></i>
                     <span class="text-sm text-dark">Home</span>
                 </a>
-                <a href="/search/Sale" class="flex flex-col items-center justify-center text-center py-2 px-4 transition">
+                <a href="/search/Sale"
+                    class="flex flex-col items-center justify-center text-center py-2 px-4 transition">
                     <i data-feather="zap" style="height: 30px;width: 20px; color: black; "></i>
                     <span class="text-sm text-dark">Trending</span>
                 </a>
-                <a href="/categories" class="flex flex-col items-center justify-center text-center py-2 px-4 transition">
+                <a href="/categories"
+                    class="flex flex-col items-center justify-center text-center py-2 px-4 transition">
                     <i data-feather="globe" style="height: 30px;width: 20px; color: black; "></i>
                     <span class="text-sm text-dark">Categories</span>
                 </a>
@@ -347,7 +353,7 @@
                     <span class="text-sm text-dark">Cart</span>
                 </a>
             </div>
-        </footer>
+        </footer> -->
         <!-- Footer Start -->
         <footer class="footer footer-1 bg--black ptb--40">
             <div class="footer-top pb--40 pb-md--30">
@@ -356,7 +362,11 @@
                         <div class="col-lg-3 col-md-8 mb-md--30">
                             <div class="footer-widget">
                                 <div class="textwidget">
-                                    <img src="{{settings.logo.url}}" alt="Logo" class="mb--10">
+                                    <!-- <img src="{{settings.logo.url}}" alt="Logo" class="mb--10"> -->
+                                    <h2 class="text-6xl text-white sm:text-5xl text-left mt-2 mb-10 px-2 {{settings.font_style}} uppercase">
+                                        {{settings.site_name}}
+                                    </h2>
+                                    
                                     <p class="font-size-16 font-2 mb--20">{{settings.tagline}}</p>
                                     <!-- Social Icons Start Here -->
                                     <ul class="social">
@@ -773,8 +783,8 @@
     <script src="/static/assets/js/revoulation/extensions/revolution.extension.video.min.js"></script>
     <script>
         feather.replace();
-      </script>
-      
+    </script>
+
     <!-- REVOLUTION ACTIVE JS FILES -->
     <script src="/static/assets/js/revoulation.js"></script>
 

@@ -1,7 +1,7 @@
 {% extends 'home/base.html' %}
 {% block breadcrumb %}
 <!-- Breadcrumb area Start -->
-<div class="breadcrumb-area bg--white-6 pt--60 pb--70 pt-lg--40 pb-lg--50 pt-md--30 pb-md--40">
+<div class="breadcrumb-area bg-white-6 pt--60 pb--70 pt-lg--40 pb-lg--50 pt-md--30 pb-md--40">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 text-center">
@@ -18,26 +18,29 @@
 <!-- Breadcrumb area End -->
 {% endblock breadcrumb %}
 {% block body %}
-<div class="shop-page-wrapper">
+<!-- Banner Start Here -->
+<div class="banner-area">
     <div class="container-fluid p-0">
-        <div class="row g-0">
-            {% for category in categories %}
-            <div class="col-md-4">
-                <div class="banner-box banner-type-3 banner-type-3-1 banner-hover-1">
-                    <div class="banner-inner">
-                        <div class="banner-image">
-                            <img src="{{category.category_image.url}}" alt="Banner">
-                        </div>
-                        <div class="banner-info">
-                            <p class="banner-title-1 lts-13 lts-lg-4 text-uppercase">{{category.short_caption}}</p>
-                            <h2 class="banner-title-2"><strong>{{category.category}}</strong></h2>
-                        </div>
-                        <a class="banner-link banner-overlay" href="/search/{{category.category}}">Shop Now</a>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-2">
+            {% for x in categories %}
+            <div class="banner-box banner-type-2 banner-hover-2">
+                <div class="banner-inner">
+                    <div class="">
+                        <img src="{{x.category_image.url}}" alt="Banner" class="rounded-3xl h-3/4">
                     </div>
+                    <div class="banner-info" style="text-align: left;">
+                        <a class="" href="/search/{{x.category}}">
+                            <h2 class="text-4xl text-white sm:text-1xl mt-2 mb-10 text-left px-4 uppercase">
+                                {{x.category}}
+                            </h2>
+                        </a>
+                    </div>
+                    <a class="banner-link banner-overlay" href="/search/{{x.category}}">Shop Now</a>
                 </div>
             </div>
             {% endfor %}
         </div>
     </div>
 </div>
+<!-- Banner End Here -->
 {% endblock body %}

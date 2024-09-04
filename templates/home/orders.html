@@ -23,6 +23,7 @@
             <div class="">
                 <form class="cart-form" action="#">
                     <div class="row g-0">
+                        {% if orders %}
                         <div class="col-12">
                             <div class="table-content table-responsive">
                                 {% for order in orders reversed %}
@@ -93,6 +94,26 @@
                                 {% endfor %}
                             </div>
                         </div>
+                        {% else %}
+
+                        <center>
+                        <div class="flex flex-col bg-white border shadow-sm rounded-xl p-4 md:p-5 w-96">
+                            <h3 class="text-lg font-bold text-gray-800">
+                              No Orders Yet
+                            </h3>
+                            <p class="mt-1 text-xs font-medium uppercase text-gray-500">
+                              Order Now
+                            </p>
+                            <p class="mt-2 text-gray-500">
+                                Search new Categories
+                            </p>
+                            <a class="mt-2 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" href="/categories">
+                              Buy Now
+                            </a>
+                          </div>
+                        </center>
+                        
+                        {% endif %}
                     </div>
                 </form>
             </div>

@@ -162,6 +162,7 @@ def my_orders(request):
     trending_products = Product.objects.filter(keywords__keyword__icontains='Trending').order_by('-id').distinct()[:6]
     orders = Order.objects.filter(user=request.user)
     categories = Categories.objects.all()
+    print(orders)
     context = {
         'trending_products':trending_products,
         'categories':categories,
