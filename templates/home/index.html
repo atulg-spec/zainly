@@ -32,6 +32,7 @@
                         data-paddingleft="[0,0,0,0]"
                         style="z-index: 5; min-width: 740px; max-width: 740px; max-width: 380px; max-width: 380px; white-space: nowrap; font-size: 20px; line-height: 22px; font-weight: 400; color: #ffffff; letter-spacing: 0px;">
                         <!-- LAYER NR. 2 -->
+                        {% if settings.slider1_caption1 %}
                         <div class="tp-caption tp-shape tp-shapewrapper  tp-resizeme" id="slide-4-layer-3"
                             data-x="['left','left','left','left']" data-hoffset="['0','0','0','0']"
                             data-y="['top','top','top','top']" data-voffset="['0','0','0','0']"
@@ -46,8 +47,6 @@
                                 data-ys="0" data-ye="0">
                             </div>
                         </div>
-
-                        <!-- LAYER NR. 3 -->
                         <div class="tp-caption   tp-resizeme" id="slide-4-layer-2"
                             data-x="['left','left','left','left']" data-hoffset="['50','50','30','30']"
                             data-y="['top','top','top','top']" data-voffset="['20','20','12','7']"
@@ -62,8 +61,10 @@
                             style="z-index: 7; white-space: nowrap; font-size: 64px; line-height: 85px; font-weight: 400; color: #282828; letter-spacing: 0px;font-family:Playfair Display;font-style:italic;">
                             {{settings.slider1_caption1}}
                         </div>
+                        {% endif %}
 
                         <!-- LAYER NR. 4 -->
+                        {% if settings.slider1_caption2 %}
                         <div class="tp-caption tp-shape tp-shapewrapper  tp-resizeme" id="slide-4-layer-4"
                             data-x="['left','left','left','left']" data-hoffset="['0','0','0','0']"
                             data-y="['top','top','top','top']" data-voffset="['140','140','90','70']"
@@ -92,8 +93,10 @@
                             data-paddingleft="[0,0,0,0]"
                             style="z-index: 9; white-space: nowrap; font-size: 93px; line-height: 115px; font-weight: 700; color: #282828; letter-spacing: 12px;font-family:Montserrat;">
                             {{settings.slider1_caption2}} </div>
+                        {% endif %}
 
                         <!-- LAYER NR. 6 -->
+                        {% if settings.slider1_url %}
                         <a class="tp-caption LA_Black_btn rev-btn " href="{{settings.slider1_url}}" id="slide-4-layer-6"
                             data-x="['left','left','left','left']" data-hoffset="['0','0','0','0']"
                             data-y="['top','top','top','top']" data-voffset="['280','280','180','140']"
@@ -106,6 +109,7 @@
                             data-paddingbottom="[15,15,15,12]" data-paddingleft="[45,45,45,35]"
                             style="z-index: 10; white-space: nowrap; border-color:rgba(0,0,0,1);outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">Shop
                             Now </a>
+                        {% endif %}
                     </div>
                 </li>
                 <!-- SLIDE  -->
@@ -132,6 +136,7 @@
                         data-paddingleft="[0,0,0,0]"
                         style="z-index: 5; min-width: 740px; max-width: 740px; max-width: 380px; max-width: 380px; white-space: nowrap; font-size: 20px; line-height: 22px; font-weight: 400; color: #ffffff; letter-spacing: 0px;">
                         <!-- LAYER NR. 8 -->
+                        {% if settings.slider2_caption1 %}
                         <div class="tp-caption tp-shape tp-shapewrapper  tp-resizeme" id="slide-5-layer-3"
                             data-x="['left','left','left','left']" data-hoffset="['0','0','0','0']"
                             data-y="['top','top','top','top']" data-voffset="['0','0','0','0']"
@@ -157,8 +162,10 @@
                             data-paddingleft="[,,,]"
                             style="z-index: 7; white-space: nowrap; font-size: 69px; line-height: 92px; font-weight: 700; color: #282828; letter-spacing: 0px;font-family:Playfair Display;font-style:italic;">
                             {{settings.slider2_caption1}} </div>
+                        {% endif %}
 
                         <!-- LAYER NR. 10 -->
+                        {% if settings.slider2_caption2 %}
                         <div class="tp-caption tp-shape tp-shapewrapper  tp-resizeme" id="slide-5-layer-4"
                             data-x="['left','left','left','left']" data-hoffset="['0','0','2','2']"
                             data-y="['top','top','top','top']" data-voffset="['140','140','90','70']"
@@ -184,8 +191,10 @@
                             data-paddingleft="[0,0,0,0]"
                             style="z-index: 9; white-space: nowrap; font-size: 69px; line-height: 84px; font-weight: 600; color: #282828; font-family:Montserrat;">
                             {{settings.slider2_caption2}} </div>
+                        {% endif %}
 
                         <!-- LAYER NR. 12 -->
+                        {% if settings.slider2_url %}
                         <a class="tp-caption LA_Black_btn rev-btn " href="{{settings.slider2_url}}" id="slide-5-layer-6"
                             data-x="['left','left','left','left']" data-hoffset="['0','0','0','0']"
                             data-y="['top','top','top','top']" data-voffset="['280','280','180','140']"
@@ -198,6 +207,7 @@
                             data-paddingbottom="[15,15,15,12]" data-paddingleft="[45,45,45,35]"
                             style="z-index: 10; white-space: nowrap; border-color:rgba(0,0,0,1);outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">Shop
                             Now </a>
+                        {% endif %}
                     </div>
                 </li>
                 <!-- SLIDE  -->
@@ -224,6 +234,7 @@
                         data-paddingleft="[0,0,0,0]"
                         style="z-index: 5; min-width: 715px; max-width: 715px; max-width: 297px; max-width: 297px; white-space: nowrap; font-size: 20px; line-height: 22px; font-weight: 400; color: #ffffff; letter-spacing: 0px;">
                         <!-- LAYER NR. 14 -->
+                        {% if settings.slider3_caption1 %}
                         <div class="tp-caption   tp-resizeme" id="slide-6-layer-2"
                             data-x="['left','left','left','left']" data-hoffset="['0','0','0','0']"
                             data-y="['top','top','top','top']" data-voffset="['0','0','-1','-5']"
@@ -237,8 +248,9 @@
                             data-paddingleft="[,,,]"
                             style="z-index: 6; white-space: nowrap; font-size: 50px; line-height: 67px; font-weight: 400; color: #ffffff; letter-spacing: 0px;font-family:Playfair Display;font-style:italic;">
                             {{settings.slider3_caption1}} </div>
-
+                        {% endif %}
                         <!-- LAYER NR. 15 -->
+                        {% if settings.slider3_caption2 %}
                         <div class="tp-caption   tp-resizeme" id="slide-6-layer-5"
                             data-x="['left','left','left','left']" data-hoffset="['0','0','0','0']"
                             data-y="['top','top','top','top']" data-voffset="['61','61','60','41']"
@@ -252,8 +264,9 @@
                             data-paddingleft="[0,0,0,0]"
                             style="z-index: 7; white-space: nowrap; font-size: 123px; line-height: 150px; font-weight: 600; color: #ffffff; font-family:Montserrat;">
                             {{settings.slider3_caption2}} </div>
-
+                        {% endif %}
                         <!-- LAYER NR. 16 -->
+                        {% if settings.slider3_url %}
                         <a class="tp-caption LA_White_btn rev-btn " href="{{settings.slider3_url}}" id="slide-6-layer-6"
                             data-x="['left','left','left','left']" data-hoffset="['1','1','0','0']"
                             data-y="['top','top','top','top']" data-voffset="['225','225','184','142']"
@@ -266,6 +279,7 @@
                             data-paddingbottom="[15,15,15,12]" data-paddingleft="[45,45,45,35]"
                             style="z-index: 8; white-space: nowrap; border-color:rgba(0,0,0,1);outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;cursor:pointer;">Shop
                             Now </a>
+                        {% endif %}
                     </div>
                 </li>
             </ul>
@@ -274,7 +288,26 @@
     </div><!-- END REVOLUTION SLIDER -->
 </div>
 <!-- END SLIDER SECTION -->
-
+<div class="block sm:hidden">
+    <h2 class="text-2xl font-semibold text-gray-900 sm:text-5xl text-center mt-4 mb-10">
+        SHOP BY CATEGORY
+    </h2>
+    <div class="grid grid-cols-4 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        {% for category in shop_categories %}
+        <div class="airi-product">
+            <div class="product-inner">
+                <figure class="product-image">
+                    <div class="product-image--holder">
+                        <a href="{{category.url}}">
+                            <img src="{{category.image.url}}" alt="Product Image" class="w-14 h-36">
+                        </a>
+                    </div>
+                </figure>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 <!-- Product Tab area Start Here -->
 <section class="product-tab-area pt--25 pt-md--20 pb--40 pb-md--30">
     <div class="container">
@@ -310,25 +343,17 @@
                                     <div class="product-inner">
                                         <figure class="product-image">
                                             <div class="product-image--holder">
-                                                <a href="/product-view/{{product.id}}">
+                                                <a href="/{{product.slug}}">
                                                     <img src="{{product.product_image.url}}" alt="Product Image"
                                                         class="w-16 h-44">
                                                     <img src="{{product.second_image.url}}" alt="Product Image"
-                                                        class="secondary-image">
+                                                        class="secondary-image w-16 h-44">
                                                 </a>
                                             </div>
-                                            <div class="airi-product-action">
-                                                <div class="product-action">
-                                                    <a class="add_to_cart_btn action-btn" href="cart.html"
-                                                        data-bs-toggle="tooltip" data-bs-placement="left" title=""
-                                                        data-bs-original-title="Add to Cart">
-                                                        <i class="dl-icon-cart29"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
+
                                             <span class="product-badge new">New</span>
                                         </figure>
-                                        <a href="/product-view/{{product.id}}" class="mb-2">
+                                        <a href="/{{product.slug}}" class="mb-2">
                                             <p class="text-gray-900 pt-3 font-semibold line-clamp-custom">
                                                 {{product.title}}
                                             </p>
@@ -356,25 +381,17 @@
                                     <div class="product-inner">
                                         <figure class="product-image">
                                             <div class="product-image--holder">
-                                                <a href="/product-view/{{product.id}}">
+                                                <a href="/{{product.slug}}">
                                                     <img src="{{product.product_image.url}}" alt="Product Image"
                                                         class="w-16 h-44">
                                                     <img src="{{product.second_image.url}}" alt="Product Image"
-                                                        class="secondary-image">
+                                                        class="secondary-image w-16 h-44">
                                                 </a>
                                             </div>
-                                            <div class="airi-product-action">
-                                                <div class="product-action">
-                                                    <a class="add_to_cart_btn action-btn" href="cart.html"
-                                                        data-bs-toggle="tooltip" data-bs-placement="left" title=""
-                                                        data-bs-original-title="Add to Cart">
-                                                        <i class="dl-icon-cart29"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
+
                                             <span class="product-badge new">TOP</span>
                                         </figure>
-                                        <a href="/product-view/{{product.id}}" class="mb-2">
+                                        <a href="/{{product.slug}}" class="mb-2">
                                             <p class="text-gray-900 pt-3 font-semibold line-clamp-custom">
                                                 {{product.title}}
                                             </p>
@@ -402,25 +419,17 @@
                                     <div class="product-inner">
                                         <figure class="product-image">
                                             <div class="product-image--holder">
-                                                <a href="/product-view/{{product.id}}">
+                                                <a href="/{{product.slug}}">
                                                     <img src="{{product.product_image.url}}" alt="Product Image"
                                                         class="w-16 h-44">
                                                     <img src="{{product.second_image.url}}" alt="Product Image"
-                                                        class="secondary-image">
+                                                        class="secondary-image w-16 h-44">
                                                 </a>
                                             </div>
-                                            <div class="airi-product-action">
-                                                <div class="product-action">
-                                                    <a class="add_to_cart_btn action-btn" href="cart.html"
-                                                        data-bs-toggle="tooltip" data-bs-placement="left" title=""
-                                                        data-bs-original-title="Add to Cart">
-                                                        <i class="dl-icon-cart29"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
+
                                             <span class="product-badge new">SALE</span>
                                         </figure>
-                                        <a href="/product-view/{{product.id}}" class="mb-2">
+                                        <a href="/{{product.slug}}" class="mb-2">
                                             <p class="text-gray-900 pt-3 font-semibold line-clamp-custom">
                                                 {{product.title}}
                                             </p>
@@ -461,7 +470,6 @@
             <div class="col-12 text-center">
                 <h2 class="heading-big lts-5 color--white mb--70 mb-lg--50 mb-xs--30">
                     {{settings.main_page_video_caption}}</h2>
-                <a href="{{settings.main_page_video_url}}" class="video-btn video-popup">video</a>
             </div>
         </div>
     </div>
@@ -474,26 +482,29 @@
 </h2>
 
 <!-- Banner Start Here -->
-<div class="banner-area">
+<div class="shop-page-wrapper">
     <div class="container-fluid p-0">
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-2">
-            {% for x in categories %}
-            <div class="banner-box banner-type-2 banner-hover-2">
-                <div class="banner-inner">
-                    <div class="">
-                        <img src="{{x.category_image.url}}" alt="Banner" class="rounded-3xl h-3/4">
+        <div class="mx-4">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                {% for x in categories %}
+                <div class="banner-box banner-type-2 banner-hover-2">
+                    <div class="banner-inner">
+                        <div class="">
+                            <img src="{{x.category_image.url}}" alt="Banner" class="rounded-3xl h-3/4">
+                        </div>
+                        <div class="banner-info" style="text-align: left;">
+                            <a class="" href="/search/{{x.category}}">
+                                <h2
+                                    class="text-2xl font-semibold text-white sm:text-5xl mt-2 mb-10 py-3 text-left px-4 uppercase bg-gradient-to-r from-gray-700 to-gray-100 shadow-lg shadow-gray-900/50">
+                                    {{ x.short_caption }}
+                                </h2>
+                            </a>
+                        </div>
+                        <a class="banner-link banner-overlay" href="/search/{{x.category}}">Shop Now</a>
                     </div>
-                    <div class="banner-info" style="text-align: left;">
-                        <a class="" href="/search/{{x.category}}">
-                            <h2 class="text-6xl text-white sm:text-5xl mt-2 mb-10 text-left px-4">
-                                {{x.category}}
-                            </h2>
-                        </a>
-                    </div>
-                    <a class="banner-link banner-overlay" href="/search/{{x.category}}">Shop Now</a>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
     </div>
 </div>
@@ -545,7 +556,7 @@
 
 
 <!-- Featured Products area Start Here -->
-<section class="featured-products-area pt--30 pb--80 pt-md--20 pb-md--60">
+<section class="mb-4 mt-4 hidden sm:block">
     <div class="container-fluid p-0">
         <div class="row mb--30 mb-md--20">
             <div class="col-12 text-center">

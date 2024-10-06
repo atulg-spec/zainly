@@ -1,4 +1,5 @@
-from django.db import models
+from PIL import Image
+from django.core.files.storage import default_storage
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from dashboard.manager import *
@@ -8,19 +9,20 @@ from django.db.models import UniqueConstraint
 import random
 from django_ckeditor_5.fields import CKEditor5Field
 import string
+from django.utils.text import slugify
+from cities_light.models import City, Region  # Import city and region models
 
-# Create your models here.
 class CustomUser(AbstractUser):
     username = None
     email = models.EmailField(unique=True)
     phone_number = models.PositiveIntegerField(blank=True, null=True)
-    pin_code = models.CharField(max_length=50,default="")
-    city = models.CharField(max_length=200,default="")
-    state = models.CharField(max_length=200,default="")
-    address = models.CharField(max_length=200,default="")
+    pin_code = models.CharField(max_length=50, default="")
+    state = models.ForeignKey(Region, on_delete=models.SET_NULL, null=True, blank=True)
+    city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True, blank=True)
+    address = models.CharField(max_length=200, default="")
     objects = UserManager()
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = [] 
+    REQUIRED_FIELDS = []
 
 
 class Gender(models.Model):
@@ -98,8 +100,16 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     video_url = models.URLField(blank=True)
     sizes_available = models.ManyToManyField(Sizes)
+    slug = models.SlugField(unique=True, max_length=100, blank=True, null=True)  # Slug field with null/blank for existing products
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        # Automatically generate slug if not present
+        if not self.slug:
+            self.slug = slugify(self.title)
+
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title
@@ -167,6 +177,17 @@ class Order(models.Model):
     class Meta:
         verbose_name = "Order"
         verbose_name_plural = "Orders"
+
+class Payment(models.Model):
+    order_id = models.CharField(max_length=100, unique=True)
+    payment_id = models.CharField(max_length=100, blank=True, null=True)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    status = models.CharField(max_length=50, default='created')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.order_id
+
 
 class Contact(models.Model):
     first_name = models.CharField(max_length=100)

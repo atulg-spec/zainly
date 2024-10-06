@@ -28,6 +28,9 @@ INSTALLED_APPS = [
     'dashboard',
     'django.contrib.humanize',
     'django_ckeditor_5',
+    'cities_light',
+    'crispy_forms',
+    'crispy_tailwind',
     # 'compressor',
 ]
 
@@ -123,9 +126,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT=os.path.join(BASE_DIR,'staticfiles/media/')
 MEDIA_URL="/media/"
 
-STATICFILES_DIRS =[
-    os.path.join(BASE_DIR, "static"),
-]
+# STATICFILES_DIRS =[
+#     os.path.join(BASE_DIR, "static"),
+# ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 WHITENOISE_MANIFEST_STRICT = False
@@ -138,6 +141,11 @@ SOCIAL_AUTH_LOGIN_ERROR_URL = '/'
 SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 
 
+CITIES_LIGHT_TRANSLATION_LANGUAGES = ['en']
+CITIES_LIGHT_INCLUDE_COUNTRIES = ['IN']  # Limit to India
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+CRISPY_TEMPLATE_PACK = "tailwind"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 customColorPalette = [
@@ -167,8 +175,6 @@ customColorPalette = [
       },
   ]
 
-# CKEDITOR_5_CUSTOM_CSS = 'path_to.css' # optional
-# CKEDITOR_5_FILE_STORAGE = "path_to_storage.CustomStorage" # optional
 CKEDITOR_5_CONFIGS = {
 'default': {
     'toolbar': ['heading', '|', 'bold', 'italic', 'link',

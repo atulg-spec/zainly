@@ -83,14 +83,14 @@
                                         "arrows": false, 
                                         "asNavFor": ".nav-slider"
                                     }'>
-                                        <figure class="product-gallery__image zoom">
+                                        <figure class="product-gallery__image md:zoom lg:zoom">
                                             <img src="{{product.product_image.url}}" alt="Product">
                                         </figure>
-                                        <figure class="product-gallery__image zoom">
+                                        <figure class="product-gallery__image md:zoom lg:zoom">
                                             <img src="{{product.second_image.url}}" alt="Product">
                                         </figure>
                                         {% for image in product_images %}
-                                        <figure class="product-gallery__image zoom">
+                                        <figure class="product-gallery__image md:zoom lg:zoom">
                                             <img src="{{image.image.url}}" alt="Product">
                                         </figure>
                                         {% endfor %}
@@ -157,23 +157,6 @@
                         <a href="/refundpolicy" class="font-size-12"><i class="fa fa-exchange"></i>Delivery and
                             return</a>
                     </div>
-                    <div class="product-data-tab border-bottom pb--40 pb-md--30 pb-sm--20 tab-style-4">
-                        <div class="nav nav-tabs product-data-tab__head mb--40 mb-sm--30" id="product-tab"
-                            role="tablist">
-                            <a class="product-data-tab__link nav-link active" id="nav-description-tab"
-                                data-bs-toggle="tab" href="#nav-description" role="tab" aria-selected="true">
-                                <span>Description</span>
-                            </a>
-                        </div>
-                        <div class="tab-content product-data-tab__content" id="product-tabContent">
-                            <div class="tab-pane fade show active" id="nav-description" role="tabpanel"
-                                aria-labelledby="nav-description-tab">
-                                <div class="product-description">
-                                    <p>{{product.description|safe}}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div
                         class="product-summary-footer d-flex justify-content-between flex-sm-row flex-column mt--45 mt-md--35 mt-sm--25">
                         <div class="product-share-box">
@@ -221,14 +204,14 @@
                         <div class="product-inner">
                             <figure class="product-image">
                                 <div class="product-image--holder">
-                                    <a href="/product-view/{{product.id}}">
+                                    <a href="/{{product.slug}}">
                                         <img src="{{product.product_image.url}}" alt="Product Image"
                                             class="w-16 h-44">
                                         <img src="{{product.product_image.url}}" alt="Product Image"
-                                            class="secondary-image">
+                                            class="secondary-image w-16 h-44">
                                     </a>
                                 </div>
-                                <div class="airi-product-action">
+                                <!-- <div class="airi-product-action">
                                     <div class="product-action">
                                         <a class="add_to_cart_btn action-btn" href="cart.html"
                                             data-bs-toggle="tooltip" data-bs-placement="left" title=""
@@ -236,10 +219,10 @@
                                             <i class="dl-icon-cart29"></i>
                                         </a>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- <span class="product-badge new">New</span> -->
                             </figure>
-                            <a href="/product-view/{{product.id}}" class="mb-2">
+                            <a href="/{{product.slug}}" class="mb-2">
                                 <p class="text-gray-900 pt-3 font-semibold line-clamp-custom">
                                     {{product.title}}
                                 </p>

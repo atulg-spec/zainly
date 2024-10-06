@@ -6,39 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="meta description">
-    <!-- Favicons -->
+    <meta name="theme-color" content="#000000"> <!-- Sets tab color to black -->
     <link rel="shortcut icon" href="{{settings.mobile_logo.url}}" type="image/x-icon">
     <link rel="apple-touch-icon" href="{{settings.mobile_logo.url}}">
-
-    <!-- Title -->
     <title>{{settings.site_name}}</title>
-
-    <!-- ************************* CSS Files ************************* -->
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/static/assets/css/bootstrap.css">
-    <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="/static/assets/css/font-awesome.min.css">
-    <!-- dl Icon CSS -->
     <link rel="stylesheet" href="/static/assets/css/dl-icon.css">
-    <!-- All Plugins CSS -->
     <link rel="stylesheet" href="/static/assets/css/plugins.css">
-
-    <!-- Revoulation Slider CSS  -->
     <link rel="stylesheet" href="/static/assets/css/revoulation.css">
-
-    <!-- Style CSS -->
     <link rel="stylesheet" href="/static/assets/css/main.css">
-
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/feather-icons"></script>
-    <!-- modernizr JS
-    ============================================ -->
     <script src="/static/assets/js/vendor/modernizr-2.8.3.min.js"></script>
-    <!--[if lt IE 9]>
-    <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 <style>
     .size_input {
@@ -63,15 +43,13 @@
 </style>
 
 <body>
-
-    <div class="ai-preloader active">
+    <!-- <div class="ai-preloader active">
         <div class="ai-preloader-inner h-100 d-flex align-items-center justify-content-center">
             <div class="ai-child ai-bounce1"></div>
             <div class="ai-child ai-bounce2"></div>
             <div class="ai-child ai-bounce3"></div>
         </div>
-    </div>
-
+    </div> -->
     <!-- Main Wrapper Start -->
     <div class="wrapper enable-header-transparent">
         <!-- Header Area Start -->
@@ -133,10 +111,12 @@
                                 <center>
                                     <a href="/" class="logo-box">
                                         <figure class="logo--normal">
-                                            <img src="{{settings.logo.url}}" alt="Logo" class="w-20 h-10" />
+                                            <img src="{{settings.logo.url}}" alt="Logo"
+                                                class="w-20 h-10 sm:w-24 sm:h-12 md:w-28 md:h-14 lg:w-32 lg:h-16 xl:w-36 xl:h-18" />
                                         </figure>
                                         <figure class="logo--transparency">
-                                            <img src="{{settings.logo.url}}" alt="Logo" class="w-20 h-10" />
+                                            <img src="{{settings.logo.url}}" alt="Logo"
+                                                class="w-20 h-10 sm:w-24 sm:h-12 md:w-28 md:h-14 lg:w-32 lg:h-16 xl:w-36 xl:h-18" />
                                         </figure>
                                     </a>
                                 </center>
@@ -189,18 +169,15 @@
                 <div class="main-sticky-header-height"></div>
             </div>
         </header>
-        <!-- Header Area End -->
-
-        <!-- Mobile Header area Start -->
         <header class="header-mobile">
             <div class="header-mobile__outer">
-                <div class="header-mobile__inner fixed-header">
+                <div class="w-full py-2">
                     <div class="container-fluid">
                         <div class="row align-items-center">
                             <div class="col-4">
                                 <a href="/" class="logo-box">
                                     <figure class="logo--normal">
-                                        <img src="{{settings.mobile_logo.url}}" alt="Logo">
+                                        <img src="{{ settings.mobile_logo.url }}" alt="Logo" class="" width="30px">
                                     </figure>
                                 </a>
                             </div>
@@ -243,7 +220,6 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <!-- Mobile Navigation Start Here -->
                                 <div class="mobile-navigation dl-menuwrapper" id="dl-menu">
                                     <button class="dl-trigger">Open Menu</button>
                                     <ul class="dl-menu">
@@ -280,7 +256,6 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <!-- Mobile Navigation End Here -->
                             </div>
                         </div>
                     </div>
@@ -288,73 +263,13 @@
                 <div class="mobile-sticky-header-height"></div>
             </div>
         </header>
-        <!-- Mobile Header area End -->
         {% block breadcrumb %}
         {% endblock breadcrumb %}
-        <!-- Main Content Wrapper Start -->
         <div id="content" class="main-content-wrapper">
             {% block body %}
             {% endblock body %}
-            <!-- Instagram Feed area Start Here -->
-            <div class="instagram-feed-area pt--80 pt-md--60 pb--65 pb-md--45">
-                <div class="container-fluid p-0">
-                    <div class="row g-0 align-items-center">
-                        <div class="col-xl-3 offset-xl-2 col-lg-4">
-                            <div class="insta-content-header mb-md--15">
-                                <h5 class="font-size-16 heading-color font-bold">Follow us on</h5>
-                                <h2>@{{settings.instagram}} Instagram</h2>
-                                <p class="font-2 font-size-16 heading-color">
-                                    {{settings.tagline}}
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-xl-7 col-lg-8">
-                            <div class="instagram-feed">
-                                <div id="instafeed" class="instagram-feed-wrapper instagram-style-1 grid-space-30"
-                                    data-insta-config='{
-                                    "accesstoken": "IGQVJWLXU1Ri1JbjE0RlhlRmVZAMy1mRllxUzJWZAG5najYxWUxLcGl1SV80UHNiN2ZAaUFdHTVllMEh6YjRucTZAIY09TQlowdGlScG9taHhWNHJwaXQzOVZAwUDdsZAHdqTjhTcHB5ZA2I5QWRVZAVZAtYjZA2SgZDZD", 
-                                    "limit":"8",
-                                    "template":"<div class=\"grid-item mb--10\"><div class=\"instagram-feed-item\"><a href=https://htmldemo.net/"{{link}}/" target=\"_blank\" id=\"{{id}}\"><img src=https://htmldemo.net/"{{image}}/" /></a><div class=\"instagram-feed-hover-content\"><span class=\"tottallikes\"><i class=\"fa fa-heart\"></i>{{likes}}</span><span class=\"totalcomments\"><i class=\"fa fa-comments\"></i>{{comments}}</span></div></div></div>"}'>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Instagram Feed area End Here -->
 
         </div>
-        <!-- Main Content Wrapper Start -->
-
-
-        <!-- <footer class="block sm:hidden fixed inset-x-0 bottom-0 z-50 bg-white shadow">
-            <div class="flex justify-around py-3">
-                <a href="/" class="flex flex-col items-center justify-center text-center py-2 px-4 transition">
-                    <i data-feather="home" style="height: 30px;width: 20px; color: black; "></i>
-                    <span class="text-sm text-dark">Home</span>
-                </a>
-                <a href="/search/Sale"
-                    class="flex flex-col items-center justify-center text-center py-2 px-4 transition">
-                    <i data-feather="zap" style="height: 30px;width: 20px; color: black; "></i>
-                    <span class="text-sm text-dark">Trending</span>
-                </a>
-                <a href="/categories"
-                    class="flex flex-col items-center justify-center text-center py-2 px-4 transition">
-                    <i data-feather="globe" style="height: 30px;width: 20px; color: black; "></i>
-                    <span class="text-sm text-dark">Categories</span>
-                </a>
-                <a href="/my-orders" class="flex flex-col items-center justify-center text-center py-2 px-4 transition">
-                    <i data-feather="layers" style="height: 30px;width: 20px; color: black; "></i>
-                    <span class="text-sm text-dark">Orders</span>
-                </a>
-                <a href="/cart" class="flex flex-col items-center justify-center text-center py-2 px-4 transition">
-                    <i data-feather="shopping-bag" style="height: 30px;width: 20px; color: black; "></i>
-                    <span class="text-sm text-dark">Cart</span>
-                </a>
-            </div>
-        </footer> -->
-        <!-- Footer Start -->
         <footer class="footer footer-1 bg--black ptb--40">
             <div class="footer-top pb--40 pb-md--30">
                 <div class="container">
@@ -362,13 +277,12 @@
                         <div class="col-lg-3 col-md-8 mb-md--30">
                             <div class="footer-widget">
                                 <div class="textwidget">
-                                    <!-- <img src="{{settings.logo.url}}" alt="Logo" class="mb--10"> -->
-                                    <h2 class="text-6xl text-white sm:text-5xl text-left mt-2 mb-10 px-2 {{settings.font_style}} uppercase">
+                                    <h2
+                                        class="text-6xl text-white sm:text-5xl text-left mt-2 mb-10 px-2 {{settings.font_style}} uppercase">
                                         {{settings.site_name}}
                                     </h2>
-                                    
+
                                     <p class="font-size-16 font-2 mb--20">{{settings.tagline}}</p>
-                                    <!-- Social Icons Start Here -->
                                     <ul class="social">
                                         <li class="social__item">
                                             <a href="{{settings.twitter_handle}}" class="social__link color--white">
@@ -396,7 +310,6 @@
                                             </a>
                                         </li>
                                     </ul>
-                                    <!-- Social Icons End Here -->
                                 </div>
                             </div>
                         </div>
@@ -446,9 +359,6 @@
                 </div>
             </div>
         </footer>
-        <!-- Footer End -->
-
-        <!-- Search from Start -->
         <div class="searchform__popup" id="searchForm">
             <a href="#" class="btn-close"><i class="dl-icon-close"></i></a>
             <div class="searchform__body">
@@ -460,9 +370,6 @@
                 </form>
             </div>
         </div>
-        <!-- Search from End -->
-
-        <!-- Side Navigation Start -->
         <aside class="side-navigation" id="sideNav">
             <div class="side-navigation-wrapper">
                 <a href="#" class="btn-close"><i class="dl-icon-close"></i></a>
@@ -494,7 +401,6 @@
                     </div>
                     <div class="widget">
                         <div class="text-widget">
-                            <!-- Social Icons Start Here -->
                             <ul class="social social-small">
                                 <li class="social__item">
                                     <a href="{{settings.twitter_handle}}" class="social__link">
@@ -522,225 +428,126 @@
                                     </a>
                                 </li>
                             </ul>
-                            <!-- Social Icons End Here -->
                         </div>
                     </div>
                 </div>
             </div>
         </aside>
-        <!-- Side Navigation End -->
-
-        <!-- Mini Cart Start -->
-        <aside class="mini-cart" id="miniCart">
-            <div class="mini-cart-wrapper">
-                <a href="#" class="btn-close"><i class="dl-icon-close"></i></a>
-                <div class="mini-cart-inner">
-                    <h5 class="mini-cart__heading mb--40 mb-lg--30">Shopping Cart</h5>
-                    <div class="mini-cart__content">
-                        <ul class="mini-cart__list">
-                            <li class="mini-cart__product">
-                                <a href="#" class="remove-from-cart remove">
-                                    <i class="dl-icon-close"></i>
-                                </a>
-                                <div class="mini-cart__product__image">
-                                    <img src="/static/assets/img/products/prod-17-1-70x91.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product__content">
-                                    <a class="mini-cart__product__title" href="product-details.html">Chain print bermuda
-                                        shorts </a>
-                                    <span class="mini-cart__product__quantity">1 x $49.00</span>
-                                </div>
-                            </li>
-                            <li class="mini-cart__product">
-                                <a href="#" class="remove-from-cart remove">
-                                    <i class="dl-icon-close"></i>
-                                </a>
-                                <div class="mini-cart__product__image">
-                                    <img src="/static/assets/img/products/prod-18-1-70x91.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product__content">
-                                    <a class="mini-cart__product__title" href="product-details.html">Waxed-effect
-                                        pleated skirt</a>
-                                    <span class="mini-cart__product__quantity">1 x $49.00</span>
-                                </div>
-                            </li>
-                            <li class="mini-cart__product">
-                                <a href="#" class="remove-from-cart remove">
-                                    <i class="dl-icon-close"></i>
-                                </a>
-                                <div class="mini-cart__product__image">
-                                    <img src="/static/assets/img/products/prod-19-1-70x91.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product__content">
-                                    <a class="mini-cart__product__title" href="product-details.html">Waxed-effect
-                                        pleated skirt</a>
-                                    <span class="mini-cart__product__quantity">1 x $49.00</span>
-                                </div>
-                            </li>
-                            <li class="mini-cart__product">
-                                <a href="#" class="remove-from-cart remove">
-                                    <i class="dl-icon-close"></i>
-                                </a>
-                                <div class="mini-cart__product__image">
-                                    <img src="/static/assets/img/products/prod-2-1-70x91.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product__content">
-                                    <a class="mini-cart__product__title" href="product-details.html">Waxed-effect
-                                        pleated skirt</a>
-                                    <span class="mini-cart__product__quantity">1 x $49.00</span>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="mini-cart__total">
-                            <span>Subtotal</span>
-                            <span class="ammount">$98.00</span>
-                        </div>
-                        <div class="mini-cart__buttons">
-                            <a href="cart.html" class="btn btn-fullwidth btn-style-1">View Cart</a>
-                            <a href="checkout.html" class="btn btn-fullwidth btn-style-1">Checkout</a>
-                        </div>
-                    </div>
+        <div class="w-full">
+            <section id="bottom-navigation" class="block fixed inset-x-0 bottom-0 z-10 bg-white shadow py-2 md:hidden">
+                <div id="tabs" class="flex justify-between">
+                    <a href="/"
+                        class="w-full text-black focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
+                        <svg width="25" height="25" viewBox="0 0 42 42" class="inline-block mb-1">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <path
+                                    d="M21.0847458,3.38674884 C17.8305085,7.08474576 17.8305085,10.7827427 21.0847458,14.4807396 C24.3389831,18.1787365 24.3389831,22.5701079 21.0847458,27.6548536 L21.0847458,42 L8.06779661,41.3066256 L6,38.5331279 L6,26.2681048 L6,17.2542373 L8.88135593,12.4006163 L21.0847458,2 L21.0847458,3.38674884 Z"
+                                    fill="currentColor" fill-opacity="0.1"></path>
+                                <path
+                                    d="M11,8 L33,8 L11,8 Z M39,17 L39,36 C39,39.3137085 36.3137085,42 33,42 L11,42 C7.6862915,42 5,39.3137085 5,36 L5,17 L7,17 L7,36 C7,38.209139 8.790861,40 11,40 L33,40 C35.209139,40 37,38.209139 37,36 L37,17 L39,17 Z"
+                                    fill="currentColor"></path>
+                                <path
+                                    d="M22,27 C25.3137085,27 28,29.6862915 28,33 L28,41 L16,41 L16,33 C16,29.6862915 18.6862915,27 22,27 Z"
+                                    stroke="currentColor" stroke-width="2" fill="currentColor" fill-opacity="0.1">
+                                </path>
+                                <rect fill="currentColor"
+                                    transform="translate(32.000000, 11.313708) scale(-1, 1) rotate(-45.000000) translate(-32.000000, -11.313708) "
+                                    x="17" y="10.3137085" width="30" height="2" rx="1"></rect>
+                                <rect fill="currentColor"
+                                    transform="translate(12.000000, 11.313708) rotate(-45.000000) translate(-12.000000, -11.313708) "
+                                    x="-3" y="10.3137085" width="30" height="2" rx="1"></rect>
+                            </g>
+                        </svg>
+                        <span class="tab tab-home block text-xs">Home</span>
+                    </a>
+                    <a href="/categories"
+                        class="w-full text-black focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
+                        <svg width="25" height="25" viewBox="0 0 42 42" class="inline-block mb-1">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <path
+                                    d="M14.7118754,20.0876892 L8.03575361,20.0876892 C5.82661462,20.0876892 4.03575361,18.2968282 4.03575361,16.0876892 L4.03575361,12.031922 C4.03575361,8.1480343 6.79157254,4.90780265 10.4544842,4.15995321 C8.87553278,8.5612583 8.1226025,14.3600511 10.9452499,15.5413938 C13.710306,16.6986332 14.5947501,18.3118357 14.7118754,20.0876892 Z M14.2420017,23.8186831 C13.515543,27.1052019 12.7414284,30.2811559 18.0438552,31.7330419 L18.0438552,33.4450645 C18.0438552,35.6542035 16.2529942,37.4450645 14.0438552,37.4450645 L9.90612103,37.4450645 C6.14196811,37.4450645 3.09051926,34.3936157 3.09051926,30.6294627 L3.09051926,27.813861 C3.09051926,25.604722 4.88138026,23.813861 7.09051926,23.813861 L14.0438552,23.813861 C14.1102948,23.813861 14.1763561,23.8154808 14.2420017,23.8186831 Z M20.7553776,32.160536 C23.9336213,32.1190063 23.9061943,29.4103976 33.8698747,31.1666916 C34.7935223,31.3295026 35.9925894,31.0627305 37.3154077,30.4407183 C37.09778,34.8980343 33.4149547,38.4450645 28.9036761,38.4450645 C24.9909035,38.4450645 21.701346,35.7767637 20.7553776,32.160536 Z"
+                                    fill="currentColor" opacity="0.1"></path>
+                                <g transform="translate(2.000000, 3.000000)">
+                                    <path
+                                        d="M8.5,1 C4.35786438,1 1,4.35786438 1,8.5 L1,13 C1,14.6568542 2.34314575,16 4,16 L13,16 C14.6568542,16 16,14.6568542 16,13 L16,4 C16,2.34314575 14.6568542,1 13,1 L8.5,1 Z"
+                                        stroke="currentColor" stroke-width="2"></path>
+                                    <path
+                                        d="M4,20 C2.34314575,20 1,21.3431458 1,23 L1,27.5 C1,31.6421356 4.35786438,35 8.5,35 L13,35 C14.6568542,35 16,33.6568542 16,32 L16,23 C16,21.3431458 14.6568542,20 13,20 L4,20 Z"
+                                        stroke="currentColor" stroke-width="2"></path>
+                                    <path
+                                        d="M23,1 C21.3431458,1 20,2.34314575 20,4 L20,13 C20,14.6568542 21.3431458,16 23,16 L32,16 C33.6568542,16 35,14.6568542 35,13 L35,8.5 C35,4.35786438 31.6421356,1 27.5,1 L23,1 Z"
+                                        stroke="currentColor" stroke-width="2"></path>
+                                    <path
+                                        d="M34.5825451,33.4769886 L38.3146092,33.4322291 C38.8602707,33.4256848 39.3079219,33.8627257 39.3144662,34.4083873 C39.3145136,34.4123369 39.3145372,34.4162868 39.3145372,34.4202367 L39.3145372,34.432158 C39.3145372,34.9797651 38.8740974,35.425519 38.3265296,35.4320861 L34.5944655,35.4768456 C34.048804,35.4833899 33.6011528,35.046349 33.5946085,34.5006874 C33.5945611,34.4967378 33.5945375,34.4927879 33.5945375,34.488838 L33.5945375,34.4769167 C33.5945375,33.9293096 34.0349773,33.4835557 34.5825451,33.4769886 Z"
+                                        fill="currentColor"
+                                        transform="translate(36.454537, 34.454537) rotate(-315.000000) translate(-36.454537, -34.454537) ">
+                                    </path>
+                                    <circle stroke="currentColor" stroke-width="2" cx="27.5" cy="27.5" r="7.5"></circle>
+                                </g>
+                            </g>
+                        </svg>
+                        <span class="tab tab-kategori block text-xs">Category</span>
+                    </a>
+                    <a href="/search/latest"
+                        class="w-full text-black focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
+                        <svg width="25" height="25" viewBox="0 0 42 42" class="inline-block mb-1">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <path
+                                    d="M20.5890101,0.254646884 C12.8696785,5.50211755 8.0025785,14.258415 14.1941217,18.8708225 C23.16683,25.5550669 13.3362326,40.2698884 33.1021758,38.4149164 C29.6814884,40.8311956 25.5065164,42.2507054 21,42.2507054 C9.40202025,42.2507054 0,32.8486852 0,21.2507054 C0,9.79003409 9.18071714,0.473634138 20.5890101,0.254646884 Z"
+                                    fill="currentColor" opacity="0.1"></path>
+                                <path
+                                    d="M25.9500282,20.3643496 L22.4308312,38.2677802 C22.3775703,38.5387376 22.1147395,38.7152155 21.8437821,38.6619546 C21.6570955,38.6252584 21.507413,38.4857901 21.4576354,38.3021581 L16.5951895,20.3643496 L20.099732,4.44663907 C20.1385204,4.27046145 20.2692032,4.12883813 20.4417012,4.07604096 C20.7057521,3.99522179 20.9853245,4.14376046 21.0661436,4.40781135 L25.9500282,20.3643496 Z M21.3022963,22.2852638 C22.4068658,22.2852638 23.3022963,21.3898333 23.3022963,20.2852638 C23.3022963,19.1806943 22.4068658,18.2852638 21.3022963,18.2852638 C20.1977268,18.2852638 19.3022963,19.1806943 19.3022963,20.2852638 C19.3022963,21.3898333 20.1977268,22.2852638 21.3022963,22.2852638 Z"
+                                    fill="currentColor"
+                                    transform="translate(21.272609, 20.629524) rotate(-315.000000) translate(-21.272609, -20.629524) ">
+                                </path>
+                                <circle stroke="currentColor" stroke-width="2" cx="21" cy="21" r="20"></circle>
+                            </g>
+                        </svg>
+                        <span class="tab tab-explore block text-xs">Explore</span>
+                    </a>
+                    <a href="/search/trending"
+                        class="w-full text-black focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
+                        <svg width="25" height="25" viewBox="0 0 42 42" class="inline-block mb-1">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <path
+                                    d="M14.7118754,20.0876892 L8.03575361,20.0876892 C5.82661462,20.0876892 4.03575361,18.2968282 4.03575361,16.0876892 L4.03575361,12.031922 C4.03575361,8.1480343 6.79157254,4.90780265 10.4544842,4.15995321 C8.87553278,8.5612583 8.1226025,14.3600511 10.9452499,15.5413938 C13.710306,16.6986332 14.5947501,18.3118357 14.7118754,20.0876892 Z M14.2420017,23.8186831 C13.515543,27.1052019 12.7414284,30.2811559 18.0438552,31.7330419 L18.0438552,33.4450645 C18.0438552,35.6542035 16.2529942,37.4450645 14.0438552,37.4450645 L9.90612103,37.4450645 C6.14196811,37.4450645 3.09051926,34.3936157 3.09051926,30.6294627 L3.09051926,27.813861 C3.09051926,25.604722 4.88138026,23.813861 7.09051926,23.813861 L14.0438552,23.813861 C14.1102948,23.813861 14.1763561,23.8154808 14.2420017,23.8186831 Z M20.7553776,32.160536 C23.9336213,32.1190063 23.9061943,29.4103976 33.8698747,31.1666916 C34.7935223,31.3295026 35.9925894,31.0627305 37.3154077,30.4407183 C37.09778,34.8980343 33.4149547,38.4450645 28.9036761,38.4450645 C24.9909035,38.4450645 21.701346,35.7767637 20.7553776,32.160536 Z"
+                                    fill="currentColor" opacity="0.1"></path>
+                                <g transform="translate(2.000000, 3.000000)">
+                                    <path
+                                        d="M8.5,1 C4.35786438,1 1,4.35786438 1,8.5 L1,13 C1,14.6568542 2.34314575,16 4,16 L13,16 C14.6568542,16 16,14.6568542 16,13 L16,4 C16,2.34314575 14.6568542,1 13,1 L8.5,1 Z"
+                                        stroke="currentColor" stroke-width="2"></path>
+                                    <path
+                                        d="M4,20 C2.34314575,20 1,21.3431458 1,23 L1,27.5 C1,31.6421356 4.35786438,35 8.5,35 L13,35 C14.6568542,35 16,33.6568542 16,32 L16,23 C16,21.3431458 14.6568542,20 13,20 L4,20 Z"
+                                        stroke="currentColor" stroke-width="2"></path>
+                                    <path
+                                        d="M23,1 C21.3431458,1 20,2.34314575 20,4 L20,13 C20,14.6568542 21.3431458,16 23,16 L32,16 C33.6568542,16 35,14.6568542 35,13 L35,8.5 C35,4.35786438 31.6421356,1 27.5,1 L23,1 Z"
+                                        stroke="currentColor" stroke-width="2"></path>
+                                    <path
+                                        d="M34.5825451,33.4769886 L38.3146092,33.4322291 C38.8602707,33.4256848 39.3079219,33.8627257 39.3144662,34.4083873 C39.3145136,34.4123369 39.3145372,34.4162868 39.3145372,34.4202367 L39.3145372,34.432158 C39.3145372,34.9797651 38.8740974,35.425519 38.3265296,35.4320861 L34.5944655,35.4768456 C34.048804,35.4833899 33.6011528,35.046349 33.5946085,34.5006874 C33.5945611,34.4967378 33.5945375,34.4927879 33.5945375,34.488838 L33.5945375,34.4769167 C33.5945375,33.9293096 34.0349773,33.4835557 34.5825451,33.4769886 Z"
+                                        fill="currentColor"
+                                        transform="translate(36.454537, 34.454537) rotate(-315.000000) translate(-36.454537, -34.454537) ">
+                                    </path>
+                                    <circle stroke="currentColor" stroke-width="2" cx="27.5" cy="27.5" r="7.5"></circle>
+                                </g>
+                            </g>
+                        </svg>
+                        <span class="tab tab-whishlist block text-xs">Trending</span>
+                    </a>
+                    <a href="/cart"
+                        class="w-full text-black focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="feather feather-shopping-cart inline-block mb-1 font-thin shadow-2xl">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span class="tab tab-cart block text-xs">Cart</span>
+                    </a>
                 </div>
-            </div>
-        </aside>
-        <!-- Mini Cart End -->
-
-        <!-- Global Overlay Start -->
-        <div class="ai-global-overlay"></div>
-        <!-- Global Overlay End -->
-
-        <!-- Modal Start -->
-        <div class="modal fade product-modal" id="productModal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true"><i class="dl-icon-close"></i></span>
-                        </button>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="airi-element-carousel product-image-carousel nav-vertical-center nav-style-1"
-                                    data-slick-options='{
-                                    "slidesToShow": 1,
-                                    "slidesToScroll": 1,
-                                    "arrows": true,
-                                    "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "dl-icon-left" },
-                                    "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "dl-icon-right" }
-                                }'>
-                                    <div class="product-image">
-                                        <div class="product-image--holder">
-                                            <a href="product-details.html">
-                                                <img src="/static/assets/img/products/prod-9-1.jpg" alt="Product Image"
-                                                    class="primary-image">
-                                            </a>
-                                        </div>
-                                        <span class="product-badge sale">sale</span>
-                                    </div>
-                                    <div class="product-image">
-                                        <div class="product-image--holder">
-                                            <a href="product-details.html">
-                                                <img src="/static/assets/img/products/prod-10-1.jpg" alt="Product Image"
-                                                    class="primary-image">
-                                            </a>
-                                        </div>
-                                        <span class="product-badge new">new</span>
-                                    </div>
-                                    <div class="product-image">
-                                        <div class="product-image--holder">
-                                            <a href="product-details.html">
-                                                <img src="/static/assets/img/products/prod-11-1.jpg" alt="Product Image"
-                                                    class="primary-image">
-                                            </a>
-                                        </div>
-                                        <span class="product-badge hot">hot</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="modal-box product-summary">
-                                    <div class="product-navigation mb--10">
-                                        <a href="#" class="prev"><i class="dl-icon-left"></i></a>
-                                        <a href="#" class="next"><i class="dl-icon-right"></i></a>
-                                    </div>
-                                    <h3 class="product-title mb--15">Waxed-effect pleated skirt</h3>
-                                    <span class="product-price-wrapper mb--20">
-                                        <span class="money">$49.00</span>
-                                        <span class="product-price-old">
-                                            <span class="money">$60.00</span>
-                                        </span>
-                                    </span>
-                                    <p class="product-short-description mb--25 mb-md--20">Donec accumsan auctor iaculis.
-                                        Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus,
-                                        ultrices justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra, in
-                                        vehicula lacus scelerisque. Vestibulum ut sem laoreet, feugiat tellus at,
-                                        hendrerit arcu.</p>
-                                    <div class="product-action d-flex flex-row align-items-center mb--30 mb-md--20">
-                                        <div class="quantity">
-                                            <input type="number" class="quantity-input" name="qty" id="quick-qty"
-                                                value="1" min="1">
-                                        </div>
-                                        <button type="button" class="btn btn-style-1 btn-semi-large add-to-cart"
-                                            onclick="window.location.href='cart.html'">
-                                            Add To Cart
-                                        </button>
-                                        <a href="wishlist.html"><i class="dl-icon-heart2"></i></a>
-                                        <a href="compare.html"><i class="dl-icon-compare2"></i></a>
-                                    </div>
-                                    <div class="product-extra mb--30 mb-md--20">
-                                        <a href="#" class="font-size-12"><i class="fa fa-map-marker"></i>Find store near
-                                            you</a>
-                                        <a href="#" class="font-size-12"><i class="fa fa-exchange"></i>Delivery and
-                                            return</a>
-                                    </div>
-                                    <div
-                                        class="product-summary-footer d-flex justify-content-between flex-sm-row flex-column flex-sm-row flex-column">
-                                        <div class="product-meta">
-                                            <span class="sku_wrapper font-size-12">SKU: <span class="sku">REF.
-                                                    LA-887</span></span>
-                                            <span class="posted_in font-size-12">Categories: <a href="shop-sidebar.html"
-                                                    rel="tag">Fashions</a></span>
-                                        </div>
-                                        <div class="product-share-box">
-                                            <span class="font-size-12">Share With</span>
-                                            <!-- Social Icons Start Here -->
-                                            <ul class="social social-small">
-                                                <li class="social__item">
-                                                    <a href="https://facebook.com/" class="social__link">
-                                                        <i class="fa fa-facebook"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="social__item">
-                                                    <a href="https://twitter.com/" class="social__link">
-                                                        <i class="fa fa-twitter"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="social__item">
-                                                    <a href="https://plus.google.com/" class="social__link">
-                                                        <i class="fa fa-google-plus"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="social__item">
-                                                    <a href="https://plus.google.com/" class="social__link">
-                                                        <i class="fa fa-pinterest-p"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                            <!-- Social Icons End Here -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </section>
         </div>
-        <!-- Modal End -->
-
-
-
     </div>
-    <!-- Main Wrapper End -->
     <script>
         document.getElementById('search-form').addEventListener('submit', function (event) {
             event.preventDefault(); // Prevent the form from submitting
@@ -748,30 +555,27 @@
             location.href = `/search/${query}`
         });
         document.body.classList.add('{{settings.font_style}}');
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check if the device is mobile (optional: check window width or user agent)
+            if (/Mobi|Android/i.test(navigator.userAgent) || window.innerWidth <= 768) {
+                // Get all elements with the class 'zoom'
+                const zoomElements = document.querySelectorAll('.zoom');
+
+                // Iterate over each element and remove the 'zoom' class
+                zoomElements.forEach(function (element) {
+                    console.log(element)
+                    element.classList.remove('zoom');
+                });
+            }
+        });
     </script>
 
-    <!-- ************************* JS Files ************************* -->
-
-    <!-- jQuery JS -->
     <script src="/static/assets/js/vendor/jquery.min.js"></script>
-
-    <!-- Bootstrap and Popper Bundle JS -->
     <script src="/static/assets/js/bootstrap.bundle.min.js"></script>
-
-    <!-- All Plugins Js -->
     <script src="/static/assets/js/plugins.js"></script>
-
-    <!-- Ajax Mail Js -->
-    <script src="/static/assets/js/ajax-mail.js"></script>
-
-    <!-- Main JS -->
     <script src="/static/assets/js/main.js"></script>
-
-    <!-- REVOLUTION JS FILES -->
     <script src="/static/assets/js/revoulation/jquery.themepunch.tools.min.js"></script>
     <script src="/static/assets/js/revoulation/jquery.themepunch.revolution.min.js"></script>
-
-    <!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->
     <script src="/static/assets/js/revoulation/extensions/revolution.extension.actions.min.js"></script>
     <script src="/static/assets/js/revoulation/extensions/revolution.extension.carousel.min.js"></script>
     <script src="/static/assets/js/revoulation/extensions/revolution.extension.kenburn.min.js"></script>
@@ -784,14 +588,7 @@
     <script>
         feather.replace();
     </script>
-
-    <!-- REVOLUTION ACTIVE JS FILES -->
     <script src="/static/assets/js/revoulation.js"></script>
-
-
 </body>
-
-
-<!-- Mirrored from htmldemo.net/airi/airi/index-02.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Aug 2024 09:47:08 GMT -->
 
 </html>

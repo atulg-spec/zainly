@@ -49,8 +49,7 @@
                                             </td>
                                             <td class="product-name text-start wide-column">
                                                 <h3>
-                                                    <a
-                                                        href="/product-view/{{product.product.id}}">{{product.product.title}}</a>
+                                                    <a href="/{{product.product.slug}}">{{product.product.title}}</a>
                                                 </h3>
                                             </td>
                                             <td class="product-price">
@@ -76,8 +75,8 @@
                                             <td class="product-total-price">
                                                 <span class="product-price-wrapper">
                                                     <span class="money"><strong>
-                                                        ₹{%widthratio product.product.price 1 product.quantity%}
-                                                    </strong></span>
+                                                            ₹{%widthratio product.product.price 1 product.quantity%}
+                                                        </strong></span>
                                                 </span>
                                             </td>
                                         </tr>
@@ -136,11 +135,40 @@
                             </table>
                         </div>
                     </div>
-                    <a href="#" class="btn btn-fullwidth btn-style-1">
+                    <a href="#" onclick="document.getElementById('confirm_address').classList.remove('hidden')"
+                        class="btn btn-fullwidth btn-style-1">
                         Proceed To Checkout
                     </a>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+<div class="grid lg:grid-cols-9 gap-4" style="z-index: 1000;">
+    <div id="confirm_address" class="fixed z-50 rounded-lg inset-0 flex items-center justify-center hidden"
+        style="left: 50%;top: 50%;transform: translate(-50%, -50%);min-width: 350px;">
+        <div class="bg-white rounded-lg shadow-lg w-full p-6 border">
+            <form method="post" action="/create-order">
+                <div class="flex justify-between items-center border-b">
+                    <div>
+                        <label class="text-2xl text-black font-semibold mb-2">Address Details :</label><span
+                            id=""></span>
+                    </div>
+                    <a class="text-gray-400 hover:text-gray-600"
+                        onclick="document.getElementById('confirm_address').classList.add('hidden')">&times;</a>
+                </div>
+                <div class="text-gray-900 m-4">
+                    {% load crispy_forms_tags %}
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                </div>
+                <div class="grid grid-cols-1 gap-2 mt-2">
+                    <div class="flex flex-col">
+                        <button class="bg-gray-900 text-white px-4 py-2 rounded" type="submit">
+                            Continue</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

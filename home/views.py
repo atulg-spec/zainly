@@ -3,12 +3,14 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from dashboard.models import *
+from home.models import *
+from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
-from dashboard.forms import ContactForm
-import random
-import string
+from dashboard.forms import ContactForm, CustomUserForm
+import razorpay
+from django.conf import settings
 User = get_user_model()
 # -=--------=---=----------=--=------PAGES--=---=------=---
 # CONTACT US
@@ -40,11 +42,13 @@ def termsofuse(request):
 # END PAGES
 def index(request):
     categories = Categories.objects.all()
+    shop_categories = ProductByCategory.objects.all()
     new_products = Product.objects.filter(keywords__keyword__icontains='New').order_by('-id').distinct()[:30]
     top_products = Product.objects.filter(keywords__keyword__icontains='Top').order_by('-id').distinct()[:30]
     sale_products = Product.objects.filter(keywords__keyword__icontains='Sale').order_by('-id').distinct()[:30]
     context = {
         'categories':categories,
+        'shop_categories':shop_categories,
         'new_products':new_products,
         'top_products':top_products,
         'sale_products':sale_products,
@@ -66,28 +70,42 @@ def search(request,search):
     }
     return render(request,'home/search.html',context)
 
-def product_view(request,id):
-    product = Product.objects.filter(id=id).first()
+
+def product_view(request, slug):
+    # Fetch the product using the slug
+    product = get_object_or_404(Product, slug=slug)
+    
+    # Get related data for the product
     product_images = ProductImage.objects.filter(product=product)
-    stars = [i for i in range(0,product.stars)]
+    stars = [i for i in range(0, product.stars)]
     categories = Categories.objects.all()
-    query = product.category.first().category
+
+    # Fetch the first category for the query
+    query = product.category.first().category if product.category.exists() else None
+
+    # Initialize related products to none
     related_products = Product.objects.none()
+    
+    # If the query is not None, fetch related products
     if query:
         related_products = Product.objects.filter(
-            models.Q(category__category__icontains=query) |  # Correct usage for ManyToManyField
-            models.Q(description__icontains=query) |  # This is fine as description is a text field
-            models.Q(keywords__keyword__icontains=query)  # Correct usage for ManyToManyField
-        ).distinct()[:100]  # Use distinct() to avoid duplicate results if there are multiple matches
+            models.Q(category__category__icontains=query) |  # Correct for ManyToManyField
+            models.Q(description__icontains=query) |  # Correct for text field
+            models.Q(keywords__keyword__icontains=query)  # Correct for ManyToManyField
+        ).distinct()[:100]  # Avoid duplicate results
 
+    # Pass the context to the template
     context = {
-        'related_products':related_products,
-        'categories':categories,
-        'stars':stars,
-        'product_images':product_images,
-        'product':product,
+        'related_products': related_products,
+        'categories': categories,
+        'stars': stars,
+        'product_images': product_images,
+        'product': product,
     }
-    return render(request,'home/product-view.html',context)
+
+    # Render the template with the context
+    return render(request, 'home/product-view.html', context)
+
 
 @login_required
 def add_to_cart(request,id,size,qty):
@@ -131,31 +149,33 @@ def decrease_quantity(request,id):
 @login_required
 def cart(request):
     trending_products = Product.objects.filter(keywords__keyword__icontains='Trending').order_by('-id').distinct()[:6]
-    cart_items = Cart.objects.filter(user=request.user).filter(ordered=False)
     categories = Categories.objects.all()
+    form = CustomUserForm(instance=request.user)
+    cart_items = Cart.objects.filter(user=request.user).filter(ordered=False)
     total = 0
     for x in cart_items:
         total = total + x.product.price * x.quantity
     context = {
         'trending_products':trending_products,
+        'form':form,
         'categories':categories,
         'total':total,
         'cart_items':cart_items,
     }
     return render(request,'home/cart.html',context)
 
-@login_required
-def create_order(request):
-    trending_products = Product.objects.filter(keywords__keyword__icontains='Trending').order_by('-id').distinct()[:6]
-    cart_items = Cart.objects.filter(user=request.user).filter(ordered=False)
-    order = Order.objects.create(user=request.user)
-    order.products.set(cart_items)  # Use set() to assign the cart_items to the products field
-    categories = Categories.objects.all()
-    context = {
-        'trending_products':trending_products,
-        'categories':categories,
-    }
-    return redirect('/my-orders')
+# @login_required
+# def create_order(request):
+#     trending_products = Product.objects.filter(keywords__keyword__icontains='Trending').order_by('-id').distinct()[:6]
+#     cart_items = Cart.objects.filter(user=request.user).filter(ordered=False)
+#     order = Order.objects.create(user=request.user)
+#     order.products.set(cart_items)  # Use set() to assign the cart_items to the products field
+#     categories = Categories.objects.all()
+#     context = {
+#         'trending_products':trending_products,
+#         'categories':categories,
+#     }
+#     return redirect('/my-orders')
 
 @login_required
 def my_orders(request):
@@ -222,3 +242,77 @@ def save_address(request):
         return JsonResponse({'status': 'success', 'message': 'Address saved successfully!'})
     else:
         return JsonResponse({'status': 'fail', 'message': 'Invalid request method.'}, status=405)
+
+
+
+
+# Initialize Razorpay client
+@login_required
+def create_order(request):
+    if request.method == 'POST':
+        form = CustomUserForm(request.POST, instance=request.user)     
+        if form.is_valid():
+            form.save()
+            gateway = PaymentGateway.objects.all().first()
+            razorpay_client = razorpay.Client(auth=(gateway.razorpay_key_id, gateway.razorpay_key_secret))
+            cart_items = Cart.objects.filter(user=request.user).filter(ordered=False)
+            total = 0
+            for x in cart_items:
+                total = total + x.product.price * x.quantity
+            total = int(total)
+            order_data = {
+                'amount': total * 100,
+                'currency': 'INR',
+                'payment_capture': 1
+            }
+            razorpay_order = razorpay_client.order.create(data=order_data)
+            payment = Payment.objects.create(
+                order_id=razorpay_order['id'],
+                amount=total
+            )
+
+            context = {
+                'cart_items':cart_items,
+                'order_id': razorpay_order['id'],
+                'razorpay_key': gateway.razorpay_key_id,
+                'amount': total * 100,
+                'total': total,
+                'name': 'The Zainly',
+                'email': request.user.email,
+                'phone': request.user.phone_number
+            }
+            return render(request, 'home/payment.html', context)
+    else:
+        return redirect('/cart')
+
+
+@csrf_exempt
+def payment_verification(request):
+    if request.method == "POST":
+        razorpay_payment_id = request.POST.get('razorpay_payment_id')
+        razorpay_order_id = request.POST.get('razorpay_order_id')
+        razorpay_signature = request.POST.get('razorpay_signature')
+        payment = Payment.objects.get(order_id=razorpay_order_id)
+        gateway = PaymentGateway.objects.all().first()
+        razorpay_client = razorpay.Client(auth=(gateway.razorpay_key_id, gateway.razorpay_key_secret))
+
+        # Verify payment signature
+        try:
+            razorpay_client.utility.verify_payment_signature({
+                'razorpay_order_id': razorpay_order_id,
+                'razorpay_payment_id': razorpay_payment_id,
+                'razorpay_signature': razorpay_signature
+            })
+
+            # Payment successful
+            payment.payment_id = razorpay_payment_id
+            payment.status = 'paid'
+            payment.save()
+
+            return render(request, 'payment_success.html')
+
+        except:
+            # Payment failed
+            payment.status = 'failed'
+            payment.save()
+            return redirect('/')

@@ -48,5 +48,32 @@ class SiteSettings(models.Model):
     
     font_style = models.CharField(max_length=10, choices=FONT_CHOICES, default='font-sans')
 
+    class Meta:
+        verbose_name = "Site Settings"
+        verbose_name_plural = "Site Settings"
+
     def __str__(self):
         return "Site Settings"
+
+
+class PaymentGateway(models.Model):
+    razorpay_key_id = models.CharField(max_length=500,default="")
+    razorpay_key_secret = models.CharField(max_length=500,default="")
+
+    class Meta:
+        verbose_name = "Payment Gateway Setting"
+        verbose_name_plural = "Payment Gateway"
+    def __str__(self):
+      return "Payment Gateway"
+    
+
+class ProductByCategory(models.Model):
+    image = models.ImageField(upload_to='slider_images/', blank=True, null=True)
+    url = models.URLField(blank=True)
+
+    class Meta:
+        verbose_name = "Product By Category"
+        verbose_name_plural = "Product By Category"
+
+    def __str__(self):
+        return "Product By Category"

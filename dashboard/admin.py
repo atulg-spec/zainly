@@ -3,6 +3,9 @@ from .models import *
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import Group
 from django.utils.html import format_html  # Import format_html
+from django.urls import reverse
+from django.utils.http import urlencode
+
 
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
@@ -50,25 +53,62 @@ class SizesAdmin(admin.ModelAdmin):
 
 @admin.register(Categories)
 class CategoriesAdmin(admin.ModelAdmin):
-    list_display = ('category', 'short_caption')
+    list_display = ('icon_tag','category_image_tag','category', 'short_caption')
     search_fields = ('category', 'short_caption')
-    list_filter = ('category',)
-    # readonly_fields = ('category_image', 'icon')
 
-    def category_image_thumbnail(self, obj):
-        if obj.category_image:
-            return format_html(f'<img src="{obj.category_image.url}" style="width: 50px; height: 50px;" />')
+    def icon_tag(self, obj):
+        if obj.icon:
+            return format_html('<img src="{}" style="max-height: 50px;" />', obj.icon.url)
         return ""
-    category_image_thumbnail.short_description = "Category Image"
+    icon_tag.short_description = 'Icon Preview'
+
+    def category_image_tag(self, obj):
+        if obj.category_image:
+            return format_html('<img src="{}" style="max-height: 50px;" />', obj.category_image.url)
+        return ""
+    category_image_tag.short_description = 'Category Image Preview'
+
+    readonly_fields = ('icon_tag', 'category_image_tag')  # Make the image previews read-only
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('order_id', 'user', 'status', 'created_at', 'expected_delivery_date')
+    list_display = ('product_details', 'user','created_at', 'expected_delivery_date', 'status','order_id')
     search_fields = ('order_id', 'user__username', 'status')
     list_filter = ('status', 'created_at')
     date_hierarchy = 'created_at'
     readonly_fields = ('order_id', 'created_at')
     filter_horizontal = ('products',)
+
+    def product_details(self, obj):
+        cart_items = obj.products.all()
+        product_details_list = []
+
+        for cart_item in cart_items:
+            product = cart_item.product
+            # Generate public URL using product slug
+            product_public_url = reverse('product-view', kwargs={'slug': product.slug})
+            
+            details = format_html(
+                """
+                <div style="margin-bottom: 10px;">
+                    <img src="{}" style="max-height: 50px;" /><br>
+                    <strong>Title:</strong> <a href="{}">{}</a><br>
+                    <strong>Price:</strong> ₹{}<br>
+                    <strong>Quantity:</strong> {}<br>
+                </div>
+                """,
+                product.product_image.url if product.product_image else '',
+                product_public_url,  # Link to public product page
+                product.title,
+                product.price,
+                cart_item.quantity
+            )
+            product_details_list.append(details)
+
+        return format_html(''.join(product_details_list)) if product_details_list else "No products"
+
+    product_details.short_description = 'Product Details'
+
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
@@ -78,19 +118,19 @@ class ContactAdmin(admin.ModelAdmin):
     readonly_fields = ('date_time',)
 
 
+@admin.register(Cart)
 class CartAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'product', 'size', 'quantity', 'ordered')
-    list_filter = ('ordered', 'size', 'product', 'user')
-    search_fields = ('user__username', 'product__title')
-    readonly_fields = ('id',)
-    
-    # Display related fields in the admin form
-    raw_id_fields = ('user', 'product', 'size')
-    
-    # Ordering by latest first
-    ordering = ('-id',)
+    list_display = ('user', 'product', 'size', 'quantity', 'ordered', 'product_image_tag')
+    search_fields = ('user__username', 'product__title')  # Search by username and product title
+    list_filter = ('ordered', 'size')
+    readonly_fields = ('product_image_tag',)
 
-admin.site.register(Cart, CartAdmin)
+    def product_image_tag(self, obj):
+        if obj.product and obj.product.product_image:
+            return format_html('<img src="{}" style="max-height: 50px;" />', obj.product.product_image.url)
+        return ""
+    product_image_tag.short_description = 'Product Image'
+
 
 class ProductImageInline(admin.TabularInline):
     model = ProductImage
@@ -106,41 +146,81 @@ class ProductImageInline(admin.TabularInline):
     image_tag.short_description = 'Preview'
 
 
+class ProductImageInline(admin.TabularInline):  # Inline to manage product images
+    model = ProductImage
+    extra = 1  # Number of empty forms to display
+    readonly_fields = ('image_tag',)  # Display image preview
+
+    def image_tag(self, obj):
+        if obj.image:
+            return format_html('<img src="{}" style="max-height: 50px;" />', obj.image.url)
+        return ""
+    image_tag.short_description = 'Image Preview'
+
+
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('title', 'price', 'created_at', 'updated_at')
+    list_display = (
+        'product_image_tag', 
+        'title', 
+        'price', 
+        'stars', 
+        'review', 
+        'created_at', 
+        'updated_at'
+    )
     search_fields = ('title', 'description')
-    list_filter = ('category', 'gender')
+    list_filter = ('category', 'gender', 'stars')  # Added stars to the filters
     inlines = [ProductImageInline]
-    readonly_fields = ('created_at', 'updated_at')
+    readonly_fields = ('created_at', 'updated_at', 'slug')
 
-    # If you want to display a preview of the main product image in the list display:
+    # Display a preview of the main product image in the list display
     def product_image_tag(self, obj):
         if obj.product_image:
             return format_html('<img src="{}" style="max-height: 50px;" />', obj.product_image.url)
         return ""
     product_image_tag.short_description = 'Main Image'
 
+    # Optionally add custom CSS for better appearance
+    class Media:
+        css = {
+            'all': ('admin/css/custom_admin.css',)  # Link to a custom CSS file if needed
+        }
 
 @admin.register(ProductImage)
 class ProductImageAdmin(admin.ModelAdmin):
-    list_display = ('product', 'image')
+    list_display = ('product_image_tag','image_tag','product')  # Include product image tag for display
     search_fields = ('product__title',)
 
-    # Optional: If you want to add an image preview in the ProductImage admin list
     def image_tag(self, obj):
         if obj.image:
             return format_html('<img src="{}" style="max-height: 50px;" />', obj.image.url)
         return ""
     image_tag.short_description = 'Image Preview'
-    readonly_fields = ('image_tag',)
+
+    def product_image_tag(self, obj):
+        if obj.product:
+            return format_html('<img src="{}" style="max-height: 50px;" />', obj.product.product_image.url)
+        return ""
+    product_image_tag.short_description = 'Product Main Image'
+
+    readonly_fields = ('image_tag',)  # Make image_tag read-only
+
+
+class PaymentAdmin(admin.ModelAdmin):
+    list_display = ('order_id', 'payment_id', 'amount', 'status', 'created_at')
+    search_fields = ('order_id', 'payment_id', 'status')
+    list_filter = ('status', 'created_at')
+    ordering = ('-created_at',)
+
+admin.site.register(Payment, PaymentAdmin)
 
 
 
-admin.site.site_header="Zainly"
-admin.site.site_title="Zainly Admin"
+admin.site.site_header="The Zainly"
+admin.site.site_title="The Zainly Admin"
 # admin.site.index_template="home.html"
-admin.site.index_title="Zainly | Admin"
+admin.site.index_title="The Zainly | Admin"
 
 from social_django.models import Nonce,UserSocialAuth,Association
 from social_django.admin import Nonce,UserSocialAuth,Association
