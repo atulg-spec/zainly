@@ -15,4 +15,4 @@ order_datas/
 # Node.js #
 node_modules/
 
-# staticfiles/
+staticfiles/
