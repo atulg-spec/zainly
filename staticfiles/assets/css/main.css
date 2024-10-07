@@ -1,5 +1,5 @@
 /******************************
-
+header-outer
 INDEX:
 
     00 - Base - Global
@@ -2531,10 +2531,6 @@ a, button, img, input, span, .main-navigation .mainmenu__item.menu-item-has-chil
   -moz-align-items: center;
   align-items: center; }
 
-.mini-cart .btn-close, .side-navigation .btn-close {
-  right: 4rem;
-  top: 2rem;
-  font-size: 4rem; }
 
 .mini-cart, .side-navigation-wrapper, .offcanvas-navigation {
   position: fixed;
@@ -2543,17 +2539,8 @@ a, button, img, input, span, .main-navigation .mainmenu__item.menu-item-has-chil
   min-height: 100vh;
   bottom: 0;
   z-index: 9999;
-  right: 0;
-  -webkit-transition: all 400ms ease-out;
-  -moz-transition: all 400ms ease-out;
-  -ms-transition: all 400ms ease-out;
-  -o-transition: all 400ms ease-out;
-  transition: all 400ms ease-out;
-  -webkit-transform: translate(200px, 0);
-  -moz-transform: translate(200px, 0);
-  -ms-transform: translate(200px, 0);
-  -o-transform: translate(200px, 0);
-  transform: translate(200px, 0);
+  /* right: 0; */
+  left: 0;
   -webkit-box-shadow: 0px 0px 87px 0px rgba(0, 0, 0, 0.09);
   -moz-box-shadow: 0px 0px 87px 0px rgba(0, 0, 0, 0.09);
   -ms-box-shadow: 0px 0px 87px 0px rgba(0, 0, 0, 0.09);
@@ -10788,9 +10775,6 @@ a, button, img, input, span, .main-navigation .mainmenu__item.menu-item-has-chil
     padding: 1rem 0; }
   .header-outer {
     position: relative; }
-    @media (max-width: 61.94em) {
-      .header-outer {
-        display: none; } }
   .header-inner {
     position: absolute;
     left: 0;
@@ -11263,15 +11247,15 @@ a, button, img, input, span, .main-navigation .mainmenu__item.menu-item-has-chil
         height: 0; } }
   .header-transparent.header:not(.is-sticky) .header-inner {
     transition: none; }
-  .header-transparent .header-inner {
-    background-color: transparent; }
+  
   .header-transparent.header-aside {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     -ms-box-shadow: none;
     -o-box-shadow: none;
     box-shadow: none;
-    background-color: transparent; }
+    /* background-color: transparent;  */
+  }
     .header-transparent.header-aside .logo--normal {
       visibility: visible;
       opacity: 1;
@@ -11991,12 +11975,7 @@ a, button, img, input, span, .main-navigation .mainmenu__item.menu-item-has-chil
       color: #fff !important; }
 
 /*-- 22.01 - Close Button --*/
-.btn-close {
-  font-size: 40px;
-  z-index: 5;
-  line-height: 40px;
-  height: 40px;
-  opacity: 1; }
+
   .btn-close i {
     vertical-align: top; }
   .btn-close:hover i {

@@ -55,7 +55,7 @@
         <!-- Header Area Start -->
         <header
             class="header {% if request.get_full_path == '/' %} header-transparent {% endif %} header-fullwidth header-style-1">
-            <div class="top-bar d-none d-md-block">
+            <div class="top-bar block">
                 <div class="container">
                     <div class="row">
                         <div class="col-12 text-center">
@@ -68,45 +68,20 @@
                     </div>
                 </div>
             </div>
-            <div class="header-outer">
+            <div class="header-outer bg-white">
                 <div class="header-inner fixed-header">
                     <div class="container-fluid">
                         <div class="row align-items-center">
-                            <div class="col-xl-5 col-lg-6">
+                            <div class="col-4">
                                 <!-- Main Navigation Start Here -->
-                                <nav class="main-navigation">
-                                    <ul class="mainmenu">
-                                        <li class="mainmenu__item menu-item-has-children megamenu-holder">
-                                            <a href="/" class="mainmenu__link">
-                                                <span class="mm-text">Home</span>
-                                            </a>
-                                        </li>
-                                        <li class="mainmenu__item menu-item-has-children">
-                                            <a href="/categories" class="mainmenu__link">
-                                                <span class="mm-text">Shop</span>
-                                                <span class="tip">Hot</span>
-                                            </a>
-                                        </li>
-                                        <li class="mainmenu__item">
-                                            <a href="/categories" class="mainmenu__link">
-                                                <span class="mm-text">Collections</span>
-                                            </a>
-                                        </li>
-                                        <li class="mainmenu__item menu-item-has-children has-children">
-                                            <a href="/about" class="mainmenu__link">
-                                                <span class="mm-text">About Us</span>
-                                            </a>
-                                        </li>
-                                        <li class="mainmenu__item">
-                                            <a href="/contact" class="mainmenu__link">
-                                                <span class="mm-text">Contact Us</span>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                <nav class="">
+                                    <a href="#sideNav" class="toolbar-btn">
+                                        <i class="dl-icon-menu2 text-gray-900 font-semibold text-4xl"></i>
+                                    </a>
                                 </nav>
                                 <!-- Main Navigation End Here -->
                             </div>
-                            <div class="col-lg-2 col-md-3 col-4 text-lg-center">
+                            <div class="col-4 text-lg-center">
                                 <!-- Logo Start Here -->
                                 <center>
                                     <a href="/" class="logo-box">
@@ -122,16 +97,11 @@
                                 </center>
                                 <!-- Logo End Here -->
                             </div>
-                            <div class="col-xl-5 col-lg-4 col-md-9 col-8">
+                            <div class="col-4">
                                 <ul class="header-toolbar text-end">
-                                    <li class="header-toolbar__item d-none d-lg-block">
-                                        <a href="#sideNav" class="toolbar-btn">
-                                            <i class="dl-icon-menu2"></i>
-                                        </a>
-                                    </li>
-                                    <li class="header-toolbar__item user-info-menu-btn">
+                                    <li class="header-toolbar__item user-info-menu-btn hidden md:block">
                                         <a href="#">
-                                            <i class="fa fa-user-circle-o"></i>
+                                            <i class="fa fa-user-circle-o text-gray-900"></i>
                                         </a>
                                         <ul class="user-info-menu">
                                             <li>
@@ -147,29 +117,26 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="header-toolbar__item">
+                                    <li class="header-toolbar__item hidden md:block">
                                         <a href="/cart" class="mini-cart-btn ">
-                                            <i class="dl-icon-cart4"></i>
-                                            <sup class="mini-cart-count">2</sup>
+                                            <i class="dl-icon-cart4 text-gray-900"></i>
+                                            <sup class="mini-cart-count text-gray-900">2</sup>
                                         </a>
                                     </li>
                                     <li class="header-toolbar__item">
                                         <a href="#searchForm" class="search-btn toolbar-btn">
-                                            <i class="dl-icon-search1"></i>
+                                            <i class="dl-icon-search1 text-gray-900"></i>
                                         </a>
-                                    </li>
-                                    <li class="header-toolbar__item d-lg-none">
-                                        <a href="#" class="menu-btn"></a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="main-sticky-header-height"></div>
+                <!-- <div class="main-sticky-header-height"></div> -->
             </div>
         </header>
-        <header class="header-mobile">
+        <!-- <header class="header-mobile">
             <div class="header-mobile__outer">
                 <div class="w-full py-2">
                     <div class="container-fluid">
@@ -262,7 +229,7 @@
                 </div>
                 <div class="mobile-sticky-header-height"></div>
             </div>
-        </header>
+        </header> -->
         {% block breadcrumb %}
         {% endblock breadcrumb %}
         <div id="content" class="main-content-wrapper">
@@ -370,9 +337,16 @@
                 </form>
             </div>
         </div>
-        <aside class="side-navigation" id="sideNav">
+        <aside class="side-navigation left" id="sideNav">
             <div class="side-navigation-wrapper">
-                <a href="#" class="btn-close"><i class="dl-icon-close"></i></a>
+                <div class="flex justify-between w-4/5 px-4 py-2">
+                    <div class="mt-5 px-4">Login</div>
+                    <div>
+                        <a href="#" class="btn-close"><i class="dl-icon-close"></i></a>
+                    </div>
+                </div>
+                
+
                 <div class="side-navigation-inner">
                     <div class="widget">
                         <ul class="sidenav-menu">
