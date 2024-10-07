@@ -1,7 +1,7 @@
 {% extends 'home/base.html' %}
 {% block breadcrumb %}
 <!-- Breadcrumb area Start -->
-<div class="breadcrumb-area bg-white-6 pt--60 pb--70 pt-lg--40 pb-lg--50 pt-md--30 pb-md--40">
+<div class="breadcrumb-area bg-white-6 pt--60 pb--70 pt-lg--40 pb-lg--50 pt-md--30 pb-md--40 mt-16">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 text-center">
@@ -19,27 +19,19 @@
 {% endblock breadcrumb %}
 {% block body %}
 <!-- Banner Start Here -->
-<div class="banner-area mb-10">
-    <div class="container-fluid p-0">
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-2">
-            {% for x in categories %}
-            <div class="banner-box banner-type-2 banner-hover-2">
-                <div class="banner-inner">
-                    <div class="">
-                        <img src="{{x.category_image.url}}" alt="Banner" class="rounded-3xl h-3/4">
-                    </div>
-                    <div class="banner-info" style="text-align: left;">
-                        <a class="" href="/search/{{x.category}}">
-                            <h2 class="text-4xl text-white sm:text-1xl mt-2 mb-10 text-left px-4 uppercase">
-                                {{x.category}}
-                            </h2>
-                        </a>
-                    </div>
-                    <a class="banner-link banner-overlay" href="/search/{{x.category}}">Shop Now</a>
+<div class="container mx-auto p-4">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <!-- Grid Item 1 -->
+        {% for x in categories %}
+        <a href="/search/{{ x.category }}" class="block">
+            <div class="relative bg-cover bg-center rounded-2xl"
+                style="background-image: url('{{ x.category_image.url }}'); height: 32rem;">
+                <div class="absolute inset-0 bg-black bg-opacity-20 flex items-end p-4 rounded-2xl">
+                    <h2 class="text-white text-2xl tracking-wide uppercase font-semibold">{{ x.category }}</h2>
                 </div>
             </div>
-            {% endfor %}
-        </div>
+        </a>
+        {% endfor %}
     </div>
 </div>
 <!-- Banner End Here -->

@@ -36,6 +36,15 @@ class SiteSettings(models.Model):
     main_page_video_caption = models.CharField(max_length=30, blank=True)
     main_page_video_url = models.CharField(max_length=300, blank=True)
 
+    main_page_timer_thumbnail = models.ImageField(upload_to='slider_images/', blank=True, null=True)
+    main_page_timer_caption = models.CharField(max_length=30, blank=True)
+    discount_percentage = models.PositiveIntegerField(default=40)
+    last_price = models.PositiveIntegerField(default=799)
+    current_price = models.PositiveIntegerField(default=369)
+    main_page_timer = models.CharField(max_length=30, default="2025/05/01")
+    main_page_timer_url = models.CharField(max_length=300, blank=True)
+
+
     instagram = models.CharField(max_length=50, blank=True)
     phone_number = models.CharField(max_length=50, blank=True)
     email = models.CharField(max_length=50, blank=True)

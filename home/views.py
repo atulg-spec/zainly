@@ -41,12 +41,16 @@ def termsofuse(request):
 
 # END PAGES
 def index(request):
+    recent = None
+    if request.user.is_authenticated:
+        recent = RecentlyStalked.objects.filter(user=request.user)
     categories = Categories.objects.all()
     shop_categories = ProductByCategory.objects.all()
     new_products = Product.objects.filter(keywords__keyword__icontains='New').order_by('-id').distinct()[:30]
     top_products = Product.objects.filter(keywords__keyword__icontains='Top').order_by('-id').distinct()[:30]
     sale_products = Product.objects.filter(keywords__keyword__icontains='Sale').order_by('-id').distinct()[:30]
     context = {
+        'recent':recent,
         'categories':categories,
         'shop_categories':shop_categories,
         'new_products':new_products,
@@ -74,6 +78,8 @@ def search(request,search):
 def product_view(request, slug):
     # Fetch the product using the slug
     product = get_object_or_404(Product, slug=slug)
+    if request.user.is_authenticated:
+        RecentlyStalked.objects.create(user=request.user,product=product)
     
     # Get related data for the product
     product_images = ProductImage.objects.filter(product=product)

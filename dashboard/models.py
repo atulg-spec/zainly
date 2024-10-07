@@ -125,8 +125,34 @@ class ProductImage(models.Model):
 
     def __str__(self):
         return f"Image for {self.product.title}"
+    
+class RecentlyStalked(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
+    class Meta:
+        unique_together = ('user', 'product')  # Ensure unique user-product pairs
 
+    def __str__(self):
+        return f"{self.user.first_name} recently watched {self.product.title}"
+
+    def save(self, *args, **kwargs):
+        # Check if the user has already stalked this product
+        if RecentlyStalked.objects.filter(user=self.user, product=self.product).exists():
+            pass
+        else:
+            # Check how many RecentlyStalked objects exist for this user
+            user_stalked_count = RecentlyStalked.objects.filter(user=self.user).count()
+            # If the user has 10 stalked products, delete the oldest one
+            if user_stalked_count >= 10:
+                # Get the oldest RecentlyStalked object for this user
+                oldest_stalked = RecentlyStalked.objects.filter(user=self.user).order_by('id').first()
+                if oldest_stalked:
+                    oldest_stalked.delete()
+
+        # Call the original save method to save the new RecentlyStalked object
+            super().save(*args, **kwargs)
+    
 
 class Cart(models.Model):
     id=models.AutoField(primary_key=True)

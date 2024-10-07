@@ -135,6 +135,7 @@
                 </div>
                 <!-- <div class="main-sticky-header-height"></div> -->
             </div>
+            <br><br><br>
         </header>
         <!-- <header class="header-mobile">
             <div class="header-mobile__outer">
@@ -340,69 +341,78 @@
         <aside class="side-navigation left" id="sideNav">
             <div class="side-navigation-wrapper">
                 <div class="flex justify-between w-4/5 px-4 py-2">
-                    <div class="mt-5 px-4">Login</div>
+                    <div class="mt-5 text-center w-48 text-2xl">
+                        {% if request.user.is_authenticated %}
+                        Hii {{request.user.first_name}} 😉
+                        {% else %}
+                        <i class="fa fa-user-circle-o text-gray-900"></i>
+                        <a href="{% url 'social:begin' 'google-oauth2' %}?next={{request.path}}">Login</a>
+                        {% endif %}
+                    </div>
                     <div>
                         <a href="#" class="btn-close"><i class="dl-icon-close"></i></a>
                     </div>
                 </div>
-                
-
-                <div class="side-navigation-inner">
-                    <div class="widget">
-                        <ul class="sidenav-menu">
-                            <li><a href="/home">Home</a></li>
-                            <li><a href="/about">About Us</a></li>
-                            <li><a href="/contact">Help Center</a></li>
-                            <li><a href="/categories">Categories</a></li>
-                        </ul>
+                <hr class="border border-gray-100 mb-4 mt-8" />
+                <div class="px-10 w-full"><a href="/search/new" class="text-2xl uppercase tracking-wide"
+                        style="letter-spacing: 5px;">New Arrivals</a></div>
+                <hr class="border border-gray-100 my-4" />
+                <div class="px-10 w-full"><a href="/search/best" class="text-2xl uppercase tracking-wide"
+                        style="letter-spacing: 5px;">Best Selling</a></div>
+                <hr class="border border-gray-100 my-4" />
+                <div class="px-10 w-full"><a href="/cart" class="text-2xl uppercase tracking-wide"
+                        style="letter-spacing: 5px;">Cart</a></div>
+                <hr class="border border-gray-100 my-4" />
+                <div class="px-10 w-full"><a href="/orders" class="text-2xl uppercase tracking-wide"
+                        style="letter-spacing: 5px;">Orders</a></div>
+                <hr class="border border-gray-100 my-4" />
+                <div class="px-10 w-full"><a href="/categories" class="text-2xl uppercase tracking-wide"
+                        style="letter-spacing: 5px;">Categories</a></div>
+                <hr class="border border-gray-100 my-4" />
+                <div class="px-10 w-full"><a href="/about" class="text-2xl uppercase tracking-wide"
+                        style="letter-spacing: 5px;">About Us</a></div>
+                <hr class="border border-gray-100 my-4" />
+                <div class="px-10 w-full"><a href="/contact" class="text-2xl uppercase tracking-wide"
+                        style="letter-spacing: 5px;">Help Center</a></div>
+                <hr class="border border-gray-100 my-4" />
+                <div class="px-10 w-full"><a href="/contact" class="text-2xl uppercase tracking-wide"
+                        style="letter-spacing: 5px;">Customer Support</a></div>
+                <hr class="border border-gray-100 my-4" />
+                <div class="w-full text-center">
+                    <center class="py-3">
+                        <img src="/static/assets/img/others/payments.png" alt="payment">
+                    </center>
+                </div>
+                <div class="grid grid-cols-3 grid-rows-2">
+                    <div class="flex justify-center items-center py-4 border border-gray-100">
+                        <a href="{{settings.twitter_handle}}" class="social__link">
+                            <i class="fa fa-twitter"></i>
+                        </a>
                     </div>
-                    <div class="widget pt--30 pr--20">
-                        <div class="text-widget">
-                            <p>
-                                <img src="/static/assets/img/others/payments.png" alt="payment">
-                            </p>
-                            <p>{{settings.tagline}}</p>
-                        </div>
+                    <div class="flex justify-center items-center py-4 border border-gray-100">
+                        <a href="{{settings.email}}" class="social__link">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
                     </div>
-                    <div class="widget">
-                        <div class="text-widget">
-                            <p>
-                                <a href="#">{{settings.phone_number}}</a>
-                                <a href="mailto:{{settings.email}}">{{settings.email}}</a>
-                                {{settings.location}}
-                            </p>
-                        </div>
+                    <div class="flex justify-center items-center py-4 border border-gray-100">
+                        <a href="{{settings.facebook_handle}}" class="social__link">
+                            <i class="fa fa-facebook"></i>
+                        </a>
                     </div>
-                    <div class="widget">
-                        <div class="text-widget">
-                            <ul class="social social-small">
-                                <li class="social__item">
-                                    <a href="{{settings.twitter_handle}}" class="social__link">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                </li>
-                                <li class="social__item">
-                                    <a href="{{settings.email}}" class="social__link">
-                                        <i class="fa fa-google-plus"></i>
-                                    </a>
-                                </li>
-                                <li class="social__item">
-                                    <a href="{{settings.facebook_handle}}" class="social__link">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                </li>
-                                <li class="social__item">
-                                    <a href="{{settings.youtube_handle}}" class="social__link">
-                                        <i class="fa fa-youtube"></i>
-                                    </a>
-                                </li>
-                                <li class="social__item">
-                                    <a href="{{settings.instagram_handle}}" class="social__link">
-                                        <i class="fa fa-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="flex justify-center items-center py-4 border border-gray-100">
+                        <a href="{{settings.youtube_handle}}" class="social__link">
+                            <i class="fa fa-youtube"></i>
+                        </a>
+                    </div>
+                    <div class="flex justify-center items-center py-4 border border-gray-100">
+                        <a href="{{settings.instagram_handle}}" class="social__link">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                    </div>
+                    <div class="flex justify-center items-center py-4 border border-gray-100">
+                        <a href="tel:{{settings.phone_number}}" class="social__link">
+                            <i class="fa fa-phone"></i>
+                        </a>
                     </div>
                 </div>
             </div>

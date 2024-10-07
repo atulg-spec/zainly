@@ -70,6 +70,13 @@ class CategoriesAdmin(admin.ModelAdmin):
 
     readonly_fields = ('icon_tag', 'category_image_tag')  # Make the image previews read-only
 
+@admin.register(RecentlyStalked)
+class RecentlyStalkedAdmin(admin.ModelAdmin):
+    list_display = ('user', 'product')  # Adjust fields as necessary
+    search_fields = ('user__first_name', 'product__title')  # Enable searching by user first name and product title
+
+
+
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('product_details', 'user','created_at', 'expected_delivery_date', 'status','order_id')

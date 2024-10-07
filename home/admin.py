@@ -35,6 +35,9 @@ class SiteSettingsAdmin(admin.ModelAdmin):
         ('Index Page Video', {
             'fields': ('main_page_video_thumbnail', 'main_page_video_caption', 'main_page_video_url')
         }),
+        ('Index Page Timer', {
+            'fields': ('main_page_timer_thumbnail', 'main_page_timer_caption', 'discount_percentage','last_price','current_price','main_page_timer','main_page_timer_url')
+        }),
         ('Contact Info', {
             'fields': ('instagram', 'phone_number', 'email', 'location')
         }),

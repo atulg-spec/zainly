@@ -476,39 +476,107 @@
 </section>
 <!-- Video Banner area End Here -->
 
+{% if recent %}
+<h2 class="text-6xl text-gray-900 sm:text-5xl text-center mt-2 mb-10">
+    Recently Stalked
+</h2>
+
+<div class="shop-page-wrapper">
+    <div class="container-fluid p-0">
+        <div class="">
+            <div class="mt-10 mb-10">
+                <div class="mx-4">
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                        {% for product in recent %}
+                        <div class="airi-product">
+                            <div class="product-inner">
+                                <figure class="product-image">
+                                    <div class="product-image--holder">
+                                        <a href="/{{product.product.slug}}">
+                                            <img src="{{product.product.product_image.url}}" alt="Product Image"
+                                                class="w-16 h-44">
+                                            <img src="{{product.product.second_image.url}}" alt="Product Image"
+                                                class="secondary-image w-16 h-44">
+                                        </a>
+                                    </div>
+                                </figure>
+                                <a href="/{{product.product.slug}}" class="mb-2">
+                                    <p class="text-gray-900 pt-3 font-semibold line-clamp-custom">
+                                        {{product.product.title}}
+                                    </p>
+                                    <span class="product-price-wrapper">
+                                        <span class="money">₹{{product.product.price}}</span>
+                                        <span class="product-price-old">
+                                            <span class="money">₹{{product.product.before_discount_price}}</span>
+                                        </span>
+                                    </span>
+                                    <p class="">
+                                        {% for size in product.product.sizes_available.all %}
+                                        <span class="text-gray-400">{{size.size}}</span>
+                                        {% endfor %}
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+<section class="special-offer-area bg--white-7 pt--80 pt-md--60 pb-sm--60 mb-5">
+    <div class="container-fluid">
+        <div class="row align-items-center special-offer-product">
+            <div class="col-md-6 text-center position-relative">
+                <figure class="special-offer-product__image">
+                    <img src="{{settings.main_page_timer_thumbnail.url}}" alt="Special Offer">
+                </figure>
+                <div class="special-offer-product__badge">
+                    <span class="discount-badge">-{{settings.discount_percentage}}%</span>
+                    <div class="price-box">
+                        <span class="regular-price">₹{{settings.last_price}}</span>
+                        <span class="sale-price">₹{{settings.current_price}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 text-center">
+                <h3 class="special-offer-product__title mb--20">
+                    <a href="{{settings.main_page_timer_url}}">{{settings.main_page_timer_caption}}</a>
+                </h3>
+                <div class="special-offer-product__countdown mb--40 mb-md--30">
+                    <div class="product-countdown" data-countdown="{{settings.main_page_timer}}"><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">Days</span></div><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">Hours</span></div><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">Minutes</span></div><div class="single-countdown"><span class="single-countdown__time">00</span><span class="single-countdown__text">Seconds</span></div></div>
+                </div>
+                <a href="{{settings.main_page_timer_url}}" class="btn btn-small btn-style-1">Shop Now</a>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 <h2 class="text-6xl text-gray-900 sm:text-5xl text-center mt-2 mb-10">
     CATEGORIES
 </h2>
 
-<!-- Banner Start Here -->
-<div class="shop-page-wrapper">
-    <div class="container-fluid p-0">
-        <div class="mx-4">
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                {% for x in categories %}
-                <div class="banner-box banner-type-2 banner-hover-2">
-                    <div class="banner-inner">
-                        <div class="">
-                            <img src="{{x.category_image.url}}" alt="Banner" class="rounded-3xl h-3/4">
-                        </div>
-                        <div class="banner-info" style="text-align: left;">
-                            <a class="" href="/search/{{x.category}}">
-                                <h2
-                                    class="text-2xl font-semibold text-white sm:text-5xl mt-2 mb-10 py-3 text-left px-4 uppercase bg-gradient-to-r from-gray-700 to-gray-100 shadow-lg shadow-gray-900/50">
-                                    {{ x.short_caption }}
-                                </h2>
-                            </a>
-                        </div>
-                        <a class="banner-link banner-overlay" href="/search/{{x.category}}">Shop Now</a>
-                    </div>
+<div class="container mx-auto p-4">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <!-- Grid Item 1 -->
+        {% for x in categories %}
+        <a href="/search/{{ x.category }}" class="block">
+            <div class="relative bg-cover bg-center rounded-2xl"
+                style="background-image: url('{{ x.category_image.url }}'); height: 32rem;">
+                <div class="absolute inset-0 bg-black bg-opacity-20 flex items-end p-4 rounded-2xl">
+                    <h2 class="text-white text-2xl tracking-wide uppercase font-semibold">{{ x.category }}</h2>
                 </div>
-                {% endfor %}
             </div>
-        </div>
+        </a>
+        {% endfor %}
     </div>
 </div>
-<!-- Banner End Here -->
+
 <!-- Method area Start Here -->
 <section class="method-area pt--80 pt-md--60 pb--40 pb-md--30">
     <div class="container">
